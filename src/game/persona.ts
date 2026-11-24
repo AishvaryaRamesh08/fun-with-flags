@@ -4,7 +4,7 @@
  * backhanded remarks, wrong answers get theatrical disappointment. Every line is original.
  *
  * pick() never returns the same line twice in a row from the same pool, so he doesn't
- * repeat himself. Lines shown after a correct answer must stay short (they have ~0.6s to type out).
+ * repeat himself. Lines appear instantly; keep them short enough to read at a glance.
  */
 
 const lastPicked = new Map<readonly string[], string>()
@@ -17,7 +17,7 @@ export function pick(pool: readonly string[]): string {
   return line
 }
 
-/** After a correct answer. Never a compliment. Keep under ~30 characters. */
+/** After a correct answer (on screen for ~0.6s). Never a compliment. Keep under ~30 characters. */
 const RIGHT = [
   'Lucky guess.',
   'Even a broken clock…',

@@ -29,7 +29,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
           </button>
         </div>
         <h1 className="display text-[2.15rem] whitespace-nowrap">
-          <span className="text-accent">&gt;</span> <Typewriter text="Fun with Flags" speed={45} cursor={false} />
+          <span className="text-accent">&gt;</span> <Typewriter text="Fun with Flags" speed={45} />
         </h1>
       </header>
 

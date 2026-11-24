@@ -19,8 +19,8 @@ describe('Moonpie persona', () => {
     for (const l of seen) expect(l).toContain('India')
   })
 
-  it('keeps correct-answer lines short enough to type out before the next question (0.6s)', () => {
-    for (const l of MOOD_LINES.happy) expect(l.length * 18).toBeLessThan(600)
+  it('keeps correct-answer lines short enough to read in the 0.6s before the next question', () => {
+    for (const l of MOOD_LINES.happy) expect(l.length).toBeLessThanOrEqual(30)
   })
 
   it('pick works on single-line pools', () => {

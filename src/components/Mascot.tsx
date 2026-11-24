@@ -1,6 +1,5 @@
 import { useId, useMemo } from 'react'
 import { MOOD_LINES, pick } from '../game/persona'
-import { Typewriter } from './Typewriter'
 
 export type Mood = 'idle' | 'happy' | 'sad' | 'thinking' | 'party' | 'wave'
 
@@ -140,7 +139,7 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
           key={`b-${mood}-${reactionKey}-${text}`}
           className="panda-bubble mb-6 min-w-0 flex-1 rounded-[var(--radius-ui)] border-2 border-accent bg-surface px-3 py-2 text-[13px] leading-snug text-fg"
         >
-          <Typewriter text={text} speed={18} />
+          {text}
         </div>
       )}
     </div>

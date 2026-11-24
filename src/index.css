@@ -111,17 +111,6 @@ body {
   text-shadow: 0 0 8px var(--color-glow);
 }
 
-/* Blinking block cursor: add class="cursor" to any text */
-.cursor::after {
-  content: '▋';
-  margin-left: 0.1em;
-  color: var(--color-accent);
-  animation: caret 1s steps(1) infinite;
-}
-@keyframes caret {
-  50% { opacity: 0; }
-}
-
 /* ---------- Shared building blocks (one look everywhere) ---------- */
 .card {
   @apply rounded-[var(--radius-ui)] border-2 border-line bg-surface;
