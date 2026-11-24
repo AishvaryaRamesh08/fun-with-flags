@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Navigate } from '../App'
 import { Flag } from '../components/Flag'
 import { feedback } from '../components/feedback'
-import { Panda, type Mood } from '../components/Panda'
+import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { BlitzDeck, blitzPoints, buildQuiz } from '../game/engine'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
@@ -155,11 +155,11 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     if (stats.answered === 0 || confirm('Quit this game? Your answers so far are still saved for review.')) navigate({ name: 'home' })
   }
 
-  /** What Bao says: streaks while thinking; in Blitz a wrong answer names the right one (there's no hint panel) */
-  const pandaLine = (): string | null | undefined => {
-    if (mood === 'thinking') return stats.streak >= 3 ? `🔥 ${stats.streak} in a row!` : null
+  /** What Byte says: streaks while thinking; in Blitz a wrong answer names the right one (there's no hint panel) */
+  const mascotLine = (): string | null | undefined => {
+    if (mood === 'thinking') return stats.streak >= 3 ? `streak x${stats.streak} 🔥` : null
     if (answer && !answer.correct) {
-      return `✗ Wrong! It's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}`
+      return `[err] it's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}`
     }
     return undefined
   }
@@ -200,8 +200,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
         </span>
       </header>
 
-      <div className="mb-2 min-h-[76px]">
-        <Panda mood={mood} size={64} reactionKey={reaction} say={pandaLine()} />
+      <div className="mb-2 flex h-[96px] items-end">
+        <Mascot mood={mood} size={64} reactionKey={reaction} say={mascotLine()} />
       </div>
 
       <QuestionView key={qid} question={question} answer={answer} onAnswer={submit} />

@@ -1,6 +1,6 @@
 # 🐼 Fun with Flags
 
-An ad-free, mobile-first flag quiz game with a friendly panda guide.
+An ad-free, mobile-first flag quiz game with a retro terminal look and a pixel mascot, Byte.
 Learn all 195 countries' flags, capitals and currencies — offline, no login, no tracking.
 
 **Play:** https://aishvaryaramesh08.github.io/fun-with-flags/

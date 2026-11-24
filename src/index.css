@@ -1,27 +1,27 @@
 @import 'tailwindcss';
 
 /*
- * Theme: two colours — black and "money green" — in a GTA-inspired street style.
- * Every screen uses these tokens; red is used only to mark a wrong answer.
+ * Theme: retro terminal. Two colours only — orange on black (red marks a wrong answer).
+ * Monospace everywhere, square corners, CRT scanlines and a blinking block cursor.
  */
 @theme {
-  --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
-  --font-body: 'Barlow', system-ui, sans-serif;
-  --font-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-display: 'VT323', 'Courier New', monospace; /* big pixel headings */
+  --font-body: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-cond: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; /* small labels */
 
-  --color-bg: #0b0b0b; /* page */
-  --color-surface: #171717; /* cards, tiles, inputs */
-  --color-raised: #222222; /* pressed / hover / flipped */
-  --color-line: #333333; /* borders */
-  --color-fg: #ffffff; /* text */
-  --color-muted: #a3a3a3; /* secondary text */
-  --color-accent: #5fd35a; /* the one colour: buttons, progress, right answers */
-  --color-accent-dim: #1f3a1d; /* accent tint for selected things */
-  --color-on-accent: #0b0b0b;
-  --color-wrong: #ff4d4d;
-  --color-wrong-dim: #3a1717;
+  --color-bg: #0a0a0a; /* page */
+  --color-surface: #111111; /* cards, tiles, inputs */
+  --color-raised: #1c130e; /* flipped card / pressed */
+  --color-line: #5a3320; /* borders: dim orange */
+  --color-fg: #f6b896; /* text: pale orange */
+  --color-muted: #a7714f; /* secondary text */
+  --color-accent: #e8794a; /* the orange: buttons, progress, right answers */
+  --color-accent-dim: #2b170d;
+  --color-on-accent: #0a0a0a;
+  --color-wrong: #ff5a4e;
+  --color-wrong-dim: #2b0f0c;
 
-  --radius-ui: 14px;
+  --radius-ui: 3px;
 }
 
 html,
@@ -34,18 +34,42 @@ body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 15px;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
 }
 
-/* Headline type: heavy, condensed, uppercase */
+/* CRT scanlines over everything (purely decorative, never blocks taps) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.22) 0 1px, transparent 1px 3px);
+}
+
+/* Headline type: chunky pixel terminal letters with a faint phosphor glow */
 .display {
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1;
+  font-size-adjust: cap-height 0.72;
+  text-shadow: 0 0 8px rgb(232 121 74 / 0.45);
+}
+
+/* Blinking block cursor: add class="cursor" to any text */
+.cursor::after {
+  content: '▋';
+  margin-left: 0.1em;
+  color: var(--color-accent);
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret {
+  50% { opacity: 0; }
 }
 
 /* ---------- Shared building blocks (one look everywhere) ---------- */
@@ -56,10 +80,20 @@ body {
   @apply rounded-[var(--radius-ui)] border-2 border-line bg-surface transition-[transform,background-color,border-color] duration-100 select-none active:scale-[0.97];
 }
 .btn {
-  @apply flex min-h-14 items-center justify-center gap-2 rounded-[var(--radius-ui)] border-2 px-4 py-3 text-xl transition-transform duration-75 select-none active:scale-[0.97] disabled:active:scale-100;
+  @apply flex min-h-14 items-center justify-center gap-2 rounded-[var(--radius-ui)] border-2 px-3 py-3 whitespace-nowrap transition-transform duration-75 select-none active:scale-[0.97] disabled:active:scale-100;
   font-family: var(--font-display);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-size: 26px;
+  line-height: 1;
+}
+/* Full-width buttons read like terminal commands: [ PLAY ] */
+.btn.w-full::before {
+  content: '[';
+  opacity: 0.6;
+}
+.btn.w-full::after {
+  content: ']';
+  opacity: 0.6;
 }
 .btn-primary {
   @apply border-accent bg-accent text-on-accent;
@@ -68,11 +102,10 @@ body {
   @apply border-line bg-surface text-fg;
 }
 .chip {
-  @apply inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border-2 border-line bg-surface px-4 py-1.5 text-base text-fg transition-colors select-none disabled:opacity-40;
+  @apply inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[var(--radius-ui)] border-2 border-line bg-surface px-3 py-1.5 text-sm text-fg transition-colors select-none disabled:opacity-40;
   font-family: var(--font-cond);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 .chip[aria-pressed='true'],
 .chip[aria-checked='true'] {
@@ -89,13 +122,16 @@ body {
   @apply border-wrong bg-wrong-dim text-wrong;
 }
 .is-dimmed {
-  @apply opacity-40;
+  @apply opacity-35;
 }
+/* Progress bar drawn as terminal blocks: ▓▓▓▓░░░░ */
 .bar {
-  @apply h-3 overflow-hidden rounded-full bg-line;
+  @apply h-3 overflow-hidden rounded-none border border-line;
+  background: repeating-linear-gradient(to right, var(--color-surface) 0 6px, var(--color-bg) 6px 8px);
 }
 .bar > div {
-  @apply h-full rounded-full bg-accent transition-[width] duration-300;
+  @apply h-full transition-[width] duration-300;
+  background: repeating-linear-gradient(to right, var(--color-accent) 0 6px, transparent 6px 8px);
 }
 
 /* ---------- Panda animations ---------- */
@@ -116,18 +152,10 @@ body {
 .panda-sad {
   animation: wobble 0.4s ease-in-out 2;
 }
-.panda-wave-arm {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: wave 0.6s ease-in-out 3;
-}
-.panda-eyes {
+.mascot-eye {
   transform-box: fill-box;
   transform-origin: center;
   animation: blink 4s infinite;
-}
-.panda-tear {
-  animation: tear 1.2s ease-in infinite;
 }
 .panda-bubble {
   animation: pop 0.2s ease-out;

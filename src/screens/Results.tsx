@@ -1,7 +1,7 @@
 import type { Navigate } from '../App'
 import { Confetti } from '../components/Confetti'
 import { Flag } from '../components/Flag'
-import { Panda } from '../components/Panda'
+import { Mascot } from '../components/Mascot'
 import { DIFFICULTY_INFO, MODE_INFO } from '../game/types'
 import type { GameResult } from './Play'
 
@@ -17,13 +17,13 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
         ? 'Amazing work, flag expert! 🎊'
         : pct >= 40
           ? 'Nice going! Practise the ones you missed 💪'
-          : 'Every flag master starts somewhere. Let’s review! 🐼'
+          : 'every flag master starts somewhere. review time.'
 
   return (
     <main className="flex flex-1 flex-col gap-4 pb-4">
       {(pct >= 70 || newBest) && <Confetti />}
       <div className="pt-2">
-        <Panda mood={mood} size={110} say={message} />
+        <Mascot mood={mood} size={110} say={message} />
       </div>
 
       <section className="card p-5 text-center">
@@ -73,10 +73,10 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
                   <Flag country={c} revealName variant="thumb" />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-cond text-lg leading-tight uppercase">
+                  <p className="font-cond text-sm leading-tight uppercase">
                     {c.name} <span className="text-accent">· {c.capitals[0]}</span>
                   </p>
-                  <p className="text-sm leading-snug text-muted">💡 {c.hint}</p>
+                  <p className="text-xs leading-snug text-muted">💡 {c.hint}</p>
                 </div>
               </li>
             ))}

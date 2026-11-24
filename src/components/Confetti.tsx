@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-const BITS = ['🎉', '⭐', '🎊', '🐼', '🎋', '✨']
+const BITS = ['█', '▓', '▒', '░', '*', '+', '#']
 
 /** Emoji confetti that falls once. Remount (change `key`) to replay. */
 export function Confetti({ count = 28 }: { count?: number }) {
@@ -21,8 +21,8 @@ export function Confetti({ count = 28 }: { count?: number }) {
       {pieces.map((p) => (
         <span
           key={p.id}
-          className="confetti-piece absolute -top-10"
-          style={{ left: `${p.left}%`, animationDelay: `${p.delay}s`, animationDuration: `${p.duration}s`, fontSize: p.size }}
+          className="confetti-piece absolute -top-10 font-display"
+          style={{ left: `${p.left}%`, animationDelay: `${p.delay}s`, animationDuration: `${p.duration}s`, fontSize: p.size, color: p.id % 3 ? 'var(--color-accent)' : 'var(--color-fg)' }}
         >
           {p.emoji}
         </span>

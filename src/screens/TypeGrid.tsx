@@ -3,7 +3,7 @@ import type { Navigate } from '../App'
 import { Confetti } from '../components/Confetti'
 import { Flag } from '../components/Flag'
 import { feedback } from '../components/feedback'
-import { Panda, type Mood } from '../components/Panda'
+import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { countryByCode, questionPool } from '../game/engine'
 import { matchCountry } from '../game/match'
@@ -143,7 +143,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
       navigate({ name: 'home' })
   }
 
-  const pandaSay =
+  const mascotSay =
     spellNote ??
     (mood === 'happy' ? `${solved.size} down, ${total - solved.size} to go!` : mood === 'sad' ? (revealed ? 'Here are the answers. Let’s learn them!' : 'Not that one. Try again!') : undefined)
 
@@ -162,7 +162,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
           </button>
           <div className="flex-1">
             <div className="flex items-baseline justify-between">
-              <h1 className="display text-2xl">⌨️ Type It</h1>
+              <h1 className="display text-[1.7rem]"><span className="text-accent">&gt; </span>Type It</h1>
               <span className="display text-xl tabular-nums">
                 {solved.size}/{total}
               </span>
@@ -204,11 +204,11 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
       </div>
 
       <div className="my-2 min-h-[64px]">
-        <Panda
+        <Mascot
           mood={mood}
           size={56}
           reactionKey={reaction}
-          say={pandaSay ?? (solved.size ? null : 'Type each country under its flag. No timer, no rush! 🐼')}
+          say={mascotSay ?? (solved.size ? null : 'type each country under its flag. no timer.')}
         />
       </div>
 

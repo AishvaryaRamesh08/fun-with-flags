@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import type { Navigate } from '../App'
 import { FlashCard } from '../components/FlashCard'
-import { Panda } from '../components/Panda'
+import { Mascot } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent, type Country } from '../data/types'
 import { ALL_COUNTRIES, countryByCode } from '../game/engine'
@@ -126,7 +126,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
 
       {!card ? (
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
-          <Panda mood="happy" size={110} say={review ? 'No flags to review — you’re all caught up! 🎉' : 'No cards here.'} />
+          <Mascot mood="happy" size={110} say={review ? 'No flags to review — you’re all caught up! 🎉' : 'No cards here.'} />
           <button className="btn btn-primary w-full" onClick={() => navigate({ name: 'home' })}>
             Back home
           </button>

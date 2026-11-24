@@ -1,5 +1,6 @@
 import type { Navigate } from '../App'
-import { Panda } from '../components/Panda'
+import { Mascot } from '../components/Mascot'
+import { Typewriter } from '../components/Typewriter'
 import { ALL_COUNTRIES } from '../game/engine'
 import { MODE_INFO, type Mode } from '../game/types'
 import { isMastered, reviewCodes, useProgress } from '../store/progress'
@@ -14,23 +15,26 @@ export function Home({ navigate }: { navigate: Navigate }) {
 
   return (
     <main className="flex flex-1 flex-col gap-4 pb-4">
-      <div className="flex items-center justify-between pt-1">
-        <h1 className="display text-4xl">
-          Fun with <span className="text-accent">Flags</span>
+      <header className="pt-1">
+        <h1 className="display text-[2.15rem] whitespace-nowrap">
+          <span className="text-accent">&gt;</span> <Typewriter text="Fun with Flags" speed={45} />
         </h1>
-        <div className="flex gap-2">
-          {progress.dayStreak.count > 0 && (
-            <span className="chip px-3" title="Days in a row">
-              🔥 {progress.dayStreak.count}
-            </span>
-          )}
-          <button onClick={() => navigate({ name: 'stats' })} className="icon-btn" aria-label="Stats and settings">
-            📊
-          </button>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <p className="font-cond text-xs text-muted">$ ./play --no-ads --no-login</p>
+          <div className="flex gap-2">
+            {progress.dayStreak.count > 0 && (
+              <span className="chip px-3" title="Days in a row">
+                🔥 {progress.dayStreak.count}
+              </span>
+            )}
+            <button onClick={() => navigate({ name: 'stats' })} className="icon-btn" aria-label="Stats and settings">
+              📊
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      <Panda mood="wave" size={100} say={firstVisit ? "Hi! I'm Bao 🐼 Let's learn the flags of the world!" : undefined} />
+      <Mascot mood="wave" size={100} say={firstVisit ? "hi! i'm Byte. let's learn the flags of the world." : undefined} />
 
       <section className="card p-4">
         <div className="mb-2 flex items-baseline justify-between font-cond text-lg uppercase">
@@ -80,7 +84,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
         </button>
       </section>
 
-      <p className="mt-auto text-center text-xs text-muted">No ads. No login. Your progress stays on this device. 🐼</p>
+      <p className="mt-auto text-center text-xs text-muted">No ads. No login. Your progress stays on this device.</p>
     </main>
   )
 }

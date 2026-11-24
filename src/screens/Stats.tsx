@@ -1,5 +1,5 @@
 import type { Navigate } from '../App'
-import { Panda } from '../components/Panda'
+import { Mascot } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS } from '../data/types'
 import { ALL_COUNTRIES } from '../game/engine'
@@ -20,7 +20,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
     <main className="flex flex-1 flex-col gap-4 pb-6">
       <TopBar title="📊 Your progress" onBack={() => navigate({ name: 'home' })} />
 
-      <Panda mood="happy" size={72} say={p.gamesPlayed ? `${mastered} flags mastered so far!` : 'Play a game and your stats will show up here!'} />
+      <Mascot mood="happy" size={72} say={p.gamesPlayed ? `${mastered} flags mastered so far!` : 'Play a game and your stats will show up here!'} />
 
       <section className="grid grid-cols-3 gap-2 text-center">
         <Stat value={p.gamesPlayed} label="games" />
@@ -95,7 +95,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
       </section>
 
       <p className="text-center text-xs text-muted">
-        Flags from flag-icons · Country data from mledoze/countries · Made with 🎋 by Bao
+        Flags from flag-icons · Country data from mledoze/countries · Made with ▓▓ by Byte
       </p>
     </main>
   )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { Navigate } from '../App'
-import { Panda } from '../components/Panda'
+import { Mascot } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent } from '../data/types'
 import { questionPool } from '../game/engine'
@@ -48,7 +48,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
       <TopBar title={`${MODE_INFO[mode].emoji} ${MODE_INFO[mode].title}`} onBack={() => navigate({ name: 'home' })} />
 
       <div className="flex flex-1 flex-col gap-5 pb-28">
-        <Panda
+        <Mascot
           mood="thinking"
           size={72}
           reactionKey={`${mode}${difficulty}${continents.join()}`}

@@ -20,7 +20,7 @@ export default defineConfig({
       manifest: {
         name: 'Fun with Flags',
         short_name: 'Fun with Flags',
-        description: 'Ad-free flag quiz game with a friendly panda guide',
+        description: 'Ad-free retro flag quiz game',
         theme_color: '#0b0b0b',
         background_color: '#0b0b0b',
         display: 'standalone',
