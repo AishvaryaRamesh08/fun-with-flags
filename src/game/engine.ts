@@ -64,7 +64,7 @@ export function makeQuestion(country: Country, kind: QuestionKind, difficulty: D
 
 /** A fixed-length quiz with no repeated countries. */
 export function buildQuiz(settings: GameSettings, rng: Rng = Math.random): Question[] {
-  if (settings.mode === 'blitz') throw new Error('Use BlitzDeck for blitz mode')
+  if (settings.mode === 'blitz') throw new Error('Use buildBlitz for blitz mode')
   const pool = shuffle(questionPool(settings), rng)
   const n = settings.count > 0 ? Math.min(settings.count, pool.length) : pool.length
   return pool.slice(0, n).map((c) => makeQuestion(c, settings.mode as QuestionKind, settings.difficulty, rng))
@@ -72,22 +72,13 @@ export function buildQuiz(settings: GameSettings, rng: Rng = Math.random): Quest
 
 const BLITZ_KINDS: QuestionKind[] = ['flag-to-name', 'name-to-flag', 'flag-to-name', 'capital']
 
-/** Endless shuffled questions for Blitz. Goes through the whole pool before repeating. */
-export class BlitzDeck {
-  private queue: Country[] = []
-  private pool: Country[]
-  private settings: Pick<GameSettings, 'continents' | 'difficulty'>
-  private rng: Rng
-  constructor(settings: Pick<GameSettings, 'continents' | 'difficulty'>, rng: Rng = Math.random) {
-    this.settings = settings
-    this.rng = rng
-    this.pool = questionPool(settings)
-  }
-  next(): Question {
-    if (!this.queue.length) this.queue = shuffle(this.pool, this.rng)
-    const country = this.queue.pop()!
-    return makeQuestion(country, pick(BLITZ_KINDS, this.rng), this.settings.difficulty, this.rng)
-  }
+/**
+ * All the questions for one Blitz game, built up front: every country in the pool exactly once,
+ * shuffled, each with a random question type. If you answer them all before 60s, the game ends.
+ * (Built as a plain list, not a stateful deck, so nothing can be skipped or drawn twice.)
+ */
+export function buildBlitz(settings: Pick<GameSettings, 'continents' | 'difficulty'>, rng: Rng = Math.random): Question[] {
+  return shuffle(questionPool(settings), rng).map((c) => makeQuestion(c, pick(BLITZ_KINDS, rng), settings.difficulty, rng))
 }
 
 /** Blitz scoring: 10 points, +5 for every 3 correct in a row (max +20). */

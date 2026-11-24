@@ -5,7 +5,7 @@ import { feedback } from '../components/feedback'
 import { Icon } from '../components/Icon'
 import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
-import { BlitzDeck, blitzPoints, buildQuiz } from '../game/engine'
+import { blitzPoints, buildBlitz, buildQuiz } from '../game/engine'
 import { rightLine, streakLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
 import { bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
@@ -29,12 +29,12 @@ interface Answer {
 
 export function Play({ settings, navigate }: { settings: GameSettings; navigate: Navigate }) {
   const blitz = settings.mode === 'blitz'
-  const deck = useMemo(() => (blitz ? new BlitzDeck(settings) : null), [blitz, settings])
-  const quiz = useMemo(() => (blitz ? [] : buildQuiz(settings)), [blitz, settings])
+  // Every mode is a fixed list with each country once; Blitz just races through it against the clock
+  const quiz = useMemo(() => (blitz ? buildBlitz(settings) : buildQuiz(settings)), [blitz, settings])
 
   const [index, setIndex] = useState(0)
   const [qid, setQid] = useState(0)
-  const [question, setQuestion] = useState<Question>(() => (deck ? deck.next() : quiz[0]))
+  const [question, setQuestion] = useState<Question>(() => quiz[0])
   const [answer, setAnswer] = useState<Answer | null>(null)
   const [stats, setStats] = useState({ correct: 0, answered: 0, points: 0, streak: 0, bestStreak: 0 })
   const missed = useRef<Country[]>([])
@@ -113,17 +113,14 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     setQid((q) => q + 1)
     const streak = statsRef.current.streak
     setLine(streak >= 3 ? streakLine(streak) : null)
-    if (deck) {
-      setQuestion(deck.next())
-      return
-    }
+    // No country is ever asked twice: when the list runs out the game ends (Blitz may end before 60s)
     if (index + 1 >= quiz.length) {
       finish(statsRef.current)
       return
     }
     setIndex(index + 1)
     setQuestion(quiz[index + 1])
-  }, [deck, finish, index, quiz])
+  }, [finish, index, quiz])
 
   const submit = (a: Answer) => {
     if (answer || finished.current) return

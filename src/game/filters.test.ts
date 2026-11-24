@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { CONTINENTS, type Continent } from '../data/types'
-import { ALL_COUNTRIES, buildQuiz, questionPool } from './engine'
+import { ALL_COUNTRIES, buildBlitz, buildQuiz, questionPool } from './engine'
 import { seeded } from './random'
 import type { Difficulty, Mode } from './types'
 
@@ -56,6 +56,28 @@ describe('filters: every continent combo × difficulty × mode', () => {
             }
           }
         }
+      }
+    }
+  })
+
+  it('Blitz never repeats a country in a game, for every filter, and then ends', () => {
+    const rng = seeded(11)
+    for (const continents of subsets) {
+      for (const difficulty of difficulties) {
+        const codes = buildBlitz({ continents, difficulty }, rng).map((q) => q.country.code)
+        expect(new Set(codes).size).toBe(codes.length)
+        expect(codes.length).toBe(questionPool({ continents, difficulty }).length)
+      }
+    }
+  })
+
+  it('Guess the Country, Find the Flag, Capitals and Type It never repeat a country, even with "All" questions', () => {
+    const rng = seeded(12)
+    for (const continents of subsets) {
+      for (const mode of modes) {
+        const quiz = buildQuiz({ mode, continents, difficulty: 'hard', count: 0 }, rng)
+        const codes = quiz.map((q) => q.country.code)
+        expect(new Set(codes).size).toBe(codes.length)
       }
     }
   })

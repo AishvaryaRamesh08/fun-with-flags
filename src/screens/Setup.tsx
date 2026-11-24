@@ -50,7 +50,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
             mode === 'type-it'
               ? `All ${pool.length} flags. No timer. Try not to embarrass us both.`
               : isBlitz
-                ? `${pool.length} countries, 60 seconds. I’d need about 12.`
+                ? `${pool.length} countries, each once, 60 seconds. I’d need about 12.`
                 : `${questions} question${questions === 1 ? '' : 's'}. I’ll try to contain my boredom.`
           }
         />
