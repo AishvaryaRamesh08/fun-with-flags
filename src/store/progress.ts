@@ -40,7 +40,7 @@ const fresh = (): Progress => ({
   dayStreak: { count: 0, lastDay: '' },
   lastSettings: null,
   settings: { sound: true, vibration: true },
-  theme: 'clay',
+  theme: 'paper',
 })
 
 function load(): Progress {

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { Navigate } from '../App'
 import { Flag } from '../components/Flag'
 import { feedback } from '../components/feedback'
+import { Icon } from '../components/Icon'
 import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { BlitzDeck, blitzPoints, buildQuiz } from '../game/engine'
@@ -157,7 +158,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
 
   /** What Byte says: streaks while thinking; in Blitz a wrong answer names the right one (there's no hint panel) */
   const mascotLine = (): string | null | undefined => {
-    if (mood === 'thinking') return stats.streak >= 3 ? `streak x${stats.streak} 🔥` : null
+    if (mood === 'thinking') return stats.streak >= 3 ? `streak x${stats.streak}` : null
     if (answer && !answer.correct) {
       return `[err] it's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}`
     }
@@ -168,19 +169,17 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     <main className="flex flex-1 flex-col">
       {/* Top bar: quit, progress / timer, score */}
       <header className="mb-2 flex items-center gap-3">
-        <button
-          onClick={quit}
-          aria-label="Quit game"
-          className="icon-btn"
-        >
-          ✕
+        <button onClick={quit} className="icon-btn">
+          <Icon name="close" label="Quit game" />
         </button>
         {blitz ? (
           <div className="flex flex-1 items-center gap-2">
             <div className="bar flex-1">
               <div
-                className={timeLeft <= 10 ? '!bg-wrong' : ''}
-                style={{ width: `${(timeLeft / BLITZ_SECONDS) * 100}%` }}
+                style={{
+                  width: `${(timeLeft / BLITZ_SECONDS) * 100}%`,
+                  ...(timeLeft <= 10 && { background: 'repeating-linear-gradient(to right, var(--color-wrong) 0 6px, transparent 6px 8px)' }),
+                }}
               />
             </div>
             <span className={`display w-12 text-right text-2xl tabular-nums ${timeLeft <= 10 ? 'text-wrong' : ''}`}>{timeLeft}s</span>
@@ -196,7 +195,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
           </div>
         )}
         <span className="chip px-3 tabular-nums" aria-label="Score">
-          ⭐ {blitz ? stats.points : stats.correct}
+          <Icon name="star" /> {blitz ? stats.points : stats.correct}
         </span>
       </header>
 
@@ -214,7 +213,8 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
   const { kind, country, options } = question
   const choose = (o: Country) => onAnswer({ chosen: o.code, correct: o === country })
 
-  const mark = (o: Country) => (!answer ? '' : o === country ? '✓ ' : o.code === answer.chosen ? '✗ ' : '')
+  const mark = (o: Country) =>
+    !answer ? null : o === country ? <Icon name="check" className="mr-1" /> : o.code === answer.chosen ? <Icon name="close" className="mr-1" /> : null
   const optionClass = (o: Country) => {
     if (!answer) return ''
     if (o === country) return 'is-right pop-in'
@@ -241,7 +241,14 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
               <Flag country={o} revealName={!!answer} variant="thumb" />
               {/* Name slot is always there (empty until answered) so tiles never change size */}
               <span className="flex h-9 items-center justify-center font-cond text-sm leading-tight uppercase">
-                <span className="line-clamp-2">{answer ? `${mark(o)}${o.name}` : ''}</span>
+                <span className="line-clamp-2">
+                  {answer && (
+                    <>
+                      {mark(o)}
+                      {o.name}
+                    </>
+                  )}
+                </span>
               </span>
             </button>
           ))}

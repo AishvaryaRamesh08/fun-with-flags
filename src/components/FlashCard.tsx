@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Country } from '../data/types'
 import { Flag } from './Flag'
+import { Icon, type IconName } from './Icon'
 
 interface Props {
   country: Country
@@ -71,8 +72,8 @@ export function FlashCard({ country, flipped, onToggle, size = 'large' }: Props)
           </p>
 
           <div className={`absolute flex gap-1.5 ${large ? 'right-3 bottom-3' : 'right-1.5 bottom-1.5'}`}>
-            <ExtraIcon emoji="💡" label="Show hint to remember it" large={large} onOpen={() => setExtra('hint')} />
-            <ExtraIcon emoji="🤓" label="Show fun fact" large={large} onOpen={() => setExtra('fact')} />
+            <ExtraIcon icon="hint" label="Show hint to remember it" large={large} onOpen={() => setExtra('hint')} />
+            <ExtraIcon icon="fact" label="Show fun fact" large={large} onOpen={() => setExtra('fact')} />
           </div>
 
           {shownExtra && (
@@ -86,8 +87,11 @@ export function FlashCard({ country, flipped, onToggle, size = 'large' }: Props)
               className={`pop-in absolute inset-0 flex flex-col overflow-y-auto rounded-[12px] bg-surface text-left ${large ? 'gap-2 p-5' : 'gap-1 p-2'}`}
             >
               <p className={`flex items-center justify-between font-cond text-accent uppercase ${large ? 'text-lg' : 'text-xs'}`}>
-                {shownExtra === 'hint' ? '💡 Remember it' : '🤓 Fun fact'}
-                <span aria-hidden className="text-muted">✕</span>
+                <span className="flex items-center gap-1.5">
+                  <Icon name={shownExtra === 'hint' ? 'hint' : 'fact'} />
+                  {shownExtra === 'hint' ? 'Remember it' : 'Fun fact'}
+                </span>
+                <Icon name="close" className="text-muted" />
               </p>
               <p className={`leading-snug ${large ? 'text-lg' : 'text-xs'}`}>{shownExtra === 'hint' ? country.hint : country.funFact}</p>
             </div>
@@ -98,7 +102,7 @@ export function FlashCard({ country, flipped, onToggle, size = 'large' }: Props)
   )
 }
 
-function ExtraIcon({ emoji, label, large, onOpen }: { emoji: string; label: string; large: boolean; onOpen: () => void }) {
+function ExtraIcon({ icon, label, large, onOpen }: { icon: IconName; label: string; large: boolean; onOpen: () => void }) {
   return (
     <button
       type="button"
@@ -108,9 +112,9 @@ function ExtraIcon({ emoji, label, large, onOpen }: { emoji: string; label: stri
         e.stopPropagation()
         onOpen()
       }}
-      className={`grid place-items-center rounded-full border border-line bg-surface leading-none active:scale-90 ${large ? 'h-9 w-9 text-lg' : 'h-6 w-6 text-xs'}`}
+      className={`grid place-items-center rounded-[var(--radius-ui)] border border-line bg-surface leading-none text-accent active:scale-90 ${large ? 'h-9 w-9 text-lg' : 'h-6 w-6 text-xs'}`}
     >
-      {emoji}
+      <Icon name={icon} />
     </button>
   )
 }

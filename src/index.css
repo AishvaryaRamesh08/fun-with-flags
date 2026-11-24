@@ -3,7 +3,7 @@
 /*
  * Theme: retro terminal. Each theme is two colours (a background and one accent)
  * plus readable text; red only marks a wrong answer. Pick one in Settings.
- * Default = Clay. All pass WCAG AA: text ≥ 7:1, secondary text ≥ 4.5:1, borders ≥ 3:1.
+ * Default = Paper (set in index.html and progress.ts). All pass WCAG AA: text ≥ 7:1, secondary text ≥ 4.5:1, borders ≥ 3:1.
  */
 @theme {
   --font-display: 'VT323', 'Courier New', monospace; /* big pixel headings */

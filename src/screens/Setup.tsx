@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Navigate } from '../App'
+import { Icon } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent } from '../data/types'
@@ -8,14 +9,6 @@ import { DIFFICULTY_INFO, MODE_INFO, type Difficulty, type GameSettings, type Mo
 import { bestKey, getProgress, useProgress } from '../store/progress'
 
 const COUNTS = [10, 20, 30, 0]
-const CONTINENT_EMOJI: Record<Continent, string> = {
-  Africa: '🌍',
-  Asia: '🌏',
-  Europe: '🏰',
-  'North America': '🗽',
-  'South America': '🦜',
-  Oceania: '🏝️',
-}
 const MODES: Mode[] = ['flag-to-name', 'name-to-flag', 'type-it', 'capital', 'blitz']
 
 export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: Navigate }) {
@@ -45,7 +38,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
 
   return (
     <main className="flex flex-1 flex-col">
-      <TopBar title={`${MODE_INFO[mode].emoji} ${MODE_INFO[mode].title}`} onBack={() => navigate({ name: 'home' })} />
+      <TopBar title={MODE_INFO[mode].title} onBack={() => navigate({ name: 'home' })} />
 
       <div className="flex flex-1 flex-col gap-5 pb-28">
         <Mascot
@@ -65,7 +58,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
           <div className="grid grid-cols-2 gap-2">
             {MODES.map((m) => (
               <button key={m} className={`chip h-11 px-2 text-sm whitespace-nowrap ${m === 'blitz' ? 'col-span-2' : ''}`} aria-pressed={mode === m} onClick={() => setMode(m)}>
-                {MODE_INFO[m].emoji} {MODE_INFO[m].title}
+                <Icon name={MODE_INFO[m].icon} /> {MODE_INFO[m].title}
               </button>
             ))}
           </div>
@@ -74,11 +67,11 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
         <Section title="Continents" note={continents.length ? `${continents.length} picked` : 'All of them'}>
           <div className="grid grid-cols-2 gap-2">
             <button className="chip col-span-2 h-11 text-sm" aria-pressed={continents.length === 0} onClick={() => setContinents([])}>
-              🌐 All
+              All continents
             </button>
             {CONTINENTS.map((c) => (
               <button key={c} className="chip h-11 px-2 text-sm whitespace-nowrap" aria-pressed={continents.includes(c)} onClick={() => toggleContinent(c)}>
-                {CONTINENT_EMOJI[c]} {c}
+                {c}
               </button>
             ))}
           </div>
@@ -97,7 +90,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
                 }`}
               >
                 <span className="display text-xl">{DIFFICULTY_INFO[d].label}</span>
-                <span className={`font-cond text-sm uppercase ${difficulty === d ? '' : 'text-muted'}`}>{poolSizes[d]} countries</span>
+                <span className={`font-cond text-xs whitespace-nowrap uppercase ${difficulty === d ? '' : 'text-muted'}`}>{poolSizes[d]} countries</span>
               </button>
             ))}
           </div>
@@ -121,14 +114,15 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
 
         {best !== undefined && (
           <p className="text-center font-cond text-lg text-muted uppercase">
-            🏆 Your best here: {isBlitz ? `${best} points` : `${best}%`}
+            <Icon name="trophy" /> Your best here: {isBlitz ? `${best} points` : `${best}%`}
           </p>
         )}
       </div>
 
       <div className="fixed inset-x-0 bottom-0 z-10 mx-auto max-w-md bg-bg/95 backdrop-blur px-4 pt-6 pb-[max(env(safe-area-inset-bottom),16px)]">
         <button onClick={start} className="btn btn-primary w-full text-2xl">
-          {isBlitz ? '⚡ Start Blitz' : mode === 'type-it' ? '⌨️ Start typing' : '▶ Play'}
+          <Icon name={isBlitz ? 'zap' : mode === 'type-it' ? 'keyboard' : 'play'} />
+          {isBlitz ? 'Start Blitz' : mode === 'type-it' ? 'Start typing' : 'Play'}
         </button>
       </div>
     </main>

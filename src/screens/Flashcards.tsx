@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import type { Navigate } from '../App'
 import { FlashCard } from '../components/FlashCard'
+import { Icon } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent, type Country } from '../data/types'
@@ -77,7 +78,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? 1 : -1)
   }
 
-  const title = only ? '🃏 Practise' : review ? '🔁 Review deck' : '🃏 Flashcards'
+  const title = only ? 'Practise' : review ? 'Review deck' : 'Flashcards'
 
   return (
     <main className="flex flex-1 flex-col">
@@ -87,7 +88,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
         right={
           deck.length > 1 && (
             <button className="chip" onClick={() => resetFilters(() => setShuffleSeed((s) => s + 1))} aria-label="Shuffle cards">
-              🔀
+              <Icon name="shuffle" />
             </button>
           )
         }
@@ -103,7 +104,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
             onClick={() => setView(v)}
             className="chip"
           >
-            {v === 'one' ? '🃏 One at a time' : '🔳 All flags'}
+            <Icon name={v === 'one' ? 'card' : 'grid'} /> {v === 'one' ? 'One at a time' : 'All flags'}
           </button>
         ))}
       </div>
@@ -111,10 +112,10 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
       {!only && (
         <div className="-mx-4 mb-3 flex gap-2 overflow-x-auto px-4 pb-2">
           <button className="chip shrink-0" aria-pressed={review} onClick={() => resetFilters(() => setReview((r) => !r))}>
-            🔁 Review only
+            <Icon name="review" /> Review only
           </button>
           <button className="chip shrink-0" aria-pressed={continent === null} onClick={() => resetFilters(() => setContinent(null))}>
-            🌐 All
+            All
           </button>
           {CONTINENTS.map((c) => (
             <button key={c} className="chip shrink-0" aria-pressed={continent === c} onClick={() => resetFilters(() => setContinent(c))}>
@@ -126,7 +127,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
 
       {!card ? (
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
-          <Mascot mood="happy" size={110} say={review ? 'No flags to review — you’re all caught up! 🎉' : 'No cards here.'} />
+          <Mascot mood="happy" size={110} say={review ? 'no flags to review. all caught up.' : 'No cards here.'} />
           <button className="btn btn-primary w-full" onClick={() => navigate({ name: 'home' })}>
             Back home
           </button>
@@ -154,7 +155,12 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
           <p className="mb-2 text-center font-cond text-sm text-muted uppercase">
             Card {pos + 1} of {deck.length}
             {done > 0 && ` · ${done} practised`}
-            {isMastered(progress.countries[card.code]) && ' · ⭐ mastered'}
+            {isMastered(progress.countries[card.code]) && (
+              <>
+                {' · '}
+                <Icon name="star" /> mastered
+              </>
+            )}
           </p>
 
           <div onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
@@ -163,19 +169,19 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
 
           <div className="mt-4 grid grid-cols-2 gap-3">
             <button className="btn btn-ghost" onClick={() => mark(false)}>
-              😅 Not yet
+              <Icon name="down" /> Not yet
             </button>
             <button className="btn btn-primary" onClick={() => mark(true)}>
-              😎 Got it
+              <Icon name="up" /> Got it
             </button>
           </div>
           <div className="mt-3 flex justify-between">
             <button className="chip" onClick={() => go(-1)} disabled={pos === 0}>
-              ← Prev
+              <Icon name="prev" /> Prev
             </button>
             <span className="self-center font-cond text-xs text-muted uppercase">Swipe to browse</span>
             <button className="chip" onClick={() => go(1)} disabled={pos >= deck.length - 1}>
-              Next →
+              Next <Icon name="next" />
             </button>
           </div>
         </>

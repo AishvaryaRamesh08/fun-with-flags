@@ -1,4 +1,5 @@
 import type { Navigate } from '../App'
+import { Icon } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
 import { Typewriter } from '../components/Typewriter'
 import { ALL_COUNTRIES } from '../game/engine'
@@ -20,11 +21,11 @@ export function Home({ navigate }: { navigate: Navigate }) {
         <div className="mb-2 flex items-center justify-end gap-2">
           {progress.dayStreak.count > 0 && (
             <span className="chip px-3" title="Days in a row">
-              🔥 {progress.dayStreak.count}
+              <Icon name="fire" /> {progress.dayStreak.count}
             </span>
           )}
           <button onClick={() => navigate({ name: 'stats' })} className="icon-btn" aria-label="Stats and settings">
-            📊
+            <Icon name="stats" label="Stats and settings" />
           </button>
         </div>
         <h1 className="display text-[2.15rem] whitespace-nowrap">
@@ -47,7 +48,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
       </section>
 
       <button onClick={() => navigate({ name: 'setup', mode: 'blitz' })} className="btn btn-primary min-h-16 w-full text-3xl">
-        ⚡ 60-second Blitz
+        <Icon name="zap" /> 60-second Blitz
       </button>
 
       <section aria-label="Quiz modes" className="grid grid-cols-2 gap-3">
@@ -57,7 +58,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
             onClick={() => navigate({ name: 'setup', mode })}
             className="tile flex aspect-square flex-col items-center justify-center gap-2 p-3 text-center"
           >
-            <span className="text-4xl leading-none">{MODE_INFO[mode].emoji}</span>
+            <Icon name={MODE_INFO[mode].icon} className="text-4xl text-accent" />
             <span className="display flex h-11 items-center text-xl">{MODE_INFO[mode].title}</span>
             <span className="line-clamp-2 h-9 text-sm leading-tight text-muted">{MODE_INFO[mode].blurb}</span>
           </button>
@@ -66,14 +67,14 @@ export function Home({ navigate }: { navigate: Navigate }) {
 
       <section className="grid grid-cols-2 gap-3">
         <button onClick={() => navigate({ name: 'flashcards' })} className="btn btn-ghost">
-          🃏 Flashcards
+          <Icon name="card" /> Flashcards
         </button>
         <button
           onClick={() => navigate({ name: 'flashcards', reviewOnly: true })}
           className="btn btn-ghost relative disabled:opacity-40"
           disabled={review === 0}
         >
-          🔁 Review
+          <Icon name="review" /> Review
           {review > 0 && (
             <span className="absolute -top-2 -right-2 grid h-7 min-w-7 place-items-center rounded-full bg-accent px-1.5 font-cond text-sm text-on-accent">
               {review}

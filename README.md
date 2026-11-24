@@ -28,6 +28,7 @@ Tap-the-map, multiplayer, currency quiz.
 | `data/curated/confusables.json` | Look-alike flag groups used for Hard mode |
 
 Flags are SVGs from [flag-icons](https://github.com/lipis/flag-icons), copied to `public/flags/`.
+UI icons are from [Pixelarticons](https://github.com/halfmage/pixelarticons) (MIT).
 
 ```bash
 npm run data:build     # regenerate countries.json + flags

@@ -1,6 +1,7 @@
 import type { Navigate } from '../App'
 import { Confetti } from '../components/Confetti'
 import { Flag } from '../components/Flag'
+import { Icon } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
 import { DIFFICULTY_INFO, MODE_INFO } from '../game/types'
 import type { GameResult } from './Play'
@@ -12,11 +13,11 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
   const mood = pct >= 70 ? 'party' : pct >= 40 ? 'happy' : 'sad'
   const message =
     pct === 100 && answered > 0
-      ? 'PERFECT! Not a single mistake! 🏆'
+      ? 'perfect round. zero mistakes.'
       : pct >= 70
-        ? 'Amazing work, flag expert! 🎊'
+        ? 'great work, flag expert.'
         : pct >= 40
-          ? 'Nice going! Practise the ones you missed 💪'
+          ? 'nice going. practise the ones you missed.'
           : 'every flag master starts somewhere. review time.'
 
   return (
@@ -28,7 +29,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
 
       <section className="card p-5 text-center">
         <p className="font-cond text-sm text-muted uppercase">
-          {MODE_INFO[settings.mode].emoji} {MODE_INFO[settings.mode].title} · {DIFFICULTY_INFO[settings.difficulty].label}
+          {MODE_INFO[settings.mode].title} · {DIFFICULTY_INFO[settings.difficulty].label}
         </p>
         {blitz ? (
           <>
@@ -44,17 +45,17 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
           </>
         )}
         <div className="mt-3 flex justify-center gap-2">
-          {settings.mode !== 'type-it' && <span className="chip">🔥 Best streak {bestStreak}</span>}
-          {newBest && <span className="chip pop-in" aria-pressed="true">🏆 New best!</span>}
+          {settings.mode !== 'type-it' && <span className="chip"><Icon name="fire" /> Best streak {bestStreak}</span>}
+          {newBest && <span className="chip pop-in" aria-pressed="true"><Icon name="trophy" /> New best</span>}
         </div>
       </section>
 
       <div className="grid grid-cols-2 gap-3">
         <button className="btn btn-primary" onClick={() => navigate({ name: 'play', settings, round: Date.now() })}>
-          🔄 Play again
+          <Icon name="restart" /> Play again
         </button>
         <button className="btn btn-ghost" onClick={() => navigate({ name: 'home' })}>
-          🏠 Home
+          <Icon name="home" /> Home
         </button>
       </div>
 
@@ -63,7 +64,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
           <div className="mb-3 flex items-center justify-between gap-2">
             <h2 className="display text-xl whitespace-nowrap">To remember ({missed.length})</h2>
             <button className="chip shrink-0 text-sm whitespace-nowrap" onClick={() => navigate({ name: 'flashcards', only: missed })}>
-              🃏 Practise
+              <Icon name="card" /> Practise
             </button>
           </div>
           <ul className="flex flex-col gap-3">
@@ -76,7 +77,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
                   <p className="font-cond text-sm leading-tight uppercase">
                     {c.name} <span className="text-accent">· {c.capitals[0]}</span>
                   </p>
-                  <p className="text-xs leading-snug text-muted">💡 {c.hint}</p>
+                  <p className="text-xs leading-snug text-muted"><Icon name="hint" className="text-accent" /> {c.hint}</p>
                 </div>
               </li>
             ))}

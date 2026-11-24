@@ -3,6 +3,7 @@ import type { Navigate } from '../App'
 import { Confetti } from '../components/Confetti'
 import { Flag } from '../components/Flag'
 import { feedback } from '../components/feedback'
+import { Icon } from '../components/Icon'
 import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { countryByCode, questionPool } from '../game/engine'
@@ -110,7 +111,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     feedback.correct()
     setMood(next.size === total ? 'party' : 'happy')
     setReaction((r) => r + 1)
-    setSpellNote(typo ? `Close enough! It's spelled “${c.name}” 😉` : null)
+    setSpellNote(typo ? `close enough. it's spelled "${c.name}".` : null)
     if (next.size === total) setTimeout(() => finish(false), 1500)
     else focusNextAfter(c.code, next)
   }
@@ -166,7 +167,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
             aria-label="Back"
             className="icon-btn"
           >
-            ←
+            <Icon name="back" />
           </button>
           <div className="flex-1">
             <div className="flex items-baseline justify-between">
@@ -183,26 +184,26 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
         <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Order">
           {(['az', 'random'] as Order[]).map((o) => (
             <button key={o} role="radio" aria-checked={order === o} onClick={() => setOrder(o)} className="chip h-10 text-sm">
-              {o === 'az' ? '🔤 A–Z' : '🔀 Random'}
+              <Icon name={o === 'az' ? 'sort' : 'shuffle'} /> {o === 'az' ? 'A–Z' : 'Random'}
             </button>
           ))}
         </div>
         <div className="mt-2 grid grid-cols-3 gap-2">
           {!revealed && (
             <button className="chip h-10 px-1 text-xs whitespace-nowrap" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
-              Hide done
+              <Icon name="eye" /> Hide done
             </button>
           )}
           <button className="chip h-10 px-1 text-xs whitespace-nowrap" onClick={restart}>
-            ↺ Restart
+            <Icon name="restart" /> Restart
           </button>
           {!revealed ? (
             <button className="chip h-10 px-1 text-xs whitespace-nowrap" onClick={giveUp} disabled={done}>
-              Give up
+              <Icon name="finish" /> Give up
             </button>
           ) : (
             <button className="chip col-span-2 h-10 text-xs" aria-pressed="true" onClick={() => finish(true)}>
-              See results 🏁
+              <Icon name="finish" /> See results
             </button>
           )}
         </div>
@@ -263,7 +264,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
           )
         })}
       </ul>
-      {hideSolved && visible.length === 0 && !done && <p className="text-center font-bold">All named! 🎉</p>}
+      {hideSolved && visible.length === 0 && !done && <p className="text-center font-bold">All named.</p>}
     </main>
   )
 }
