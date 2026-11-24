@@ -4,10 +4,18 @@ import { TopBar } from '../components/TopBar'
 import { CONTINENTS } from '../data/types'
 import { ALL_COUNTRIES } from '../game/engine'
 import { DIFFICULTY_INFO, MODE_INFO, type Difficulty, type Mode } from '../game/types'
-import { bestKey, isMastered, resetProgress, setSetting, useProgress } from '../store/progress'
+import { bestKey, isMastered, resetProgress, setSetting, setTheme, useProgress, type ThemeName } from '../store/progress'
 
 const DIFFS: Difficulty[] = ['easy', 'medium', 'hard']
 const QUIZ_MODES: Mode[] = ['flag-to-name', 'name-to-flag', 'type-it', 'capital']
+
+/** Preview colours for the theme picker: background, accent, text */
+const THEMES: { id: ThemeName; label: string; colors: [string, string, string] }[] = [
+  { id: 'clay', label: 'Clay', colors: ['#1a1918', '#e07b55', '#f2efe8'] },
+  { id: 'amber', label: 'Amber', colors: ['#0b0805', '#ffa62b', '#ffd9a3'] },
+  { id: 'phosphor', label: 'Phosphor', colors: ['#060b07', '#3dff73', '#d2ffdc'] },
+  { id: 'paper', label: 'Paper', colors: ['#f3ebde', '#b8461a', '#1d1812'] },
+]
 
 export function Stats({ navigate }: { navigate: Navigate }) {
   const p = useProgress()
@@ -84,6 +92,29 @@ export function Stats({ navigate }: { navigate: Navigate }) {
 
       <section className="card flex flex-col gap-3 p-4">
         <h2 className="display text-xl">⚙️ Settings</h2>
+        <div>
+          <p className="mb-2 font-cond text-sm uppercase">Theme</p>
+          <div className="grid grid-cols-4 gap-2" role="radiogroup" aria-label="Colour theme">
+            {THEMES.map((t) => (
+              <button
+                key={t.id}
+                role="radio"
+                aria-checked={p.theme === t.id}
+                onClick={() => setTheme(t.id)}
+                className={`tile flex flex-col items-center gap-1.5 p-1.5 ${p.theme === t.id ? '!border-accent' : ''}`}
+              >
+                <span
+                  aria-hidden
+                  className="flex h-10 w-full items-center justify-center rounded-[2px] font-display text-2xl"
+                  style={{ background: t.colors[0], color: t.colors[2] }}
+                >
+                  <span style={{ color: t.colors[1] }}>&gt;</span>_
+                </span>
+                <span className="font-cond text-[11px] uppercase">{t.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
         <Toggle label="🔊 Sounds" on={p.settings.sound} onChange={(v) => setSetting('sound', v)} />
         <Toggle label="📳 Vibration" on={p.settings.vibration} onChange={(v) => setSetting('vibration', v)} />
         <button

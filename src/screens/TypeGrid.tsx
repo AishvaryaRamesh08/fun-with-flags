@@ -138,6 +138,14 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     setReaction((r) => r + 1)
   }
 
+  /** Clear every answer on this page and start fresh (new random order too) */
+  const restart = () => {
+    if (solved.size > 0 && !revealed && !confirm(`Clear your ${solved.size} answer${solved.size === 1 ? '' : 's'} and start again?`)) return
+    localStorage.removeItem(SAVE_KEY)
+    navigate({ name: 'play', settings, round: Date.now() })
+    window.scrollTo(0, 0)
+  }
+
   const leave = () => {
     if (solved.size === 0 || revealed || confirm('Leave for now? Your answers are saved — pick Type It with the same filters to carry on.'))
       navigate({ name: 'home' })
@@ -172,31 +180,28 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
             </div>
           </div>
         </header>
-        <div className="mt-2 grid grid-cols-2 gap-2">
-          <div className="col-span-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Order">
-            {(['az', 'random'] as Order[]).map((o) => (
-              <button
-                key={o}
-                role="radio"
-                aria-checked={order === o}
-                onClick={() => setOrder(o)}
-                className="chip h-10 text-sm"
-              >
-                {o === 'az' ? '🔤 A–Z' : '🔀 Random'}
-              </button>
-            ))}
-          </div>
+        <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Order">
+          {(['az', 'random'] as Order[]).map((o) => (
+            <button key={o} role="radio" aria-checked={order === o} onClick={() => setOrder(o)} className="chip h-10 text-sm">
+              {o === 'az' ? '🔤 A–Z' : '🔀 Random'}
+            </button>
+          ))}
+        </div>
+        <div className="mt-2 grid grid-cols-3 gap-2">
           {!revealed && (
-            <button className="chip h-10 text-sm" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
-              🙈 Hide done
+            <button className="chip h-10 px-1 text-xs whitespace-nowrap" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
+              Hide done
             </button>
           )}
+          <button className="chip h-10 px-1 text-xs whitespace-nowrap" onClick={restart}>
+            ↺ Restart
+          </button>
           {!revealed ? (
-            <button className="chip h-10 text-sm" onClick={giveUp} disabled={done}>
-              🏳️ Give up
+            <button className="chip h-10 px-1 text-xs whitespace-nowrap" onClick={giveUp} disabled={done}>
+              Give up
             </button>
           ) : (
-            <button className="chip col-span-2 h-10 text-sm" aria-pressed="true" onClick={() => finish(true)}>
+            <button className="chip col-span-2 h-10 text-xs" aria-pressed="true" onClick={() => finish(true)}>
               See results 🏁
             </button>
           )}
@@ -229,8 +234,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
                     isSolved ? 'pop-in bg-accent text-on-accent' : 'bg-wrong-dim text-wrong'
                   }`}
                 >
-                  {isSolved ? '✓ ' : ''}
-                  {c.name}
+                  <span className="line-clamp-2">{c.name}</span>
                 </p>
               ) : (
                 <input

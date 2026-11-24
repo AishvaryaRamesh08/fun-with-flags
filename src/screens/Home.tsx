@@ -16,22 +16,20 @@ export function Home({ navigate }: { navigate: Navigate }) {
   return (
     <main className="flex flex-1 flex-col gap-4 pb-4">
       <header className="pt-1">
-        <h1 className="display text-[2.15rem] whitespace-nowrap">
-          <span className="text-accent">&gt;</span> <Typewriter text="Fun with Flags" speed={45} />
-        </h1>
-        <div className="mt-2 flex items-center justify-between gap-2">
-          <p className="font-cond text-xs text-muted">$ ./play --no-ads --no-login</p>
-          <div className="flex gap-2">
-            {progress.dayStreak.count > 0 && (
-              <span className="chip px-3" title="Days in a row">
-                🔥 {progress.dayStreak.count}
-              </span>
-            )}
-            <button onClick={() => navigate({ name: 'stats' })} className="icon-btn" aria-label="Stats and settings">
-              📊
-            </button>
-          </div>
+        {/* Status row on top, then the title on its own full-width line */}
+        <div className="mb-2 flex items-center justify-end gap-2">
+          {progress.dayStreak.count > 0 && (
+            <span className="chip px-3" title="Days in a row">
+              🔥 {progress.dayStreak.count}
+            </span>
+          )}
+          <button onClick={() => navigate({ name: 'stats' })} className="icon-btn" aria-label="Stats and settings">
+            📊
+          </button>
         </div>
+        <h1 className="display text-[2.15rem] whitespace-nowrap">
+          <span className="text-accent">&gt;</span> <Typewriter text="Fun with Flags" speed={45} cursor={false} />
+        </h1>
       </header>
 
       <Mascot mood="wave" size={100} say={firstVisit ? "hi! i'm Byte. let's learn the flags of the world." : undefined} />

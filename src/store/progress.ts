@@ -13,6 +13,8 @@ export interface CountryProgress {
   mistakes: number
 }
 
+export type ThemeName = 'clay' | 'amber' | 'phosphor' | 'paper'
+
 export interface Progress {
   version: 1
   countries: Record<string, CountryProgress>
@@ -24,6 +26,7 @@ export interface Progress {
   dayStreak: { count: number; lastDay: string }
   lastSettings: GameSettings | null
   settings: { sound: boolean; vibration: boolean }
+  theme: ThemeName
 }
 
 const KEY = 'fun-with-flags:v1'
@@ -37,6 +40,7 @@ const fresh = (): Progress => ({
   dayStreak: { count: 0, lastDay: '' },
   lastSettings: null,
   settings: { sound: true, vibration: true },
+  theme: 'clay',
 })
 
 function load(): Progress {
@@ -120,6 +124,10 @@ export function setSetting(key: keyof Progress['settings'], value: boolean) {
   update((p) => ({ ...p, settings: { ...p.settings, [key]: value } }))
 }
 
+export function setTheme(theme: ThemeName) {
+  update((p) => ({ ...p, theme }))
+}
+
 export function resetProgress() {
-  update((p) => ({ ...fresh(), settings: p.settings }))
+  update((p) => ({ ...fresh(), settings: p.settings, theme: p.theme }))
 }

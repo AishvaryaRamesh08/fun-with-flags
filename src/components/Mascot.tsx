@@ -159,7 +159,6 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
           key={`b-${mood}-${reactionKey}-${text}`}
           className="panda-bubble mb-6 min-w-0 flex-1 rounded-[var(--radius-ui)] border-2 border-accent bg-surface px-3 py-2 text-[13px] leading-snug text-fg"
         >
-          <span className="text-accent">{MASCOT_NAME.toLowerCase()}@flags:~$ </span>
           <Typewriter text={text} />
         </div>
       )}

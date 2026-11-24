@@ -8,6 +8,7 @@ import { Results } from './screens/Results'
 import { Setup } from './screens/Setup'
 import { Stats } from './screens/Stats'
 import { TypeGrid } from './screens/TypeGrid'
+import { useProgress } from './store/progress'
 
 export type Screen =
   | { name: 'home' }
@@ -21,6 +22,14 @@ export type Navigate = (screen: Screen) => void
 
 export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' })
+  const { theme } = useProgress()
+
+  // Apply the chosen colour theme to the whole page (and the phone's status bar)
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    const bg = getComputedStyle(document.documentElement).getPropertyValue('--color-bg').trim()
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg)
+  }, [theme])
 
   // Phone back button / swipe-back returns to the home screen instead of leaving the site
   useEffect(() => {
