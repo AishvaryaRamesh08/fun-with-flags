@@ -50,7 +50,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="mx-auto flex min-h-dvh max-w-md flex-col px-4 pt-[max(env(safe-area-inset-top),12px)] pb-[max(env(safe-area-inset-bottom),16px)]">
+    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-4 md:max-w-3xl md:px-8 lg:max-w-6xl pt-[max(env(safe-area-inset-top),12px)] pb-[max(env(safe-area-inset-bottom),16px)]">
       {screen.name === 'home' && <Home navigate={navigate} />}
       {screen.name === 'setup' && <Setup key={screen.mode} initialMode={screen.mode} navigate={navigate} />}
       {screen.name === 'play' &&

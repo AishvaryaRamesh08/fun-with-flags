@@ -136,6 +136,6 @@ export const TYPE_IT = {
   ],
   wrong: ['No. Look again. Properly.', 'Wrong. Use your eyes this time.', 'That’s not it. Clearly.', 'Nope. Try thinking first.'],
   gaveUp: ['Giving up? Predictable.', 'Surrender accepted. Study these.', 'I knew you’d quit. I always know.'],
-  typo: 'I’ll allow it. It’s spelled “{a}”. Spelling exists.',
+  typo: 'I’ll allow it. The full name is “{a}”. Precision exists, you know.',
 }
 export const typeItSolved = (done: number, left: number) => pick(TYPE_IT.solved).replace('{d}', String(done)).replace('{r}', String(left))

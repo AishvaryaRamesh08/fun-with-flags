@@ -26,12 +26,17 @@ export function Stats({ navigate }: { navigate: Navigate }) {
   const right = seen.reduce((n, c) => n + c.correct, 0)
 
   return (
-    <main className="flex flex-1 flex-col gap-4 pb-6">
-      <TopBar title="Your progress" onBack={() => navigate({ name: 'home' })} />
+    <main className="flex flex-1 flex-col gap-4 pb-6 lg:grid lg:grid-cols-2 lg:items-start">
+      <div className="lg:col-span-2">
+        <TopBar title="Your progress" onBack={() => navigate({ name: 'home' })} />
+      </div>
 
+      <div className="lg:col-span-2">
       <Mascot mood="smug" size={96} say={p.gamesPlayed ? `${mastered} flags mastered. I had all 195 by age six. Just saying.` : 'No games yet. Your record is as blank as a white flag.'} />
 
-      <section className="grid grid-cols-3 gap-2 text-center">
+      </div>
+
+      <section className="grid grid-cols-3 gap-2 text-center lg:col-span-2">
         <Stat value={p.gamesPlayed} label="games" />
         <Stat value={p.dayStreak.count} label="day streak" />
         <Stat value={answers ? `${Math.round((right / answers) * 100)}%` : '–'} label="accuracy" />
@@ -92,7 +97,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
         </table>
       </section>
 
-      <section className="card flex flex-col gap-3 p-4">
+      <section className="card flex flex-col gap-3 p-4 lg:col-span-2">
         <h2 className="display flex items-center gap-2 text-xl"><Icon name="settings" className="text-accent" /> Settings</h2>
         <div>
           <p className="mb-2 font-cond text-sm uppercase">Theme</p>
@@ -151,7 +156,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
         </button>
       </section>
 
-      <p className="text-center text-xs text-muted">
+      <p className="text-center text-xs text-muted lg:col-span-2">
         Flags from flag-icons · Icons from Pixelarticons · Country data from mledoze/countries
       </p>
     </main>

@@ -28,7 +28,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
             <Icon name="stats" label="Stats and settings" />
           </button>
         </div>
-        <h1 className="display text-[2.15rem] whitespace-nowrap">
+        <h1 className="display text-[2.15rem] whitespace-nowrap md:text-5xl">
           <span className="text-accent">&gt;</span> <Typewriter text="Fun with Flags" speed={45} />
         </h1>
       </header>
@@ -51,12 +51,12 @@ export function Home({ navigate }: { navigate: Navigate }) {
         <Icon name="zap" /> 60-second Blitz
       </button>
 
-      <section aria-label="Quiz modes" className="grid grid-cols-2 gap-3">
+      <section aria-label="Quiz modes" className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {QUIZ_MODES.map((mode) => (
           <button
             key={mode}
             onClick={() => navigate({ name: 'setup', mode })}
-            className="tile flex aspect-square flex-col items-center justify-center gap-2 p-3 text-center"
+            className="tile flex aspect-square flex-col items-center justify-center gap-2 p-3 text-center lg:aspect-[4/3]"
           >
             <Icon name={MODE_INFO[mode].icon} className="text-4xl text-accent" />
             <span className="display flex h-11 items-center text-xl">{MODE_INFO[mode].title}</span>

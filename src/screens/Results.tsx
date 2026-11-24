@@ -19,7 +19,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
   const [message] = useState(() => resultLine(tier))
 
   return (
-    <main className="flex flex-1 flex-col gap-4 pb-4">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-4 pb-4">
       {(pct >= 70 || (newBest && pct >= 40)) && <Confetti />}
       <div className="pt-2">
         <Mascot mood={mood} size={132} say={message} />
@@ -65,7 +65,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
               <Icon name="card" /> Practise
             </button>
           </div>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-3 md:grid md:grid-cols-2 md:gap-x-6 md:[&>li:nth-child(2)]:border-t-0 md:[&>li:nth-child(2)]:pt-0">
             {missed.map((c) => (
               <li key={c.code} className="flex items-center gap-3 border-t border-line pt-3 first:border-t-0 first:pt-0">
                 <div className="w-20 shrink-0">
