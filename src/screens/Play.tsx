@@ -156,11 +156,11 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     if (stats.answered === 0 || confirm('Quit this game? Your answers so far are still saved for review.')) navigate({ name: 'home' })
   }
 
-  /** What Byte says: streaks while thinking; in Blitz a wrong answer names the right one (there's no hint panel) */
+  /** What Dr. Pennant says: streak remarks while you think; after a wrong answer he names the right one */
   const mascotLine = (): string | null | undefined => {
-    if (mood === 'thinking') return stats.streak >= 3 ? `streak x${stats.streak}` : null
+    if (mood === 'thinking') return stats.streak >= 3 ? `${stats.streak} in a row. I'm cautiously impressed.` : null
     if (answer && !answer.correct) {
-      return `[err] it's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}`
+      return `Wrong. It's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}. Obviously.`
     }
     return undefined
   }
@@ -200,7 +200,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
       </header>
 
       <div className="mb-2 flex h-[96px] items-end">
-        <Mascot mood={mood} size={64} reactionKey={reaction} say={mascotLine()} />
+        <Mascot mood={mood} size={88} reactionKey={reaction} say={mascotLine()} />
       </div>
 
       <QuestionView key={qid} question={question} answer={answer} onAnswer={submit} />

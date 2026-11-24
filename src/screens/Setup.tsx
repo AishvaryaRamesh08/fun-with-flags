@@ -43,14 +43,14 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
       <div className="flex flex-1 flex-col gap-5 pb-28">
         <Mascot
           mood="thinking"
-          size={72}
+          size={96}
           reactionKey={`${mode}${difficulty}${continents.join()}`}
           say={
             mode === 'type-it'
-              ? `Name all ${pool.length} flags, no timer. Take your time!`
+              ? `All ${pool.length} flags. No timer. Try not to embarrass us both.`
               : isBlitz
-                ? `${pool.length} countries in the mix. Answer as many as you can in 60s!`
-                : `${questions} question${questions === 1 ? '' : 's'} from ${pool.length} countries. Let's go!`
+                ? `${pool.length} countries, 60 seconds. I could do it in 30.`
+                : `${questions} question${questions === 1 ? '' : 's'} from ${pool.length} countries. Begin.`
           }
         />
 

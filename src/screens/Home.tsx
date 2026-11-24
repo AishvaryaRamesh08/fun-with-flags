@@ -33,7 +33,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
         </h1>
       </header>
 
-      <Mascot mood="wave" size={100} say={firstVisit ? "hi! i'm Byte. let's learn the flags of the world." : undefined} />
+      <Mascot mood="wave" size={124} say={firstVisit ? "Greetings. I'm Dr. Pennant, and this is Fun with Flags." : undefined} />
 
       <section className="card p-4">
         <div className="mb-2 flex items-baseline justify-between font-cond text-lg uppercase">

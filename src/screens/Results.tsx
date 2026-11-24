@@ -10,21 +10,22 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
   const { settings, score, correct, answered, total, bestStreak, missed, newBest } = result
   const blitz = settings.mode === 'blitz'
   const pct = Math.round((correct / Math.max(blitz ? answered : total, 1)) * 100)
-  const mood = pct >= 70 ? 'party' : pct >= 40 ? 'happy' : 'sad'
+  // His face matches his verdict: delighted, smug, skeptical, then face-palm
+  const mood = pct >= 90 ? 'party' : pct >= 70 ? 'happy' : pct >= 40 ? 'thinking' : 'sad'
   const message =
     pct === 100 && answered > 0
-      ? 'perfect round. zero mistakes.'
+      ? 'Flawless. I’d shake your hand, but… germs.'
       : pct >= 70
-        ? 'great work, flag expert.'
+        ? 'Impressive. For someone who isn’t me.'
         : pct >= 40
-          ? 'nice going. practise the ones you missed.'
-          : 'every flag master starts somewhere. review time.'
+          ? 'Mediocre. Review the flags you fumbled.'
+          : 'That was painful to watch. Flashcards. Now.'
 
   return (
     <main className="flex flex-1 flex-col gap-4 pb-4">
-      {(pct >= 70 || newBest) && <Confetti />}
+      {(pct >= 70 || (newBest && pct >= 40)) && <Confetti />}
       <div className="pt-2">
-        <Mascot mood={mood} size={110} say={message} />
+        <Mascot mood={mood} size={132} say={message} />
       </div>
 
       <section className="card p-5 text-center">

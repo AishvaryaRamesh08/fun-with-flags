@@ -1,6 +1,6 @@
 # 🐼 Fun with Flags
 
-An ad-free, mobile-first flag quiz game with a retro terminal look and a pixel mascot, Byte.
+An ad-free, mobile-first flag quiz game with a retro terminal look and Dr. Pennant, a smug paper cut-out flag expert.
 Learn all 195 countries' flags, capitals and currencies — offline, no login, no tracking.
 
 **Play:** https://aishvaryaramesh08.github.io/fun-with-flags/

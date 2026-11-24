@@ -184,59 +184,114 @@ body {
   background: repeating-linear-gradient(to right, var(--color-accent) 0 6px, transparent 6px 8px);
 }
 
-/* ---------- Panda animations ---------- */
-.panda {
-  transform-origin: 50% 100%;
+/* ---------- Mascot: paper cut-out puppet animations ----------
+ * steps() timing gives a choppy stop-motion feel, like paper puppets moved frame by frame.
+ * Joints rotate around points in the drawing's own 120×150 coordinates.
+ */
+.cutout {
   overflow: visible;
 }
-.panda-idle,
-.panda-thinking {
-  animation: breathe 3s ease-in-out infinite;
+.cutout .cut-body,
+.cutout .cut-head,
+.cutout .cut-arm-l,
+.cutout .cut-arm-r,
+.cutout .cut-eyes {
+  transform-box: view-box;
 }
-.panda-happy {
-  animation: hop 0.5s ease-out 1;
+.cutout .cut-body {
+  transform-origin: 60px 150px;
 }
-.panda-party {
-  animation: party 0.7s ease-in-out infinite;
+.cutout .cut-head {
+  transform-origin: 60px 84px;
 }
-.panda-sad {
-  animation: wobble 0.4s ease-in-out 2;
+.cutout .cut-arm-l {
+  transform-origin: 31px 101px;
 }
-.mascot-eye {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: blink 4s infinite;
+.cutout .cut-arm-r {
+  transform-origin: 89px 101px;
+}
+.cutout .cut-eyes {
+  transform-origin: 60px 56px;
+  animation: blink 4.5s infinite;
+}
+
+/* idle: a smug little sway */
+.cutout-idle .cut-body {
+  animation: cut-sway 2.4s steps(4) infinite;
+}
+/* wave: rocking, hand going back and forth */
+.cutout-wave .cut-body {
+  animation: cut-sway 2s steps(4) infinite;
+}
+.cutout-wave .cut-arm-l {
+  animation: cut-wave 0.8s steps(3) infinite;
+}
+/* thinking: head tilts, sizing you up */
+.cutout-thinking .cut-head {
+  animation: cut-tilt 2.2s steps(3) infinite;
+}
+/* happy: "Correct." — a smug hop and a raised finger */
+.cutout-happy .cut-body {
+  animation: cut-hop 0.5s steps(3) 1;
+}
+.cutout-happy .cut-arm-l {
+  animation: cut-wag 0.25s steps(2) 3;
+}
+/* sad: face-palm and a disappointed head shake */
+.cutout-sad .cut-head {
+  animation: cut-shake 0.24s steps(2) 3;
+}
+.cutout-sad .cut-body {
+  animation: cut-slump 0.6s steps(2) 1 forwards;
+}
+/* party: jumping with both arms up */
+.cutout-party .cut-body {
+  animation: cut-party 0.6s steps(3) infinite;
+}
+.cutout-party .cut-arm-l,
+.cutout-party .cut-arm-r {
+  animation: cut-wag 0.3s steps(2) infinite;
+}
+
+@keyframes cut-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+@keyframes cut-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-14deg); }
+}
+@keyframes cut-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+@keyframes cut-hop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px) rotate(-3deg); }
+}
+@keyframes cut-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+}
+@keyframes cut-shake {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+@keyframes cut-slump {
+  to { transform: translateY(3px) rotate(-2deg); }
+}
+@keyframes cut-party {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
 }
 .panda-bubble {
   animation: pop 0.2s ease-out;
   transform-origin: 0 100%;
 }
 
-@keyframes breathe {
-  50% { transform: scale(1.03, 0.98); }
-}
-@keyframes hop {
-  30% { transform: translateY(-18px) scale(1.05); }
-  60% { transform: translateY(0) scale(1.08, 0.92); }
-}
-@keyframes party {
-  0%, 100% { transform: translateY(0) rotate(-6deg); }
-  50% { transform: translateY(-14px) rotate(6deg); }
-}
-@keyframes wobble {
-  25% { transform: rotate(-7deg); }
-  75% { transform: rotate(7deg); }
-}
-@keyframes wave {
-  50% { transform: rotate(-30deg); }
-}
 @keyframes blink {
   0%, 92%, 100% { transform: scaleY(1); }
   95% { transform: scaleY(0.1); }
-}
-@keyframes tear {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(26px); opacity: 0; }
 }
 @keyframes pop {
   from { transform: scale(0.6); opacity: 0; }

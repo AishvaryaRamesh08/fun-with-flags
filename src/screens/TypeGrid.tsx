@@ -111,7 +111,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     feedback.correct()
     setMood(next.size === total ? 'party' : 'happy')
     setReaction((r) => r + 1)
-    setSpellNote(typo ? `close enough. it's spelled "${c.name}".` : null)
+    setSpellNote(typo ? `I'll allow it. It's spelled "${c.name}", though.` : null)
     if (next.size === total) setTimeout(() => finish(false), 1500)
     else focusNextAfter(c.code, next)
   }
@@ -154,7 +154,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
 
   const mascotSay =
     spellNote ??
-    (mood === 'happy' ? `${solved.size} down, ${total - solved.size} to go!` : mood === 'sad' ? (revealed ? 'Here are the answers. Let’s learn them!' : 'Not that one. Try again!') : undefined)
+    (mood === 'happy' ? `${solved.size} down, ${total - solved.size} to go. Keep up.` : mood === 'sad' ? (revealed ? 'Here are the answers. Study them. I’ll wait.' : 'No. Look again, properly this time.') : undefined)
 
   return (
     <main className="flex flex-1 flex-col">
@@ -209,12 +209,12 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
         </div>
       </div>
 
-      <div className="my-2 min-h-[64px]">
+      <div className="my-2 min-h-[80px]">
         <Mascot
           mood={mood}
-          size={56}
+          size={76}
           reactionKey={reaction}
-          say={mascotSay ?? (solved.size ? null : 'type each country under its flag. no timer.')}
+          say={mascotSay ?? (solved.size ? null : 'Name every flag. No timer. I’ll be watching.')}
         />
       </div>
 
