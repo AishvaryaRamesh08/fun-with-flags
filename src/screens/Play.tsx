@@ -171,31 +171,31 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
         <button
           onClick={quit}
           aria-label="Quit game"
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-white text-xl font-black shadow-[0_3px_0_var(--color-ink)] active:translate-y-[3px] active:shadow-none"
+          className="icon-btn"
         >
           ✕
         </button>
         {blitz ? (
           <div className="flex flex-1 items-center gap-2">
-            <div className="h-5 flex-1 overflow-hidden rounded-full border-[3px] border-ink bg-white">
+            <div className="bar flex-1">
               <div
-                className={`h-full transition-[width] duration-200 ${timeLeft <= 10 ? 'bg-rose-400' : 'bg-yellow-300'}`}
+                className={timeLeft <= 10 ? '!bg-wrong' : ''}
                 style={{ width: `${(timeLeft / BLITZ_SECONDS) * 100}%` }}
               />
             </div>
-            <span className={`w-10 text-right text-xl font-black tabular-nums ${timeLeft <= 10 ? 'text-rose-600' : ''}`}>{timeLeft}s</span>
+            <span className={`display w-12 text-right text-2xl tabular-nums ${timeLeft <= 10 ? 'text-wrong' : ''}`}>{timeLeft}s</span>
           </div>
         ) : (
           <div className="flex flex-1 items-center gap-2">
-            <div className="h-5 flex-1 overflow-hidden rounded-full border-[3px] border-ink bg-white">
-              <div className="h-full bg-bamboo transition-[width]" style={{ width: `${((index + (answer ? 1 : 0)) / quiz.length) * 100}%` }} />
+            <div className="bar flex-1">
+              <div style={{ width: `${((index + (answer ? 1 : 0)) / quiz.length) * 100}%` }} />
             </div>
-            <span className="text-base font-black tabular-nums">
+            <span className="display text-xl tabular-nums">
               {index + 1}/{quiz.length}
             </span>
           </div>
         )}
-        <span className="chip flex items-center bg-yellow-100 px-3 tabular-nums" aria-label="Score">
+        <span className="chip px-3 tabular-nums" aria-label="Score">
           ⭐ {blitz ? stats.points : stats.correct}
         </span>
       </header>
@@ -216,18 +216,18 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
 
   const mark = (o: Country) => (!answer ? '' : o === country ? '✓ ' : o.code === answer.chosen ? '✗ ' : '')
   const optionClass = (o: Country) => {
-    if (!answer) return 'bg-white'
-    if (o === country) return 'bg-green-300 pop-in'
-    if (o.code === answer.chosen) return 'bg-rose-300 shake'
-    return 'bg-white opacity-50'
+    if (!answer) return ''
+    if (o === country) return 'is-right pop-in'
+    if (o.code === answer.chosen) return 'is-wrong shake'
+    return 'is-dimmed'
   }
 
   if (kind === 'name-to-flag') {
     return (
       <section className="flex flex-col gap-4">
-        <div className="card px-4 py-5 text-center">
-          <p className="text-sm font-bold text-slate-500">Find the flag of</p>
-          <p className="text-3xl leading-tight font-black">{country.name}</p>
+        <div className="card flex min-h-28 flex-col items-center justify-center px-4 py-4 text-center">
+          <p className="font-cond text-sm text-muted uppercase">Find the flag of</p>
+          <p className="display line-clamp-2 text-4xl">{country.name}</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {options.map((o, i) => (
@@ -236,10 +236,13 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
               onClick={() => choose(o)}
               disabled={!!answer}
               aria-label={`Option ${i + 1}`}
-              className={`rounded-2xl border-[3px] border-ink p-2 shadow-[0_4px_0_var(--color-ink)] transition active:translate-y-1 active:shadow-none disabled:active:translate-y-0 ${optionClass(o)}`}
+              className={`tile flex flex-col gap-1.5 p-2 disabled:active:scale-100 ${optionClass(o)}`}
             >
               <Flag country={o} revealName={!!answer} variant="thumb" />
-              {answer && <span className="mt-1 block text-sm leading-tight font-extrabold">{mark(o)}{o.name}</span>}
+              {/* Name slot is always there (empty until answered) so tiles never change size */}
+              <span className="flex h-9 items-center justify-center font-cond text-sm leading-tight uppercase">
+                <span className="line-clamp-2">{answer ? `${mark(o)}${o.name}` : ''}</span>
+              </span>
             </button>
           ))}
         </div>
@@ -252,10 +255,10 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
       <div className="mx-auto w-full max-w-[340px]">
         <Flag country={country} revealName={!!answer} />
       </div>
-      <p className="text-center text-xl font-extrabold">
+      <p className="text-center font-cond text-xl uppercase">
         {kind === 'capital' ? (
           <>
-            What is the capital of <span className="text-bamboo-dark">{country.name}</span>?
+            Capital of <span className="text-accent">{country.name}</span>?
           </>
         ) : (
           'Which country is this?'
@@ -264,7 +267,12 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
 
       <div className="grid gap-3">
         {options.map((o) => (
-          <button key={o.code} onClick={() => choose(o)} disabled={!!answer} className={`btn text-xl ${optionClass(o)}`}>
+          <button
+            key={o.code}
+            onClick={() => choose(o)}
+            disabled={!!answer}
+            className={`tile flex h-16 items-center justify-center px-3 text-center font-cond text-xl leading-tight uppercase disabled:active:scale-100 ${optionClass(o)}`}
+          >
             {mark(o)}
             {kind === 'capital' ? o.capitals[0] : o.name}
           </button>

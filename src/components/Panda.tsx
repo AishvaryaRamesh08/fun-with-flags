@@ -43,22 +43,22 @@ export function Panda({ mood = 'idle', say, size = 120, reactionKey }: Props) {
         aria-label={`${PANDA_NAME} the panda looks ${mood}`}
       >
         {/* ears */}
-        <circle cx="52" cy="42" r="24" fill="#1f2937" />
-        <circle cx="148" cy="42" r="24" fill="#1f2937" />
+        <circle cx="52" cy="42" r="24" fill="#1f2937" stroke="#fff" strokeWidth="3" />
+        <circle cx="148" cy="42" r="24" fill="#1f2937" stroke="#fff" strokeWidth="3" />
         {/* body + arms */}
         <g className="panda-body">
           <ellipse cx="100" cy="168" rx="52" ry="34" fill="#fff" stroke="#1f2937" strokeWidth="4" />
           {mood === 'party' ? (
             <>
-              <ellipse cx="44" cy="128" rx="13" ry="24" fill="#1f2937" transform="rotate(-35 44 128)" />
-              <ellipse cx="156" cy="128" rx="13" ry="24" fill="#1f2937" transform="rotate(35 156 128)" />
+              <ellipse cx="44" cy="128" rx="13" ry="24" fill="#1f2937" stroke="#fff" strokeWidth="3" transform="rotate(-35 44 128)" />
+              <ellipse cx="156" cy="128" rx="13" ry="24" fill="#1f2937" stroke="#fff" strokeWidth="3" transform="rotate(35 156 128)" />
             </>
           ) : mood === 'wave' ? (
             <>
               <ellipse cx="58" cy="168" rx="13" ry="22" fill="#1f2937" transform="rotate(25 58 168)" />
               {/* SVG transform on the group, CSS animation on the arm (CSS would otherwise replace the rotate) */}
               <g transform="rotate(35 156 128)">
-                <ellipse className="panda-wave-arm" cx="156" cy="128" rx="13" ry="24" fill="#1f2937" />
+                <ellipse className="panda-wave-arm" cx="156" cy="128" rx="13" ry="24" fill="#1f2937" stroke="#fff" strokeWidth="3" />
               </g>
             </>
           ) : (
@@ -87,7 +87,7 @@ export function Panda({ mood = 'idle', say, size = 120, reactionKey }: Props) {
         {mood === 'sad' && <path className="panda-tear" d="M62 104 q-6 10 0 14 q6 -4 0 -14z" fill="#60a5fa" />}
         {mood === 'party' && (
           <g>
-            <path d="M78 30 L100 -2 L122 30 Z" fill="#f472b6" stroke="#1f2937" strokeWidth="3" />
+            <path d="M78 30 L100 -2 L122 30 Z" fill="#5fd35a" stroke="#fff" strokeWidth="3" />
             <circle cx="100" cy="-2" r="6" fill="#facc15" />
           </g>
         )}
@@ -95,10 +95,9 @@ export function Panda({ mood = 'idle', say, size = 120, reactionKey }: Props) {
       {text && (
         <div
           key={`b-${mood}-${reactionKey}`}
-          className="panda-bubble relative mb-8 rounded-2xl border-2 border-slate-800 bg-white px-3 py-2 text-sm font-bold text-slate-800 shadow-[3px_3px_0_#1f2937]"
-        >
+          className="panda-bubble relative mb-8 rounded-[var(--radius-ui)] border-2 border-accent bg-surface px-3 py-2 text-[15px] leading-snug font-bold text-fg">
           {text}
-          <span className="absolute -left-2 bottom-3 h-3 w-3 rotate-45 border-b-2 border-l-2 border-slate-800 bg-white" />
+          <span className="absolute -left-[7px] bottom-3 h-3 w-3 rotate-45 border-b-2 border-l-2 border-accent bg-surface" />
         </div>
       )}
     </div>

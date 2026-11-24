@@ -1,11 +1,27 @@
 @import 'tailwindcss';
 
+/*
+ * Theme: two colours — black and "money green" — in a GTA-inspired street style.
+ * Every screen uses these tokens; red is used only to mark a wrong answer.
+ */
 @theme {
-  --font-display: 'Baloo 2 Variable', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
-  --color-ink: #1f2937;
-  --color-cream: #fef9e7;
-  --color-bamboo: #22c55e;
-  --color-bamboo-dark: #15803d;
+  --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --font-body: 'Barlow', system-ui, sans-serif;
+  --font-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+
+  --color-bg: #0b0b0b; /* page */
+  --color-surface: #171717; /* cards, tiles, inputs */
+  --color-raised: #222222; /* pressed / hover / flipped */
+  --color-line: #333333; /* borders */
+  --color-fg: #ffffff; /* text */
+  --color-muted: #a3a3a3; /* secondary text */
+  --color-accent: #5fd35a; /* the one colour: buttons, progress, right answers */
+  --color-accent-dim: #1f3a1d; /* accent tint for selected things */
+  --color-on-accent: #0b0b0b;
+  --color-wrong: #ff4d4d;
+  --color-wrong-dim: #3a1717;
+
+  --radius-ui: 14px;
 }
 
 html,
@@ -15,33 +31,71 @@ body,
 }
 
 body {
-  background-color: var(--color-cream);
-  background-image: radial-gradient(#e7dcc0 1.2px, transparent 1.2px);
-  background-size: 22px 22px;
-  color: var(--color-ink);
-  font-family: var(--font-display);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-weight: 600;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
 }
 
-/* Chunky "game" button: dark outline + hard shadow that presses down */
+/* Headline type: heavy, condensed, uppercase */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* ---------- Shared building blocks (one look everywhere) ---------- */
+.card {
+  @apply rounded-[var(--radius-ui)] border-2 border-line bg-surface;
+}
+.tile {
+  @apply rounded-[var(--radius-ui)] border-2 border-line bg-surface transition-[transform,background-color,border-color] duration-100 select-none active:scale-[0.97];
+}
 .btn {
-  @apply flex min-h-14 items-center justify-center gap-2 rounded-2xl border-[3px] border-ink px-4 py-3 text-lg font-extrabold shadow-[0_5px_0_var(--color-ink)] transition-[transform,box-shadow] duration-75 select-none active:translate-y-[5px] active:shadow-none disabled:active:translate-y-0 disabled:active:shadow-[0_5px_0_var(--color-ink)];
+  @apply flex min-h-14 items-center justify-center gap-2 rounded-[var(--radius-ui)] border-2 px-4 py-3 text-xl transition-transform duration-75 select-none active:scale-[0.97] disabled:active:scale-100;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 .btn-primary {
-  @apply bg-bamboo text-white;
+  @apply border-accent bg-accent text-on-accent;
 }
-.btn-white {
-  @apply bg-white text-ink;
-}
-.card {
-  @apply rounded-3xl border-[3px] border-ink bg-white shadow-[0_6px_0_var(--color-ink)];
+.btn-ghost {
+  @apply border-line bg-surface text-fg;
 }
 .chip {
-  @apply min-h-11 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 text-base font-bold transition-colors select-none;
+  @apply inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border-2 border-line bg-surface px-4 py-1.5 text-base text-fg transition-colors select-none disabled:opacity-40;
+  font-family: var(--font-cond);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
-.chip[aria-pressed='true'] {
-  @apply bg-yellow-300;
+.chip[aria-pressed='true'],
+.chip[aria-checked='true'] {
+  @apply border-accent bg-accent text-on-accent;
+}
+.icon-btn {
+  @apply grid h-11 w-11 shrink-0 place-items-center rounded-[var(--radius-ui)] border-2 border-line bg-surface text-xl text-fg active:scale-95;
+}
+/* States for answer tiles */
+.is-right {
+  @apply border-accent bg-accent text-on-accent;
+}
+.is-wrong {
+  @apply border-wrong bg-wrong-dim text-wrong;
+}
+.is-dimmed {
+  @apply opacity-40;
+}
+.bar {
+  @apply h-3 overflow-hidden rounded-full bg-line;
+}
+.bar > div {
+  @apply h-full rounded-full bg-accent transition-[width] duration-300;
 }
 
 /* ---------- Panda animations ---------- */
@@ -54,13 +108,13 @@ body {
   animation: breathe 3s ease-in-out infinite;
 }
 .panda-happy {
-  animation: hop 0.6s ease-out 2;
+  animation: hop 0.5s ease-out 1;
 }
 .panda-party {
   animation: party 0.7s ease-in-out infinite;
 }
 .panda-sad {
-  animation: wobble 0.5s ease-in-out 2;
+  animation: wobble 0.4s ease-in-out 2;
 }
 .panda-wave-arm {
   transform-box: fill-box;
@@ -76,7 +130,7 @@ body {
   animation: tear 1.2s ease-in infinite;
 }
 .panda-bubble {
-  animation: pop 0.25s ease-out;
+  animation: pop 0.2s ease-out;
   transform-origin: 0 100%;
 }
 
@@ -84,7 +138,7 @@ body {
   50% { transform: scale(1.03, 0.98); }
 }
 @keyframes hop {
-  30% { transform: translateY(-22px) scale(1.05); }
+  30% { transform: translateY(-18px) scale(1.05); }
   60% { transform: translateY(0) scale(1.08, 0.92); }
 }
 @keyframes party {
@@ -112,20 +166,14 @@ body {
 
 /* ---------- Game feedback ---------- */
 .shake {
-  animation: shake 0.4s;
+  animation: shake 0.35s;
 }
 @keyframes shake {
-  20%, 60% { transform: translateX(-8px); }
-  40%, 80% { transform: translateX(8px); }
+  20%, 60% { transform: translateX(-7px); }
+  40%, 80% { transform: translateX(7px); }
 }
 .pop-in {
-  animation: pop 0.3s ease-out;
-}
-.slide-up {
-  animation: slideUp 0.3s ease-out;
-}
-@keyframes slideUp {
-  from { transform: translateY(24px); opacity: 0; }
+  animation: pop 0.25s ease-out;
 }
 .confetti-piece {
   animation-name: fall;
@@ -142,7 +190,7 @@ body {
 }
 .flip-card {
   transform-style: preserve-3d;
-  transition: transform 0.5s;
+  transition: transform 0.45s;
 }
 .flip-card.flipped {
   transform: rotateY(180deg);

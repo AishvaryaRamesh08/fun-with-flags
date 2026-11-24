@@ -151,52 +151,52 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     <main className="flex flex-1 flex-col">
       {done && <Confetti />}
       {/* Sticky header so progress and actions are always in reach while scrolling */}
-      <div className="sticky top-0 z-10 -mx-4 bg-cream/95 px-4 pt-1 pb-2 backdrop-blur">
+      <div className="sticky top-0 z-10 -mx-4 bg-bg/95 px-4 pt-1 pb-2 backdrop-blur">
         <header className="flex items-center gap-3">
           <button
             onClick={leave}
             aria-label="Back"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-white text-xl font-black shadow-[0_3px_0_var(--color-ink)] active:translate-y-[3px] active:shadow-none"
+            className="icon-btn"
           >
             ←
           </button>
           <div className="flex-1">
             <div className="flex items-baseline justify-between">
-              <h1 className="text-xl font-extrabold">⌨️ Type It</h1>
-              <span className="font-black tabular-nums">
+              <h1 className="display text-2xl">⌨️ Type It</h1>
+              <span className="display text-xl tabular-nums">
                 {solved.size}/{total}
               </span>
             </div>
-            <div className="h-3 overflow-hidden rounded-full border-2 border-ink bg-white">
-              <div className="h-full bg-bamboo transition-[width]" style={{ width: `${(solved.size / total) * 100}%` }} />
+            <div className="bar mt-1">
+              <div style={{ width: `${(solved.size / total) * 100}%` }} />
             </div>
           </div>
         </header>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <div className="flex shrink-0 rounded-full border-[3px] border-ink bg-white p-0.5" role="radiogroup" aria-label="Order">
+        <div className="mt-2 grid grid-cols-2 gap-2">
+          <div className="col-span-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Order">
             {(['az', 'random'] as Order[]).map((o) => (
               <button
                 key={o}
                 role="radio"
                 aria-checked={order === o}
                 onClick={() => setOrder(o)}
-                className={`rounded-full px-3 py-1 text-sm font-extrabold ${order === o ? 'bg-yellow-300' : ''}`}
+                className="chip h-10 text-sm"
               >
                 {o === 'az' ? '🔤 A–Z' : '🔀 Random'}
               </button>
             ))}
           </div>
           {!revealed && (
-            <button className="chip shrink-0 text-sm" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
+            <button className="chip h-10 text-sm" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
               🙈 Hide done
             </button>
           )}
           {!revealed ? (
-            <button className="chip shrink-0 bg-rose-100 text-sm" onClick={giveUp} disabled={done}>
+            <button className="chip h-10 text-sm" onClick={giveUp} disabled={done}>
               🏳️ Give up
             </button>
           ) : (
-            <button className="chip shrink-0 bg-bamboo text-sm text-white" onClick={() => finish(true)}>
+            <button className="chip col-span-2 h-10 text-sm" aria-pressed="true" onClick={() => finish(true)}>
               See results 🏁
             </button>
           )}
@@ -218,13 +218,17 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
           return (
             <li
               key={c.code}
-              className={`flex flex-col gap-2 rounded-2xl border-[3px] border-ink p-2 shadow-[0_4px_0_var(--color-ink)] ${
-                isSolved ? 'bg-green-200' : revealed ? 'bg-rose-100' : 'bg-white'
-              } ${wrongCode === c.code ? 'shake' : ''}`}
+              className={`card flex flex-col gap-2 p-2 ${isSolved ? '!border-accent' : revealed ? '!border-wrong' : ''} ${
+                wrongCode === c.code ? 'shake' : ''
+              }`}
             >
               <Flag country={c} variant="thumb" revealName={isSolved || revealed} />
               {isSolved || revealed ? (
-                <p className={`flex min-h-11 items-center justify-center text-center leading-tight font-extrabold ${isSolved ? 'pop-in' : 'text-rose-700'}`}>
+                <p
+                  className={`flex h-11 items-center justify-center rounded-[10px] px-1 text-center font-cond text-sm leading-tight uppercase ${
+                    isSolved ? 'pop-in bg-accent text-on-accent' : 'bg-wrong-dim text-wrong'
+                  }`}
+                >
                   {isSolved ? '✓ ' : ''}
                   {c.name}
                 </p>
@@ -248,7 +252,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
                   autoCapitalize="words"
                   spellCheck={false}
                   enterKeyHint="next"
-                  className="min-h-11 w-full rounded-xl border-2 border-ink bg-white px-2 text-center text-base font-bold outline-none focus:bg-yellow-50 focus:ring-4 focus:ring-yellow-300"
+                  className="h-11 w-full rounded-[10px] border-2 border-line bg-bg px-2 text-center text-base text-fg outline-none placeholder:text-muted focus:border-accent"
                 />
               )}
             </li>

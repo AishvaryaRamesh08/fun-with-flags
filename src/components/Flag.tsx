@@ -6,21 +6,20 @@ interface Props {
   country: Country
   /** Hide the name from screen readers when it would give the answer away */
   revealName?: boolean
-  /** 'hero' = big framed flag; 'thumb' = small flag in lists and option buttons */
+  /** 'hero' = the big question flag; 'thumb' = flags inside tiles and lists */
   variant?: 'hero' | 'thumb'
 }
 
+/** Every flag is shown in the same 4:3 frame so cards line up everywhere */
 export function Flag({ country, revealName = false, variant = 'hero' }: Props) {
-  const style =
-    variant === 'hero'
-      ? 'rounded-xl border-[3px] shadow-[4px_4px_0_var(--color-ink)]'
-      : 'rounded-lg border-2'
   return (
     <img
       src={`${BASE}${country.flag}`}
       alt={revealName ? `Flag of ${country.name}` : 'Mystery flag'}
       draggable={false}
-      className={`aspect-[4/3] w-full border-ink bg-white object-cover select-none ${style}`}
+      className={`block aspect-[4/3] w-full bg-white object-cover select-none ${
+        variant === 'hero' ? 'rounded-[10px] ring-2 ring-line' : 'rounded-[8px] ring-1 ring-line'
+      }`}
     />
   )
 }

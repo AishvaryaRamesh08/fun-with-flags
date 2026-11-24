@@ -94,14 +94,14 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
       />
 
       {/* View switch */}
-      <div className="mb-3 grid grid-cols-2 rounded-full border-[3px] border-ink bg-white p-1" role="radiogroup" aria-label="Card view">
+      <div className="mb-3 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Card view">
         {(['one', 'grid'] as View[]).map((v) => (
           <button
             key={v}
             role="radio"
             aria-checked={view === v}
             onClick={() => setView(v)}
-            className={`min-h-10 rounded-full font-extrabold ${view === v ? 'bg-yellow-300' : ''}`}
+            className="chip"
           >
             {v === 'one' ? '🃏 One at a time' : '🔳 All flags'}
           </button>
@@ -133,7 +133,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
         </div>
       ) : view === 'grid' ? (
         <>
-          <p className="mb-2 text-center text-sm font-extrabold text-slate-500">
+          <p className="mb-2 text-center font-cond text-sm text-muted uppercase">
             {deck.length} flags · tap one to flip it
           </p>
           <ul className="grid grid-cols-2 items-start gap-3 pb-8 sm:grid-cols-3">
@@ -151,7 +151,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
         </>
       ) : (
         <>
-          <p className="mb-2 text-center text-sm font-extrabold text-slate-500">
+          <p className="mb-2 text-center font-cond text-sm text-muted uppercase">
             Card {pos + 1} of {deck.length}
             {done > 0 && ` · ${done} practised`}
             {isMastered(progress.countries[card.code]) && ' · ⭐ mastered'}
@@ -162,18 +162,18 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <button className="btn bg-rose-200" onClick={() => mark(false)}>
-              😅 Still learning
+            <button className="btn btn-ghost" onClick={() => mark(false)}>
+              😅 Not yet
             </button>
-            <button className="btn bg-green-300" onClick={() => mark(true)}>
-              😎 Got it!
+            <button className="btn btn-primary" onClick={() => mark(true)}>
+              😎 Got it
             </button>
           </div>
           <div className="mt-3 flex justify-between">
             <button className="chip" onClick={() => go(-1)} disabled={pos === 0}>
               ← Prev
             </button>
-            <span className="self-center text-xs font-bold text-slate-500">Swipe to browse</span>
+            <span className="self-center font-cond text-xs text-muted uppercase">Swipe to browse</span>
             <button className="chip" onClick={() => go(1)} disabled={pos >= deck.length - 1}>
               Next →
             </button>

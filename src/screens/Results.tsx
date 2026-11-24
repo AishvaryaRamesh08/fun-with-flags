@@ -27,25 +27,25 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
       </div>
 
       <section className="card p-5 text-center">
-        <p className="text-sm font-bold text-slate-500">
+        <p className="font-cond text-sm text-muted uppercase">
           {MODE_INFO[settings.mode].emoji} {MODE_INFO[settings.mode].title} · {DIFFICULTY_INFO[settings.difficulty].label}
         </p>
         {blitz ? (
           <>
-            <p className="text-6xl font-black text-bamboo-dark">{score}</p>
+            <p className="display my-1 text-7xl text-accent">{score}</p>
             <p className="font-bold">points · {correct} of {answered} right</p>
           </>
         ) : (
           <>
-            <p className="text-6xl font-black text-bamboo-dark">
+            <p className="display my-1 text-7xl text-accent">
               {correct}/{total}
             </p>
             <p className="font-bold">{pct}% correct</p>
           </>
         )}
         <div className="mt-3 flex justify-center gap-2">
-          {settings.mode !== 'type-it' && <span className="chip bg-orange-100">🔥 Best streak {bestStreak}</span>}
-          {newBest && <span className="chip pop-in bg-yellow-300">🏆 New best!</span>}
+          {settings.mode !== 'type-it' && <span className="chip">🔥 Best streak {bestStreak}</span>}
+          {newBest && <span className="chip pop-in" aria-pressed="true">🏆 New best!</span>}
         </div>
       </section>
 
@@ -53,7 +53,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
         <button className="btn btn-primary" onClick={() => navigate({ name: 'play', settings, round: Date.now() })}>
           🔄 Play again
         </button>
-        <button className="btn btn-white" onClick={() => navigate({ name: 'home' })}>
+        <button className="btn btn-ghost" onClick={() => navigate({ name: 'home' })}>
           🏠 Home
         </button>
       </div>
@@ -61,22 +61,22 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
       {missed.length > 0 && (
         <section className="card p-4">
           <div className="mb-3 flex items-center justify-between gap-2">
-            <h2 className="text-lg font-extrabold">Flags to remember ({missed.length})</h2>
-            <button className="chip bg-sky-200 text-sm" onClick={() => navigate({ name: 'flashcards', only: missed })}>
+            <h2 className="display text-xl whitespace-nowrap">To remember ({missed.length})</h2>
+            <button className="chip shrink-0 text-sm whitespace-nowrap" onClick={() => navigate({ name: 'flashcards', only: missed })}>
               🃏 Practise
             </button>
           </div>
           <ul className="flex flex-col gap-3">
             {missed.map((c) => (
-              <li key={c.code} className="flex gap-3">
+              <li key={c.code} className="flex items-center gap-3 border-t border-line pt-3 first:border-t-0 first:pt-0">
                 <div className="w-20 shrink-0">
                   <Flag country={c} revealName variant="thumb" />
                 </div>
                 <div className="min-w-0">
-                  <p className="leading-tight font-extrabold">
-                    {c.name} <span className="font-semibold text-slate-500">· {c.capitals[0]}</span>
+                  <p className="font-cond text-lg leading-tight uppercase">
+                    {c.name} <span className="text-accent">· {c.capitals[0]}</span>
                   </p>
-                  <p className="text-sm leading-snug font-semibold text-slate-600">💡 {c.hint}</p>
+                  <p className="text-sm leading-snug text-muted">💡 {c.hint}</p>
                 </div>
               </li>
             ))}
