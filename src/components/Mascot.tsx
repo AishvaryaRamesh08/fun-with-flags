@@ -53,10 +53,11 @@ interface Props {
 export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
   const uid = useId().replace(/:/g, '')
   // A fresh line per reaction (never the same one twice in a row), only used when no `say` is given
+  const useOwnLine = say === undefined
   const line = useMemo(
-    () => (say === undefined ? pick(MOOD_LINES[mood]) : ''),
+    () => (useOwnLine ? pick(MOOD_LINES[mood]) : ''),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mood, reactionKey, say === undefined],
+    [mood, reactionKey, useOwnLine],
   )
   const text = say === null ? null : (say ?? line)
   const pose = POSES[mood]
