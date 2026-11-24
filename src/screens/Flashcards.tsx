@@ -127,7 +127,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
 
       {!card ? (
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
-          <Mascot mood="happy" size={124} say={review ? 'Nothing to review. Suspiciously competent.' : 'No cards here.'} />
+          <Mascot mood="happy" size={124} say={review ? 'Nothing to review. I’m as surprised as you are.' : 'No cards here.'} />
           <button className="btn btn-primary w-full" onClick={() => navigate({ name: 'home' })}>
             Back home
           </button>

@@ -8,6 +8,7 @@ import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { countryByCode, questionPool } from '../game/engine'
 import { matchCountry } from '../game/match'
+import { TYPE_IT, pick, typeItSolved } from '../game/persona'
 import { shuffle } from '../game/random'
 import type { GameSettings } from '../game/types'
 import { bestKey, getProgress, recordAnswer, recordGame } from '../store/progress'
@@ -52,7 +53,8 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
   const [wrongCode, setWrongCode] = useState<string | null>(null)
   const [mood, setMood] = useState<Mood>('thinking')
   const [reaction, setReaction] = useState(0)
-  const [spellNote, setSpellNote] = useState<string | null>(null)
+  /** What Moonpie says; chosen once per event */
+  const [line, setLine] = useState<string | null>(null)
   const inputs = useRef(new Map<string, HTMLInputElement>())
 
   const list: Country[] = useMemo(
@@ -111,7 +113,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     feedback.correct()
     setMood(next.size === total ? 'party' : 'happy')
     setReaction((r) => r + 1)
-    setSpellNote(typo ? `I'll allow it. It's spelled "${c.name}", though.` : null)
+    setLine(typo ? TYPE_IT.typo.replace('{a}', c.name) : typeItSolved(next.size, total - next.size))
     if (next.size === total) setTimeout(() => finish(false), 1500)
     else focusNextAfter(c.code, next)
   }
@@ -127,7 +129,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     setWrongCode(c.code)
     setMood('sad')
     setReaction((n) => n + 1)
-    setSpellNote(null)
+    setLine(pick(TYPE_IT.wrong))
     feedback.wrong()
     setTimeout(() => setWrongCode(null), 450)
   }
@@ -137,6 +139,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     setRevealed(true)
     setMood('sad')
     setReaction((r) => r + 1)
+    setLine(pick(TYPE_IT.gaveUp))
   }
 
   /** Clear every answer on this page and start fresh (new random order too) */
@@ -151,10 +154,6 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     if (solved.size === 0 || revealed || confirm('Leave for now? Your answers are saved — pick Type It with the same filters to carry on.'))
       navigate({ name: 'home' })
   }
-
-  const mascotSay =
-    spellNote ??
-    (mood === 'happy' ? `${solved.size} down, ${total - solved.size} to go. Keep up.` : mood === 'sad' ? (revealed ? 'Here are the answers. Study them. I’ll wait.' : 'No. Look again, properly this time.') : undefined)
 
   return (
     <main className="flex flex-1 flex-col">
@@ -214,7 +213,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
           mood={mood}
           size={76}
           reactionKey={reaction}
-          say={mascotSay ?? (solved.size ? null : 'Name every flag. No timer. I’ll be watching.')}
+          say={line ?? (solved.size ? null : TYPE_IT.intro)}
         />
       </div>
 

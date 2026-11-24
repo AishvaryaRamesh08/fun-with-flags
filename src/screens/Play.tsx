@@ -6,6 +6,7 @@ import { Icon } from '../components/Icon'
 import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { BlitzDeck, blitzPoints, buildQuiz } from '../game/engine'
+import { rightLine, streakLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
 import { bestKey, getProgress, recordAnswer, recordGame } from '../store/progress'
 
@@ -39,6 +40,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
   const missed = useRef<Country[]>([])
   const [mood, setMood] = useState<Mood>('thinking')
   const [reaction, setReaction] = useState(0)
+  /** What Moonpie is saying right now (null = nothing). Chosen once per event so it never flickers. */
+  const [line, setLine] = useState<string | null>(null)
   const [timeLeft, setTimeLeft] = useState(BLITZ_SECONDS)
   const finished = useRef(false)
   const advanceTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
@@ -106,6 +109,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     setAnswer(null)
     setMood('thinking')
     setQid((q) => q + 1)
+    const streak = statsRef.current.streak
+    setLine(streak >= 3 ? streakLine(streak) : null)
     if (deck) {
       setQuestion(deck.next())
       return
@@ -135,6 +140,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     })
     setMood(a.correct ? 'happy' : 'sad')
     setReaction((r) => r + 1)
+    setLine(a.correct ? rightLine() : wrongLine(question.kind === 'capital' ? question.country.capitals[0] : question.country.name))
     if (a.correct) feedback.correct()
     else feedback.wrong()
     // Keep it snappy: right = green and on, wrong = red + the right answer in green, then on.
@@ -154,15 +160,6 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
 
   const quit = () => {
     if (stats.answered === 0 || confirm('Quit this game? Your answers so far are still saved for review.')) navigate({ name: 'home' })
-  }
-
-  /** What Dr. Pennant says: streak remarks while you think; after a wrong answer he names the right one */
-  const mascotLine = (): string | null | undefined => {
-    if (mood === 'thinking') return stats.streak >= 3 ? `${stats.streak} in a row. I'm cautiously impressed.` : null
-    if (answer && !answer.correct) {
-      return `Wrong. It's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}. Obviously.`
-    }
-    return undefined
   }
 
   return (
@@ -200,7 +197,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
       </header>
 
       <div className="mb-2 flex h-[96px] items-end">
-        <Mascot mood={mood} size={88} reactionKey={reaction} say={mascotLine()} />
+        <Mascot mood={mood} size={88} reactionKey={reaction} say={line} />
       </div>
 
       <QuestionView key={qid} question={question} answer={answer} onAnswer={submit} />

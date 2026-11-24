@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import type { Navigate } from '../App'
 import { Confetti } from '../components/Confetti'
 import { Flag } from '../components/Flag'
 import { Icon } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
+import { resultLine } from '../game/persona'
 import { DIFFICULTY_INFO, MODE_INFO } from '../game/types'
 import type { GameResult } from './Play'
 
@@ -10,16 +12,10 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
   const { settings, score, correct, answered, total, bestStreak, missed, newBest } = result
   const blitz = settings.mode === 'blitz'
   const pct = Math.round((correct / Math.max(blitz ? answered : total, 1)) * 100)
-  // His face matches his verdict: delighted, smug, skeptical, then face-palm
+  // His face still follows the score: smug party, smug, skeptical, face-palm
   const mood = pct >= 90 ? 'party' : pct >= 70 ? 'happy' : pct >= 40 ? 'thinking' : 'sad'
-  const message =
-    pct === 100 && answered > 0
-      ? 'Flawless. I’d shake your hand, but… germs.'
-      : pct >= 70
-        ? 'Impressive. For someone who isn’t me.'
-        : pct >= 40
-          ? 'Mediocre. Review the flags you fumbled.'
-          : 'That was painful to watch. Flashcards. Now.'
+  // Chosen once for this results screen (he never praises, even a perfect score)
+  const [message] = useState(() => resultLine(answered > 0 ? pct : 0))
 
   return (
     <main className="flex flex-1 flex-col gap-4 pb-4">

@@ -1,51 +1,15 @@
 import { useId, useMemo } from 'react'
+import { MOOD_LINES, pick } from '../game/persona'
 import { Typewriter } from './Typewriter'
 
 export type Mood = 'idle' | 'happy' | 'sad' | 'thinking' | 'party' | 'wave'
 
 /**
- * Dr. Pennant — an original paper-cutout cartoon: a lanky, supremely confident
- * flag expert who adores vexillology and takes your mistakes personally.
- * (A persona in the spirit of TV's smug-genius scientists; the drawing and every line are our own.)
+ * Moonpie — an original paper-cutout cartoon: a lanky, self-declared genius who is
+ * obsessed with flags, rude about your mistakes and allergic to giving compliments.
+ * His lines live in game/persona.ts.
  */
-export const MASCOT_NAME = 'Dr. Pennant'
-
-const LINES: Record<Mood, string[]> = {
-  idle: [
-    'Vexillology: the study of flags. You’re welcome.',
-    'My intellect is wasted on small talk. Pick a game.',
-    'I’ve memorised every flag. Twice. Your turn.',
-  ],
-  wave: [
-    'Greetings. I’m Dr. Pennant, and this is Fun with Flags.',
-    'Ah, you’re back. Your flag knowledge was getting dangerously low.',
-    'Welcome. I’ve been alphabetising my flags by thread count.',
-  ],
-  thinking: [
-    'Take your time. I’ll just stand here, being right.',
-    'Look closer. Flags reward the attentive mind.',
-    'Hint: the answer is the correct one.',
-  ],
-  // Short: a correct answer moves on after 0.6s, so these must finish typing in time
-  happy: [
-    'Correct. Obviously.',
-    'Acceptable.',
-    'Yes. As I predicted.',
-    'Correct. I taught you well.',
-    'Splendid.',
-  ],
-  sad: [
-    'Incorrect. I’m not angry. I’m vexillologically disappointed.',
-    'No. Just… no.',
-    'That’s wrong, and on some level you knew it.',
-    'I’ll pretend I didn’t see that. For your sake.',
-  ],
-  party: [
-    'Remarkable. You’re almost as good as me. Almost.',
-    'I’m genuinely impressed, and I don’t say that. Ever.',
-    'Flawless. I’ll permit a small celebration.',
-  ],
-}
+export const MASCOT_NAME = 'Moonpie'
 
 /*
  * Arm poses: shoulder → elbow → hand, in the drawing's 120×150 coordinate space.
@@ -88,11 +52,12 @@ interface Props {
 
 export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
   const uid = useId().replace(/:/g, '')
-  const line = useMemo(() => {
-    const options = LINES[mood]
-    return options[Math.floor(Math.random() * options.length)]
+  // A fresh line per reaction (never the same one twice in a row), only used when no `say` is given
+  const line = useMemo(
+    () => (say === undefined ? pick(MOOD_LINES[mood]) : ''),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mood, reactionKey])
+    [mood, reactionKey, say === undefined],
+  )
   const text = say === null ? null : (say ?? line)
   const pose = POSES[mood]
 
