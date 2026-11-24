@@ -10,6 +10,9 @@ import { rightLine, streakLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
 import { bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
 
+/** Length of the card swish-out before the next question appears (ms) */
+const SWISH_MS = 260
+
 /** How long a result stays on screen before the next question (ms) */
 const ADVANCE_MS = {
   quiz: { right: 1400, wrong: 2300 },
@@ -113,7 +116,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     return () => clearInterval(id)
   }, [blitz, finish])
 
-  const next = useCallback(() => {
+  /** Swaps in the next question (or ends the game). Called once the old card has swished away. */
+  const advance = useCallback(() => {
     setAnswer(null)
     setMood('thinking')
     setQid((q) => q + 1)
@@ -127,6 +131,20 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     setIndex(index + 1)
     setQuestion(quiz[index + 1])
   }, [finish, index, quiz])
+
+  // Card transition: the answered card swishes off to the left, then the next one swishes in from the right
+  const [leaving, setLeaving] = useState(false)
+  const leavingRef = useRef(false)
+  const next = useCallback(() => {
+    if (leavingRef.current) return
+    leavingRef.current = true
+    setLeaving(true)
+    advanceTimer.current = setTimeout(() => {
+      leavingRef.current = false
+      setLeaving(false)
+      advance()
+    }, SWISH_MS)
+  }, [advance])
 
   const submit = (a: Answer) => {
     if (answer || finished.current) return
@@ -155,7 +173,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
 
   /** Skip the reading pause: move on now instead of waiting for the timer */
   const skipAhead = () => {
-    if (!answer || finished.current) return
+    if (!answer || finished.current || leavingRef.current) return
     clearTimeout(advanceTimer.current)
     next()
   }
@@ -181,7 +199,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
 
   return (
     // After answering, a tap anywhere moves on (the click that answered doesn't count: `answer` was still empty then)
-    <main className="flex flex-1 flex-col" onClick={skipAhead}>
+    <main className="flex flex-1 flex-col overflow-x-clip" onClick={skipAhead}>
       {/* Top bar: quit, progress / timer, score */}
       <header className="mb-2 flex items-center gap-3">
         <button
@@ -224,7 +242,9 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
         <Mascot mood={mood} size={88} reactionKey={reaction} say={line} />
       </div>
 
-      <QuestionView key={qid} question={question} answer={answer} onAnswer={submit} />
+      <div key={qid} className={leaving ? 'card-swish-out' : 'card-swish-in'}>
+        <QuestionView question={question} answer={answer} onAnswer={submit} />
+      </div>
       {answer && <p className="mt-4 text-center font-cond text-xs text-muted uppercase">Tap anywhere to continue</p>}
 
     </main>

@@ -308,6 +308,27 @@ body {
   to { transform: translateY(110vh) rotate(720deg); }
 }
 
+/* ---------- Quiz card transition: swish out left, swish in from the right ---------- */
+.card-swish-in {
+  animation: swish-in 0.34s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card-swish-out {
+  animation: swish-out 0.26s cubic-bezier(0.5, 0, 0.9, 0.4) forwards;
+  pointer-events: none;
+}
+@keyframes swish-in {
+  from {
+    transform: translateX(65%) rotate(6deg);
+    opacity: 0;
+  }
+}
+@keyframes swish-out {
+  to {
+    transform: translateX(-75%) rotate(-7deg);
+    opacity: 0;
+  }
+}
+
 /* ---------- Flashcard flip ---------- */
 .flip-scene {
   perspective: 1200px;
