@@ -3,10 +3,12 @@ import type { Navigate } from '../App'
 import { Confetti } from '../components/Confetti'
 import { Flag } from '../components/Flag'
 import { feedback } from '../components/feedback'
-import { Panda, type Mood } from '../components/Panda'
+import { Icon } from '../components/Icon'
+import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { countryByCode, questionPool } from '../game/engine'
 import { matchCountry } from '../game/match'
+import { TYPE_IT, pick, typeItSolved } from '../game/persona'
 import { shuffle } from '../game/random'
 import type { GameSettings } from '../game/types'
 import { bestKey, getProgress, recordAnswer, recordGame } from '../store/progress'
@@ -51,8 +53,19 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
   const [wrongCode, setWrongCode] = useState<string | null>(null)
   const [mood, setMood] = useState<Mood>('thinking')
   const [reaction, setReaction] = useState(0)
-  const [spellNote, setSpellNote] = useState<string | null>(null)
+  /** What Moonpie says; chosen once per event */
+  const [line, setLine] = useState<string | null>(null)
   const inputs = useRef(new Map<string, HTMLInputElement>())
+  /** Flags you typed a wrong answer for this game (each is added to the Review deck once) */
+  const missedOnce = useRef(new Set<string>())
+  // The automatic finish runs 1.5s after the last answer; skip it if you've left the page by then
+  const mounted = useRef(false)
+  useEffect(() => {
+    mounted.current = true
+    return () => {
+      mounted.current = false
+    }
+  }, [])
 
   const list: Country[] = useMemo(
     () =>
@@ -70,22 +83,23 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     else localStorage.setItem(SAVE_KEY, JSON.stringify({ key, order, randomCodes, solved: [...solved] } satisfies Saved))
   }, [key, order, randomCodes, solved, revealed, done])
 
-  const finish = (gaveUp: boolean) => {
-    const missed = list.filter((c) => !solved.has(c.code))
-    if (gaveUp) missed.forEach((c) => recordAnswer(c.code, false))
-    const prevBest = getProgress().bestPercent[bestKey('type-it', settings.difficulty)] ?? 0
-    const pct = Math.round((solved.size / total) * 100)
-    recordGame(settings, solved.size, total)
+  /** `finalSolved` is passed in because a delayed call would otherwise see a stale copy of `solved` */
+  const finish = (finalSolved: Set<string> = solved) => {
+    if (!mounted.current) return
+    const missed = list.filter((c) => !finalSolved.has(c.code))
+    const prevBest = getProgress().bestPercent[bestKey('type-it', settings.difficulty, settings.continents)] ?? 0
+    const pct = Math.round((finalSolved.size / total) * 100)
+    recordGame(settings, finalSolved.size, total)
     feedback.finish()
     navigate({
       name: 'results',
       result: {
         settings,
-        score: solved.size,
-        correct: solved.size,
+        score: finalSolved.size,
+        correct: finalSolved.size,
         answered: total,
         total,
-        bestStreak: solved.size,
+        bestStreak: finalSolved.size,
         missed,
         newBest: pct > prevBest && pct > 0,
       },
@@ -108,10 +122,10 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     setSolved(next)
     recordAnswer(c.code, true)
     feedback.correct()
-    setMood(next.size === total ? 'party' : 'happy')
+    setMood(next.size === total ? 'eyeroll' : 'smug')
     setReaction((r) => r + 1)
-    setSpellNote(typo ? `Close enough! It's spelled “${c.name}” 😉` : null)
-    if (next.size === total) setTimeout(() => finish(false), 1500)
+    setLine(typo ? TYPE_IT.typo.replace('{a}', c.name) : typeItSolved(next.size, total - next.size))
+    if (next.size === total) setTimeout(() => finish(next), 1500)
     else focusNextAfter(c.code, next)
   }
 
@@ -123,10 +137,14 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     const r = matchCountry(value, c)
     if (r !== 'wrong') return solve(c, r === 'close')
     if (!value.trim()) return focusNextAfter(c.code, solved) // empty: skip to the next flag
+    if (!missedOnce.current.has(c.code)) {
+      missedOnce.current.add(c.code)
+      recordAnswer(c.code, false)
+    }
     setWrongCode(c.code)
-    setMood('sad')
+    setMood('facepalm')
     setReaction((n) => n + 1)
-    setSpellNote(null)
+    setLine(pick(TYPE_IT.wrong))
     feedback.wrong()
     setTimeout(() => setWrongCode(null), 450)
   }
@@ -134,8 +152,17 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
   const giveUp = () => {
     if (!confirm(`Show the answers for the ${total - solved.size} flags you haven't named yet?`)) return
     setRevealed(true)
-    setMood('sad')
+    setMood('facepalm')
     setReaction((r) => r + 1)
+    setLine(pick(TYPE_IT.gaveUp))
+  }
+
+  /** Clear every answer on this page and start fresh (new random order too) */
+  const restart = () => {
+    if (solved.size > 0 && !revealed && !confirm(`Clear your ${solved.size} answer${solved.size === 1 ? '' : 's'} and start again?`)) return
+    localStorage.removeItem(SAVE_KEY)
+    navigate({ name: 'play', settings, round: Date.now() })
+    window.scrollTo(0, 0)
   }
 
   const leave = () => {
@@ -143,72 +170,65 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
       navigate({ name: 'home' })
   }
 
-  const pandaSay =
-    spellNote ??
-    (mood === 'happy' ? `${solved.size} down, ${total - solved.size} to go!` : mood === 'sad' ? (revealed ? 'Here are the answers. Let’s learn them!' : 'Not that one. Try again!') : undefined)
-
   return (
     <main className="flex flex-1 flex-col">
       {done && <Confetti />}
       {/* Sticky header so progress and actions are always in reach while scrolling */}
-      <div className="sticky top-0 z-10 -mx-4 bg-cream/95 px-4 pt-1 pb-2 backdrop-blur">
+      <div className="sticky top-0 z-10 -mx-4 bg-bg/95 px-4 pt-1 pb-2 backdrop-blur">
         <header className="flex items-center gap-3">
           <button
             onClick={leave}
             aria-label="Back"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-[3px] border-ink bg-white text-xl font-black shadow-[0_3px_0_var(--color-ink)] active:translate-y-[3px] active:shadow-none"
+            className="icon-btn"
           >
-            ←
+            <Icon name="back" />
           </button>
           <div className="flex-1">
             <div className="flex items-baseline justify-between">
-              <h1 className="text-xl font-extrabold">⌨️ Type It</h1>
-              <span className="font-black tabular-nums">
+              <h1 className="display text-[1.7rem]"><span className="text-accent">&gt; </span>Type It</h1>
+              <span className="display text-xl tabular-nums">
                 {solved.size}/{total}
               </span>
             </div>
-            <div className="h-3 overflow-hidden rounded-full border-2 border-ink bg-white">
-              <div className="h-full bg-bamboo transition-[width]" style={{ width: `${(solved.size / total) * 100}%` }} />
+            <div className="bar mt-1">
+              <div style={{ width: `${(solved.size / total) * 100}%` }} />
             </div>
           </div>
         </header>
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          <div className="flex shrink-0 rounded-full border-[3px] border-ink bg-white p-0.5" role="radiogroup" aria-label="Order">
-            {(['az', 'random'] as Order[]).map((o) => (
-              <button
-                key={o}
-                role="radio"
-                aria-checked={order === o}
-                onClick={() => setOrder(o)}
-                className={`rounded-full px-3 py-1 text-sm font-extrabold ${order === o ? 'bg-yellow-300' : ''}`}
-              >
-                {o === 'az' ? '🔤 A–Z' : '🔀 Random'}
-              </button>
-            ))}
-          </div>
+        <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Order">
+          {(['az', 'random'] as Order[]).map((o) => (
+            <button key={o} role="radio" aria-checked={order === o} onClick={() => setOrder(o)} className="chip h-10 text-sm">
+              <Icon name={o === 'az' ? 'sort' : 'shuffle'} /> {o === 'az' ? 'A–Z' : 'Random'}
+            </button>
+          ))}
+        </div>
+        <div className="mt-2 grid grid-cols-3 gap-2">
           {!revealed && (
-            <button className="chip shrink-0 text-sm" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
-              🙈 Hide done
+            <button className="chip h-10 px-1 text-xs whitespace-nowrap" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
+              <Icon name="eye" /> Hide done
             </button>
           )}
+          <button className="chip h-10 px-1 text-xs whitespace-nowrap" onClick={restart}>
+            <Icon name="restart" /> Restart
+          </button>
           {!revealed ? (
-            <button className="chip shrink-0 bg-rose-100 text-sm" onClick={giveUp} disabled={done}>
-              🏳️ Give up
+            <button className="chip h-10 px-1 text-xs whitespace-nowrap" onClick={giveUp} disabled={done}>
+              <Icon name="finish" /> Give up
             </button>
           ) : (
-            <button className="chip shrink-0 bg-bamboo text-sm text-white" onClick={() => finish(true)}>
-              See results 🏁
+            <button className="chip col-span-2 h-10 text-xs" aria-pressed="true" onClick={() => finish()}>
+              <Icon name="finish" /> See results
             </button>
           )}
         </div>
       </div>
 
-      <div className="my-2 min-h-[64px]">
-        <Panda
+      <div className="my-2 min-h-[80px]">
+        <Mascot
           mood={mood}
-          size={56}
+          size={76}
           reactionKey={reaction}
-          say={pandaSay ?? (solved.size ? null : 'Type each country under its flag. No timer, no rush! 🐼')}
+          say={line ?? (solved.size ? null : TYPE_IT.intro)}
         />
       </div>
 
@@ -218,15 +238,18 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
           return (
             <li
               key={c.code}
-              className={`flex flex-col gap-2 rounded-2xl border-[3px] border-ink p-2 shadow-[0_4px_0_var(--color-ink)] ${
-                isSolved ? 'bg-green-200' : revealed ? 'bg-rose-100' : 'bg-white'
-              } ${wrongCode === c.code ? 'shake' : ''}`}
+              className={`card flex flex-col gap-2 p-2 ${isSolved ? '!border-accent' : revealed ? '!border-wrong' : ''} ${
+                wrongCode === c.code ? 'shake' : ''
+              }`}
             >
               <Flag country={c} variant="thumb" revealName={isSolved || revealed} />
               {isSolved || revealed ? (
-                <p className={`flex min-h-11 items-center justify-center text-center leading-tight font-extrabold ${isSolved ? 'pop-in' : 'text-rose-700'}`}>
-                  {isSolved ? '✓ ' : ''}
-                  {c.name}
+                <p
+                  className={`flex h-11 items-center justify-center rounded-[10px] px-1 text-center font-cond leading-tight uppercase ${c.name.length > 24 ? 'text-[11px]' : 'text-sm'} ${
+                    isSolved ? 'pop-in bg-accent text-on-accent' : 'bg-wrong-dim text-wrong'
+                  }`}
+                >
+                  <span className="line-clamp-2">{c.name}</span>
                 </p>
               ) : (
                 <input
@@ -248,14 +271,14 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
                   autoCapitalize="words"
                   spellCheck={false}
                   enterKeyHint="next"
-                  className="min-h-11 w-full rounded-xl border-2 border-ink bg-white px-2 text-center text-base font-bold outline-none focus:bg-yellow-50 focus:ring-4 focus:ring-yellow-300"
+                  className="h-11 w-full rounded-[10px] border-2 border-line bg-bg px-2 text-center text-base text-fg outline-none placeholder:text-muted focus:border-accent"
                 />
               )}
             </li>
           )
         })}
       </ul>
-      {hideSolved && visible.length === 0 && !done && <p className="text-center font-bold">All named! 🎉</p>}
+      {hideSolved && visible.length === 0 && !done && <p className="text-center font-bold">All named.</p>}
     </main>
   )
 }

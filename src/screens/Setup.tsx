@@ -1,21 +1,14 @@
 import { useState } from 'react'
 import type { Navigate } from '../App'
-import { Panda } from '../components/Panda'
+import { Icon } from '../components/Icon'
+import { Mascot } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent } from '../data/types'
 import { questionPool } from '../game/engine'
 import { DIFFICULTY_INFO, MODE_INFO, type Difficulty, type GameSettings, type Mode } from '../game/types'
-import { bestKey, getProgress, useProgress } from '../store/progress'
+import { bestKey, blitzKey, getProgress, useProgress } from '../store/progress'
 
 const COUNTS = [10, 20, 30, 0]
-const CONTINENT_EMOJI: Record<Continent, string> = {
-  Africa: '🌍',
-  Asia: '🌏',
-  Europe: '🏰',
-  'North America': '🗽',
-  'South America': '🦜',
-  Oceania: '🏝️',
-}
 const MODES: Mode[] = ['flag-to-name', 'name-to-flag', 'type-it', 'capital', 'blitz']
 
 export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: Navigate }) {
@@ -33,7 +26,8 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
   ) as Record<Difficulty, number>
   const isBlitz = mode === 'blitz'
   const questions = count > 0 ? Math.min(count, pool.length) : pool.length
-  const best = isBlitz ? progress.blitzBest[difficulty] : progress.bestPercent[bestKey(mode, difficulty)]
+  // Your best for exactly these filters
+  const best = isBlitz ? progress.blitzBest[blitzKey(difficulty, continents)] : progress.bestPercent[bestKey(mode, difficulty, continents)]
 
   const toggleContinent = (c: Continent) =>
     setContinents((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]))
@@ -45,40 +39,40 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
 
   return (
     <main className="flex flex-1 flex-col">
-      <TopBar title={`${MODE_INFO[mode].emoji} ${MODE_INFO[mode].title}`} onBack={() => navigate({ name: 'home' })} />
+      <TopBar title={MODE_INFO[mode].title} onBack={() => navigate({ name: 'home' })} />
 
       <div className="flex flex-1 flex-col gap-5 pb-28">
-        <Panda
+        <Mascot
           mood="thinking"
-          size={72}
+          size={96}
           reactionKey={`${mode}${difficulty}${continents.join()}`}
           say={
             mode === 'type-it'
-              ? `Name all ${pool.length} flags, no timer. Take your time!`
+              ? `All ${pool.length} flags. No timer. Try not to embarrass us both.`
               : isBlitz
-                ? `${pool.length} countries in the mix. Answer as many as you can in 60s!`
-                : `${questions} question${questions === 1 ? '' : 's'} from ${pool.length} countries. Let's go!`
+                ? `${pool.length} countries, each once, 60 seconds. I’d need about 12.`
+                : `${questions} question${questions === 1 ? '' : 's'}. I’ll try to contain my boredom.`
           }
         />
 
         <Section title="Game">
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {MODES.map((m) => (
-              <button key={m} className="chip" aria-pressed={mode === m} onClick={() => setMode(m)}>
-                {MODE_INFO[m].emoji} {MODE_INFO[m].title}
+              <button key={m} className={`chip h-11 px-2 text-sm whitespace-nowrap ${m === 'blitz' ? 'col-span-2' : ''}`} aria-pressed={mode === m} onClick={() => setMode(m)}>
+                <Icon name={MODE_INFO[m].icon} /> {MODE_INFO[m].title}
               </button>
             ))}
           </div>
         </Section>
 
         <Section title="Continents" note={continents.length ? `${continents.length} picked` : 'All of them'}>
-          <div className="flex flex-wrap gap-2">
-            <button className="chip" aria-pressed={continents.length === 0} onClick={() => setContinents([])}>
-              🌐 All
+          <div className="grid grid-cols-2 gap-2">
+            <button className="chip col-span-2 h-11 text-sm" aria-pressed={continents.length === 0} onClick={() => setContinents([])}>
+              All continents
             </button>
             {CONTINENTS.map((c) => (
-              <button key={c} className="chip" aria-pressed={continents.includes(c)} onClick={() => toggleContinent(c)}>
-                {CONTINENT_EMOJI[c]} {c}
+              <button key={c} className="chip h-11 px-2 text-sm whitespace-nowrap" aria-pressed={continents.includes(c)} onClick={() => toggleContinent(c)}>
+                {c}
               </button>
             ))}
           </div>
@@ -92,18 +86,16 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
                 role="radio"
                 aria-checked={difficulty === d}
                 onClick={() => setDifficulty(d)}
-                className={`rounded-2xl border-[3px] border-ink px-2 py-2 font-extrabold ${
-                  difficulty === d ? (d === 'easy' ? 'bg-green-300' : d === 'medium' ? 'bg-yellow-300' : 'bg-rose-300') : 'bg-white'
+                className={`tile flex min-h-20 flex-col items-center justify-center gap-1 px-2 py-2 ${
+                  difficulty === d ? 'is-right' : ''
                 }`}
               >
-                <span className="block">
-                  {d === 'easy' ? '🌱' : d === 'medium' ? '🌿' : '🌳'} {DIFFICULTY_INFO[d].label}
-                </span>
-                <span className="block text-sm font-bold opacity-70">{poolSizes[d]} countries</span>
+                <span className="display text-xl">{DIFFICULTY_INFO[d].label}</span>
+                <span className={`font-cond text-xs whitespace-nowrap uppercase ${difficulty === d ? '' : 'text-muted'}`}>{poolSizes[d]} countries</span>
               </button>
             ))}
           </div>
-          <p className="mt-2 text-sm font-semibold text-slate-600">
+          <p className="mt-2 text-sm text-muted">
             {DIFFICULTY_INFO[difficulty].blurb}
             {difficulty !== 'hard' && ' · Pick Hard to include every country.'}
           </p>
@@ -113,7 +105,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
           <Section title="Questions">
             <div className="grid grid-cols-4 gap-2">
               {COUNTS.map((n) => (
-                <button key={n} className="chip px-2" aria-pressed={count === n} onClick={() => setCount(n)}>
+                <button key={n} className="chip h-11 px-2 text-sm whitespace-nowrap" aria-pressed={count === n} onClick={() => setCount(n)}>
                   {n === 0 ? `All ${pool.length}` : n}
                 </button>
               ))}
@@ -122,15 +114,16 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
         )}
 
         {best !== undefined && (
-          <p className="text-center font-bold text-slate-600">
-            🏆 Your best here: {isBlitz ? `${best} points` : `${best}%`}
+          <p className="text-center font-cond text-lg text-muted uppercase">
+            <Icon name="trophy" /> Your best here: {isBlitz ? `${best} points` : `${best}%`}
           </p>
         )}
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-10 mx-auto max-w-md bg-gradient-to-t from-cream via-cream to-transparent px-4 pt-6 pb-[max(env(safe-area-inset-bottom),16px)]">
+      <div className="fixed inset-x-0 bottom-0 z-10 mx-auto max-w-md bg-bg/95 backdrop-blur px-4 pt-6 pb-[max(env(safe-area-inset-bottom),16px)]">
         <button onClick={start} className="btn btn-primary w-full text-2xl">
-          {isBlitz ? '⚡ Start Blitz' : mode === 'type-it' ? '⌨️ Start typing' : '▶ Play'}
+          <Icon name={isBlitz ? 'zap' : mode === 'type-it' ? 'keyboard' : 'play'} />
+          {isBlitz ? 'Start Blitz' : mode === 'type-it' ? 'Start typing' : 'Play'}
         </button>
       </div>
     </main>
@@ -141,8 +134,8 @@ function Section({ title, note, children }: { title: string; note?: string; chil
   return (
     <section>
       <div className="mb-2 flex items-baseline justify-between">
-        <h2 className="text-lg font-extrabold">{title}</h2>
-        {note && <span className="text-sm font-bold text-slate-500">{note}</span>}
+        <h2 className="display text-xl">{title}</h2>
+        {note && <span className="font-cond text-sm text-muted uppercase">{note}</span>}
       </div>
       {children}
     </section>

@@ -8,11 +8,13 @@ const BY_CODE = new Map(ALL_COUNTRIES.map((c) => [c.code, c]))
 export const countryByCode = (code: string) => BY_CODE.get(code)
 
 const MAX_TIER: Record<Difficulty, number> = { easy: 1, medium: 2, hard: 3 }
+const MIN_POOL = 4
 
 /**
  * Countries the player will be asked about. Filters by continent and difficulty tier.
- * If a small continent has too few countries at that tier (e.g. Oceania on Easy),
- * the pool widens to the next tier so there are always enough to play.
+ * A level only widens to the next tier when it has fewer than 4 countries (e.g. Oceania on
+ * Easy has just Australia and New Zealand), so Easy, Medium and Hard stay genuinely different.
+ * Wrong answer options always come from all 195 countries, so even a small pool gets 4 options.
  */
 export function questionPool(settings: Pick<GameSettings, 'continents' | 'difficulty'>, all = ALL_COUNTRIES): Country[] {
   const inContinent = settings.continents.length
@@ -20,7 +22,7 @@ export function questionPool(settings: Pick<GameSettings, 'continents' | 'diffic
     : all
   for (let tier = MAX_TIER[settings.difficulty]; tier <= 3; tier++) {
     const pool = inContinent.filter((c) => c.tier <= tier)
-    if (pool.length >= 8 || tier === 3) return pool
+    if (pool.length >= MIN_POOL || tier === 3) return pool
   }
   return inContinent
 }
@@ -62,7 +64,7 @@ export function makeQuestion(country: Country, kind: QuestionKind, difficulty: D
 
 /** A fixed-length quiz with no repeated countries. */
 export function buildQuiz(settings: GameSettings, rng: Rng = Math.random): Question[] {
-  if (settings.mode === 'blitz') throw new Error('Use BlitzDeck for blitz mode')
+  if (settings.mode === 'blitz') throw new Error('Use buildBlitz for blitz mode')
   const pool = shuffle(questionPool(settings), rng)
   const n = settings.count > 0 ? Math.min(settings.count, pool.length) : pool.length
   return pool.slice(0, n).map((c) => makeQuestion(c, settings.mode as QuestionKind, settings.difficulty, rng))
@@ -70,22 +72,13 @@ export function buildQuiz(settings: GameSettings, rng: Rng = Math.random): Quest
 
 const BLITZ_KINDS: QuestionKind[] = ['flag-to-name', 'name-to-flag', 'flag-to-name', 'capital']
 
-/** Endless shuffled questions for Blitz. Goes through the whole pool before repeating. */
-export class BlitzDeck {
-  private queue: Country[] = []
-  private pool: Country[]
-  private settings: Pick<GameSettings, 'continents' | 'difficulty'>
-  private rng: Rng
-  constructor(settings: Pick<GameSettings, 'continents' | 'difficulty'>, rng: Rng = Math.random) {
-    this.settings = settings
-    this.rng = rng
-    this.pool = questionPool(settings)
-  }
-  next(): Question {
-    if (!this.queue.length) this.queue = shuffle(this.pool, this.rng)
-    const country = this.queue.pop()!
-    return makeQuestion(country, pick(BLITZ_KINDS, this.rng), this.settings.difficulty, this.rng)
-  }
+/**
+ * All the questions for one Blitz game, built up front: every country in the pool exactly once,
+ * shuffled, each with a random question type. If you answer them all before 60s, the game ends.
+ * (Built as a plain list, not a stateful deck, so nothing can be skipped or drawn twice.)
+ */
+export function buildBlitz(settings: Pick<GameSettings, 'continents' | 'difficulty'>, rng: Rng = Math.random): Question[] {
+  return shuffle(questionPool(settings), rng).map((c) => makeQuestion(c, pick(BLITZ_KINDS, rng), settings.difficulty, rng))
 }
 
 /** Blitz scoring: 10 points, +5 for every 3 correct in a row (max +20). */

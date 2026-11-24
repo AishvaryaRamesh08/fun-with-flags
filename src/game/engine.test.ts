@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { ALL_COUNTRIES, BlitzDeck, blitzPoints, buildQuiz, countryByCode, distractors, questionPool } from './engine'
+import { ALL_COUNTRIES, blitzPoints, buildBlitz, buildQuiz, countryByCode, distractors, questionPool } from './engine'
 import { matchCountry } from './match'
 import { seeded } from './random'
 import type { Difficulty } from './types'
@@ -17,9 +17,10 @@ describe('questionPool', () => {
     const pool = questionPool({ continents: ['Europe', 'Oceania'], difficulty: 'hard' })
     expect(pool.every((x) => x.continent === 'Europe' || x.continent === 'Oceania')).toBe(true)
   })
-  it('widens small pools so there is always enough to play', () => {
-    // Oceania has only 2 tier-1 countries
-    expect(questionPool({ continents: ['Oceania'], difficulty: 'easy' }).length).toBeGreaterThanOrEqual(8)
+  it('widens only tiny pools, so difficulty levels stay different', () => {
+    // Oceania has only 2 tier-1 countries, so Easy widens to tier 2 (4 countries) but not further
+    expect(questionPool({ continents: ['Oceania'], difficulty: 'easy' })).toHaveLength(4)
+    expect(questionPool({ continents: ['Oceania'], difficulty: 'hard' })).toHaveLength(14)
   })
 })
 
@@ -60,11 +61,11 @@ describe('buildQuiz', () => {
   })
 })
 
-describe('BlitzDeck', () => {
-  it('goes through the whole pool before repeating', () => {
-    const deck = new BlitzDeck({ continents: ['South America'], difficulty: 'hard' }, seeded(5))
-    const seen = Array.from({ length: 12 }, () => deck.next().country.code)
-    expect(new Set(seen).size).toBe(12)
+describe('buildBlitz', () => {
+  it('has every country in the pool exactly once', () => {
+    const codes = buildBlitz({ continents: ['South America'], difficulty: 'hard' }, seeded(5)).map((q) => q.country.code)
+    expect(codes).toHaveLength(12)
+    expect(new Set(codes).size).toBe(12)
   })
   it('rewards streaks', () => {
     expect(blitzPoints(0)).toBe(10)

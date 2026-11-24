@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '@fontsource-variable/baloo-2'
+import '@fontsource/vt323'
+import '@fontsource/jetbrains-mono/500.css'
+import '@fontsource/jetbrains-mono/700.css'
+import '@fontsource/jetbrains-mono/800.css'
 import './index.css'
 import App from './App.tsx'
 

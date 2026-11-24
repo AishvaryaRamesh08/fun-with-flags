@@ -1,11 +1,82 @@
 @import 'tailwindcss';
 
+/*
+ * Theme: retro terminal. Each theme is two colours (a background and one accent)
+ * plus readable text; red only marks a wrong answer. Pick one in Settings.
+ * Default = Paper (set in index.html and progress.ts). All pass WCAG AA: text ≥ 7:1, secondary text ≥ 4.5:1, borders ≥ 3:1.
+ */
 @theme {
-  --font-display: 'Baloo 2 Variable', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
-  --color-ink: #1f2937;
-  --color-cream: #fef9e7;
-  --color-bamboo: #22c55e;
-  --color-bamboo-dark: #15803d;
+  --font-display: 'VT323', 'Courier New', monospace; /* big pixel headings */
+  --font-body: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-cond: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace; /* small labels */
+
+  /* Clay: warm charcoal + clay orange */
+  --color-bg: #1a1918;
+  --color-surface: #242321;
+  --color-raised: #2f2a25;
+  --color-line: #7d766c;
+  --color-fg: #f2efe8;
+  --color-muted: #c2bcb1;
+  --color-accent: #e07b55;
+  --color-accent-dim: #3a2519;
+  --color-on-accent: #141312;
+  --color-wrong: #ff7a6e;
+  --color-wrong-dim: #3d1f1c;
+  --color-scan: rgb(0 0 0 / 0.18);
+  --color-glow: rgb(224 123 85 / 0.35);
+
+  --radius-ui: 3px;
+}
+
+/* Amber CRT: black + amber phosphor */
+:root[data-theme='amber'] {
+  --color-bg: #0b0805;
+  --color-surface: #15100a;
+  --color-raised: #22190e;
+  --color-line: #7a5a30;
+  --color-fg: #ffd9a3;
+  --color-muted: #e0a85e;
+  --color-accent: #ffa62b;
+  --color-accent-dim: #2e1f0b;
+  --color-on-accent: #0b0805;
+  --color-wrong: #ff6b5e;
+  --color-wrong-dim: #331410;
+  --color-scan: rgb(0 0 0 / 0.3);
+  --color-glow: rgb(255 166 43 / 0.4);
+}
+
+/* Phosphor: black + green phosphor */
+:root[data-theme='phosphor'] {
+  --color-bg: #060b07;
+  --color-surface: #0c150e;
+  --color-raised: #112016;
+  --color-line: #2f7a42;
+  --color-fg: #d2ffdc;
+  --color-muted: #7fe39a;
+  --color-accent: #3dff73;
+  --color-accent-dim: #0f2c17;
+  --color-on-accent: #060b07;
+  --color-wrong: #ff6b5e;
+  --color-wrong-dim: #331410;
+  --color-scan: rgb(0 0 0 / 0.3);
+  --color-glow: rgb(61 255 115 / 0.35);
+}
+
+/* Paper: light cream + burnt orange (best in bright daylight) */
+:root[data-theme='paper'] {
+  --color-bg: #f3ebde;
+  --color-surface: #fffaf2;
+  --color-raised: #fbeadb;
+  --color-line: #8f7d68;
+  --color-fg: #1d1812;
+  --color-muted: #55493c;
+  --color-accent: #b8461a;
+  --color-accent-dim: #f6d9c8;
+  --color-on-accent: #fffaf2;
+  --color-wrong: #b3261e;
+  --color-wrong-dim: #fbe0dc;
+  --color-scan: rgb(0 0 0 / 0.035);
+  --color-glow: transparent;
 }
 
 html,
@@ -15,96 +86,203 @@ body,
 }
 
 body {
-  background-color: var(--color-cream);
-  background-image: radial-gradient(#e7dcc0 1.2px, transparent 1.2px);
-  background-size: 22px 22px;
-  color: var(--color-ink);
-  font-family: var(--font-display);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior-y: none;
 }
 
-/* Chunky "game" button: dark outline + hard shadow that presses down */
-.btn {
-  @apply flex min-h-14 items-center justify-center gap-2 rounded-2xl border-[3px] border-ink px-4 py-3 text-lg font-extrabold shadow-[0_5px_0_var(--color-ink)] transition-[transform,box-shadow] duration-75 select-none active:translate-y-[5px] active:shadow-none disabled:active:translate-y-0 disabled:active:shadow-[0_5px_0_var(--color-ink)];
-}
-.btn-primary {
-  @apply bg-bamboo text-white;
-}
-.btn-white {
-  @apply bg-white text-ink;
-}
-.card {
-  @apply rounded-3xl border-[3px] border-ink bg-white shadow-[0_6px_0_var(--color-ink)];
-}
-.chip {
-  @apply min-h-11 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 text-base font-bold transition-colors select-none;
-}
-.chip[aria-pressed='true'] {
-  @apply bg-yellow-300;
+/* Faint CRT scanlines on the page background only — cards and flag images stay clean */
+body {
+  background-image: repeating-linear-gradient(to bottom, var(--color-scan) 0 1px, transparent 1px 4px);
 }
 
-/* ---------- Panda animations ---------- */
-.panda {
-  transform-origin: 50% 100%;
+/* Headline type: chunky pixel terminal letters with a faint phosphor glow */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  font-size-adjust: cap-height 0.72;
+  text-shadow: 0 0 8px var(--color-glow);
+}
+
+/* ---------- Shared building blocks (one look everywhere) ---------- */
+.card {
+  @apply rounded-[var(--radius-ui)] border-2 border-line bg-surface;
+}
+.tile {
+  @apply rounded-[var(--radius-ui)] border-2 border-line bg-surface transition-[transform,background-color,border-color] duration-100 select-none active:scale-[0.97];
+}
+.btn {
+  @apply flex min-h-14 items-center justify-center gap-2 rounded-[var(--radius-ui)] border-2 px-3 py-3 whitespace-nowrap transition-transform duration-75 select-none active:scale-[0.97] disabled:active:scale-100;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 26px;
+  line-height: 1;
+}
+/* Full-width buttons read like terminal commands: [ PLAY ] */
+.btn.w-full::before {
+  content: '[';
+  opacity: 0.6;
+}
+.btn.w-full::after {
+  content: ']';
+  opacity: 0.6;
+}
+.btn-primary {
+  @apply border-accent bg-accent text-on-accent;
+}
+.btn-ghost {
+  @apply border-line bg-surface text-fg;
+}
+.chip {
+  @apply inline-flex min-h-11 items-center justify-center gap-1.5 rounded-[var(--radius-ui)] border-2 border-line bg-surface px-3 py-1.5 text-sm text-fg transition-colors select-none disabled:opacity-40;
+  font-family: var(--font-cond);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.chip[aria-pressed='true'],
+.chip[aria-checked='true'] {
+  @apply border-accent bg-accent text-on-accent;
+}
+.icon-btn {
+  @apply grid h-11 w-11 shrink-0 place-items-center rounded-[var(--radius-ui)] border-2 border-line bg-surface text-xl text-fg active:scale-95;
+}
+/* States for answer tiles */
+.is-right {
+  @apply border-accent bg-accent text-on-accent;
+}
+.is-wrong {
+  @apply border-wrong bg-wrong-dim text-wrong;
+}
+.is-dimmed {
+  @apply opacity-35;
+}
+/* Progress bar drawn as terminal blocks: ▓▓▓▓░░░░ */
+.bar {
+  @apply h-3 overflow-hidden rounded-none border border-line;
+  background: repeating-linear-gradient(to right, var(--color-surface) 0 6px, var(--color-bg) 6px 8px);
+}
+.bar > div {
+  @apply h-full transition-[width] duration-300;
+  background: repeating-linear-gradient(to right, var(--color-accent) 0 6px, transparent 6px 8px);
+}
+
+/* ---------- Mascot: paper cut-out puppet animations ----------
+ * steps() timing gives a choppy stop-motion feel, like paper puppets moved frame by frame.
+ * Joints rotate around points in the drawing's own 120×150 coordinates.
+ */
+.cutout {
   overflow: visible;
 }
-.panda-idle,
-.panda-thinking {
-  animation: breathe 3s ease-in-out infinite;
+.cutout .cut-body,
+.cutout .cut-head,
+.cutout .cut-arm-l,
+.cutout .cut-arm-r,
+.cutout .cut-eyes {
+  transform-box: view-box;
 }
-.panda-happy {
-  animation: hop 0.6s ease-out 2;
+.cutout .cut-body {
+  transform-origin: 60px 150px;
 }
-.panda-party {
-  animation: party 0.7s ease-in-out infinite;
+.cutout .cut-head {
+  transform-origin: 60px 84px;
 }
-.panda-sad {
-  animation: wobble 0.5s ease-in-out 2;
+.cutout .cut-arm-l {
+  transform-origin: 31px 101px;
 }
-.panda-wave-arm {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: wave 0.6s ease-in-out 3;
+.cutout .cut-arm-r {
+  transform-origin: 89px 101px;
 }
-.panda-eyes {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: blink 4s infinite;
+.cutout .cut-eyes {
+  transform-origin: 60px 56px;
+  animation: blink 4.5s infinite;
 }
-.panda-tear {
-  animation: tear 1.2s ease-in infinite;
+
+/* idle: a smug little sway */
+.cutout-idle .cut-body {
+  animation: cut-sway 2.4s steps(4) infinite;
+}
+/* wave: rocking, hand going back and forth */
+.cutout-wave .cut-body {
+  animation: cut-sway 2s steps(4) infinite;
+}
+.cutout-wave .cut-arm-l {
+  animation: cut-wave 0.8s steps(3) infinite;
+}
+/* thinking: head tilts, sizing you up */
+.cutout-thinking .cut-head {
+  animation: cut-tilt 2.2s steps(3) infinite;
+}
+/* smug: chin goes up, finger wags "obviously" */
+.cutout-smug .cut-head {
+  animation: cut-chin 0.4s steps(2) forwards;
+}
+.cutout-smug .cut-arm-l {
+  animation: cut-wag 0.3s steps(2) 2;
+}
+/* eyeroll: unimpressed sigh with a slow head tilt */
+.cutout-eyeroll .cut-head {
+  animation: cut-roll 1.4s steps(3) forwards;
+}
+.cutout-eyeroll .cut-body {
+  animation: cut-sigh 1.4s steps(2) forwards;
+}
+/* facepalm: "ugh" head shake and a slump */
+.cutout-facepalm .cut-head {
+  animation: cut-shake 0.28s steps(2) 3;
+}
+.cutout-facepalm .cut-body {
+  animation: cut-slump 0.6s steps(2) 1 forwards;
+}
+
+@keyframes cut-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+@keyframes cut-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-14deg); }
+}
+@keyframes cut-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+@keyframes cut-chin {
+  to { transform: rotate(-6deg) translateY(-1px); }
+}
+@keyframes cut-roll {
+  40% { transform: rotate(7deg); }
+  100% { transform: rotate(4deg); }
+}
+@keyframes cut-sigh {
+  50% { transform: translateY(2px) scaleY(0.98); }
+  100% { transform: translateY(1px); }
+}
+@keyframes cut-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-10deg); }
+}
+@keyframes cut-shake {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+@keyframes cut-slump {
+  to { transform: translateY(3px) rotate(-2deg); }
 }
 .panda-bubble {
-  animation: pop 0.25s ease-out;
+  animation: pop 0.2s ease-out;
   transform-origin: 0 100%;
 }
 
-@keyframes breathe {
-  50% { transform: scale(1.03, 0.98); }
-}
-@keyframes hop {
-  30% { transform: translateY(-22px) scale(1.05); }
-  60% { transform: translateY(0) scale(1.08, 0.92); }
-}
-@keyframes party {
-  0%, 100% { transform: translateY(0) rotate(-6deg); }
-  50% { transform: translateY(-14px) rotate(6deg); }
-}
-@keyframes wobble {
-  25% { transform: rotate(-7deg); }
-  75% { transform: rotate(7deg); }
-}
-@keyframes wave {
-  50% { transform: rotate(-30deg); }
-}
 @keyframes blink {
   0%, 92%, 100% { transform: scaleY(1); }
   95% { transform: scaleY(0.1); }
-}
-@keyframes tear {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(26px); opacity: 0; }
 }
 @keyframes pop {
   from { transform: scale(0.6); opacity: 0; }
@@ -112,20 +290,14 @@ body {
 
 /* ---------- Game feedback ---------- */
 .shake {
-  animation: shake 0.4s;
+  animation: shake 0.35s;
 }
 @keyframes shake {
-  20%, 60% { transform: translateX(-8px); }
-  40%, 80% { transform: translateX(8px); }
+  20%, 60% { transform: translateX(-7px); }
+  40%, 80% { transform: translateX(7px); }
 }
 .pop-in {
-  animation: pop 0.3s ease-out;
-}
-.slide-up {
-  animation: slideUp 0.3s ease-out;
-}
-@keyframes slideUp {
-  from { transform: translateY(24px); opacity: 0; }
+  animation: pop 0.25s ease-out;
 }
 .confetti-piece {
   animation-name: fall;
@@ -136,13 +308,34 @@ body {
   to { transform: translateY(110vh) rotate(720deg); }
 }
 
+/* ---------- Quiz card transition: swish out left, swish in from the right ---------- */
+.card-swish-in {
+  animation: swish-in 0.34s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card-swish-out {
+  animation: swish-out 0.26s cubic-bezier(0.5, 0, 0.9, 0.4) forwards;
+  pointer-events: none;
+}
+@keyframes swish-in {
+  from {
+    transform: translateX(65%) rotate(6deg);
+    opacity: 0;
+  }
+}
+@keyframes swish-out {
+  to {
+    transform: translateX(-75%) rotate(-7deg);
+    opacity: 0;
+  }
+}
+
 /* ---------- Flashcard flip ---------- */
 .flip-scene {
   perspective: 1200px;
 }
 .flip-card {
   transform-style: preserve-3d;
-  transition: transform 0.5s;
+  transition: transform 0.45s;
 }
 .flip-card.flipped {
   transform: rotateY(180deg);

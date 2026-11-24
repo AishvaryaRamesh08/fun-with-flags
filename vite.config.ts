@@ -20,9 +20,9 @@ export default defineConfig({
       manifest: {
         name: 'Fun with Flags',
         short_name: 'Fun with Flags',
-        description: 'Ad-free flag quiz game with a friendly panda guide',
-        theme_color: '#22c55e',
-        background_color: '#fefce8',
+        description: 'Ad-free retro flag quiz game',
+        theme_color: '#f3ebde',
+        background_color: '#f3ebde',
         display: 'standalone',
         orientation: 'portrait',
         icons: [{ src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }],

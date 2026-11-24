@@ -1,6 +1,6 @@
 # 🐼 Fun with Flags
 
-An ad-free, mobile-first flag quiz game with a friendly panda guide.
+An ad-free, mobile-first flag quiz game with a retro terminal look and Moonpie, a smug paper cut-out flag genius who never gives a compliment.
 Learn all 195 countries' flags, capitals and currencies — offline, no login, no tracking.
 
 **Play:** https://aishvaryaramesh08.github.io/fun-with-flags/
@@ -28,6 +28,7 @@ Tap-the-map, multiplayer, currency quiz.
 | `data/curated/confusables.json` | Look-alike flag groups used for Hard mode |
 
 Flags are SVGs from [flag-icons](https://github.com/lipis/flag-icons), copied to `public/flags/`.
+UI icons are from [Pixelarticons](https://github.com/halfmage/pixelarticons) (MIT).
 
 ```bash
 npm run data:build     # regenerate countries.json + flags
