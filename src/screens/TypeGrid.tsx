@@ -7,7 +7,7 @@ import { Icon } from '../components/Icon'
 import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { countryByCode, questionPool } from '../game/engine'
-import { matchCountry } from '../game/match'
+import { couldBeAnotherCountry, matchCountry } from '../game/match'
 import { TYPE_IT, pick, typeItSolved } from '../game/persona'
 import { shuffle } from '../game/random'
 import type { GameSettings } from '../game/types'
@@ -129,8 +129,13 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     else focusNextAfter(c.code, next)
   }
 
+  // Accepted as you type: the full name, or a whole part of it that fits only this flag ("Bosnia").
+  // Typos are accepted when you press Enter. If the letters so far could still turn into a different
+  // country ("Niger…" → Nigeria, "Mauri…" → Mauritius), we also wait for Enter so a wrong answer isn't
+  // accepted halfway through.
   const onType = (c: Country, value: string) => {
-    if (matchCountry(value, c) === 'exact') solve(c, false)
+    const r = matchCountry(value, c)
+    if ((r === 'exact' || r === 'part') && !couldBeAnotherCountry(value, c)) solve(c, r === 'part')
   }
 
   const onEnter = (c: Country, value: string) => {
@@ -174,7 +179,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     <main className="flex flex-1 flex-col">
       {done && <Confetti />}
       {/* Sticky header so progress and actions are always in reach while scrolling */}
-      <div className="sticky top-0 z-10 -mx-4 bg-bg/95 px-4 pt-1 pb-2 backdrop-blur">
+      <div className="sticky top-0 z-10 -mx-4 bg-bg/95 px-4 pt-1 pb-2 backdrop-blur md:-mx-8 md:px-8">
         <header className="flex items-center gap-3">
           <button
             onClick={leave}
@@ -195,14 +200,15 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
             </div>
           </div>
         </header>
-        <div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="Order">
+        <div className="md:mt-2 md:grid md:grid-cols-2 md:gap-2">
+        <div className="mt-2 grid grid-cols-2 gap-2 md:mt-0" role="radiogroup" aria-label="Order">
           {(['az', 'random'] as Order[]).map((o) => (
             <button key={o} role="radio" aria-checked={order === o} onClick={() => setOrder(o)} className="chip h-10 text-sm">
               <Icon name={o === 'az' ? 'sort' : 'shuffle'} /> {o === 'az' ? 'A–Z' : 'Random'}
             </button>
           ))}
         </div>
-        <div className="mt-2 grid grid-cols-3 gap-2">
+        <div className="mt-2 grid grid-cols-3 gap-2 md:mt-0">
           {!revealed && (
             <button className="chip h-10 px-1 text-xs whitespace-nowrap" aria-pressed={hideSolved} onClick={() => setHideSolved((h) => !h)}>
               <Icon name="eye" /> Hide done
@@ -221,6 +227,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
             </button>
           )}
         </div>
+        </div>
       </div>
 
       <div className="my-2 min-h-[80px]">
@@ -232,7 +239,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
         />
       </div>
 
-      <ul className="grid grid-cols-2 gap-3 pb-8 sm:grid-cols-3">
+      <ul className="grid grid-cols-2 gap-3 pb-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {visible.map((c) => {
           const isSolved = solved.has(c.code)
           return (

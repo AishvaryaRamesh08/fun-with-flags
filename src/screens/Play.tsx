@@ -192,7 +192,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
 
   return (
     // After answering, a tap anywhere moves on (the click that answered doesn't count: `answer` was still empty then)
-    <main className="flex flex-1 flex-col overflow-x-clip" onClick={skipAhead}>
+    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col overflow-x-clip" onClick={skipAhead}>
       {/* Top bar: quit, progress / timer, score */}
       <header className="mb-2 flex items-center gap-3">
         <button
@@ -264,7 +264,7 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
           <p className="font-cond text-sm text-muted uppercase">Find the flag of</p>
           <p className={`display line-clamp-2 ${country.name.length > 24 ? 'text-3xl' : 'text-4xl'}`}>{country.name}</p>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           {options.map((o, i) => (
             <button
               key={o.code}
@@ -293,10 +293,11 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
   }
 
   return (
-    <section className="flex flex-col gap-4">
-      <div className="mx-auto w-full max-w-[340px]">
+    <section className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
+      <div className="mx-auto w-full max-w-[340px] lg:max-w-none">
         <Flag country={country} revealName={!!answer} />
       </div>
+      <div className="flex flex-col gap-4">
       <p className="text-center font-cond text-xl uppercase">
         {kind === 'capital' ? (
           <>
@@ -319,6 +320,7 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
             {kind === 'capital' ? o.capitals[0] : o.name}
           </button>
         ))}
+      </div>
       </div>
     </section>
   )

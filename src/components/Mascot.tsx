@@ -147,7 +147,7 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
       {text && (
         <div
           key={`b-${mood}-${reactionKey}-${text}`}
-          className="panda-bubble mb-6 min-w-0 flex-1 rounded-[var(--radius-ui)] border-2 border-accent bg-surface px-3 py-2 text-[13px] leading-snug text-fg"
+          className="panda-bubble mb-6 min-w-0 flex-1 md:max-w-xl md:flex-none rounded-[var(--radius-ui)] border-2 border-accent bg-surface px-3 py-2 text-[13px] leading-snug text-fg"
         >
           {text}
         </div>

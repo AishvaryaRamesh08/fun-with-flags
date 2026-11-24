@@ -38,7 +38,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
   }
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
       <TopBar title={MODE_INFO[mode].title} onBack={() => navigate({ name: 'home' })} />
 
       <div className="flex flex-1 flex-col gap-5 pb-28">
@@ -66,8 +66,8 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
         </Section>
 
         <Section title="Continents" note={continents.length ? `${continents.length} picked` : 'All of them'}>
-          <div className="grid grid-cols-2 gap-2">
-            <button className="chip col-span-2 h-11 text-sm" aria-pressed={continents.length === 0} onClick={() => setContinents([])}>
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+            <button className="chip col-span-2 h-11 text-sm md:col-span-3" aria-pressed={continents.length === 0} onClick={() => setContinents([])}>
               All continents
             </button>
             {CONTINENTS.map((c) => (
@@ -120,7 +120,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
         )}
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-10 mx-auto max-w-md bg-bg/95 backdrop-blur px-4 pt-6 pb-[max(env(safe-area-inset-bottom),16px)]">
+      <div className="fixed inset-x-0 bottom-0 z-10 mx-auto w-full max-w-md bg-bg/95 px-4 pt-6 backdrop-blur md:max-w-3xl md:px-8 pb-[max(env(safe-area-inset-bottom),16px)]">
         <button onClick={start} className="btn btn-primary w-full text-2xl">
           <Icon name={isBlitz ? 'zap' : mode === 'type-it' ? 'keyboard' : 'play'} />
           {isBlitz ? 'Start Blitz' : mode === 'type-it' ? 'Start typing' : 'Play'}

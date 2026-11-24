@@ -141,7 +141,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
           <p className="mb-2 text-center font-cond text-sm text-muted uppercase">
             {deck.length} flags · tap one to flip it
           </p>
-          <ul className="grid grid-cols-2 items-start gap-3 pb-8 sm:grid-cols-3">
+          <ul className="grid grid-cols-2 items-start gap-3 pb-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {deck.map((c) => (
               <li key={c.code} className={openCode === c.code ? 'relative z-10' : undefined}>
                 <FlashCard
@@ -155,7 +155,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
           </ul>
         </>
       ) : (
-        <>
+        <div className="mx-auto w-full max-w-md">
           <p className="mb-2 text-center font-cond text-sm text-muted uppercase">
             Card {pos + 1} of {deck.length}
             {done > 0 && ` · ${done} practised`}
@@ -188,7 +188,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
               Next <Icon name="next" />
             </button>
           </div>
-        </>
+        </div>
       )}
     </main>
   )
