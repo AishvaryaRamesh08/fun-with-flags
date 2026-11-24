@@ -23,10 +23,14 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
   const progress = useProgress()
   const [mode, setMode] = useState<Mode>(initialMode)
   const [continents, setContinents] = useState<Continent[]>(last?.continents ?? [])
-  const [difficulty, setDifficulty] = useState<Difficulty>(last?.difficulty ?? 'easy')
+  // Type It lists every flag on one page, so it starts with all of them (Hard)
+  const [difficulty, setDifficulty] = useState<Difficulty>(initialMode === 'type-it' ? 'hard' : (last?.difficulty ?? 'easy'))
   const [count, setCount] = useState(last?.count ?? 10)
 
   const pool = questionPool({ continents, difficulty })
+  const poolSizes = Object.fromEntries(
+    (['easy', 'medium', 'hard'] as Difficulty[]).map((d) => [d, questionPool({ continents, difficulty: d }).length]),
+  ) as Record<Difficulty, number>
   const isBlitz = mode === 'blitz'
   const questions = count > 0 ? Math.min(count, pool.length) : pool.length
   const best = isBlitz ? progress.blitzBest[difficulty] : progress.bestPercent[bestKey(mode, difficulty)]
@@ -49,9 +53,11 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
           size={72}
           reactionKey={`${mode}${difficulty}${continents.join()}`}
           say={
-            isBlitz
-              ? `${pool.length} countries in the mix. Answer as many as you can in 60s!`
-              : `${questions} question${questions === 1 ? '' : 's'} from ${pool.length} countries. Let's go!`
+            mode === 'type-it'
+              ? `Name all ${pool.length} flags, no timer. Take your time!`
+              : isBlitz
+                ? `${pool.length} countries in the mix. Answer as many as you can in 60s!`
+                : `${questions} question${questions === 1 ? '' : 's'} from ${pool.length} countries. Let's go!`
           }
         />
 
@@ -90,14 +96,20 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
                   difficulty === d ? (d === 'easy' ? 'bg-green-300' : d === 'medium' ? 'bg-yellow-300' : 'bg-rose-300') : 'bg-white'
                 }`}
               >
-                {d === 'easy' ? '🌱' : d === 'medium' ? '🌿' : '🌳'} {DIFFICULTY_INFO[d].label}
+                <span className="block">
+                  {d === 'easy' ? '🌱' : d === 'medium' ? '🌿' : '🌳'} {DIFFICULTY_INFO[d].label}
+                </span>
+                <span className="block text-sm font-bold opacity-70">{poolSizes[d]} countries</span>
               </button>
             ))}
           </div>
-          <p className="mt-2 text-sm font-semibold text-slate-600">{DIFFICULTY_INFO[difficulty].blurb}</p>
+          <p className="mt-2 text-sm font-semibold text-slate-600">
+            {DIFFICULTY_INFO[difficulty].blurb}
+            {difficulty !== 'hard' && ' · Pick Hard to include every country.'}
+          </p>
         </Section>
 
-        {!isBlitz && (
+        {!isBlitz && mode !== 'type-it' && (
           <Section title="Questions">
             <div className="grid grid-cols-4 gap-2">
               {COUNTS.map((n) => (
@@ -118,7 +130,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
 
       <div className="fixed inset-x-0 bottom-0 z-10 mx-auto max-w-md bg-gradient-to-t from-cream via-cream to-transparent px-4 pt-6 pb-[max(env(safe-area-inset-bottom),16px)]">
         <button onClick={start} className="btn btn-primary w-full text-2xl">
-          {isBlitz ? '⚡ Start Blitz' : '▶ Play'}
+          {isBlitz ? '⚡ Start Blitz' : mode === 'type-it' ? '⌨️ Start typing' : '▶ Play'}
         </button>
       </div>
     </main>

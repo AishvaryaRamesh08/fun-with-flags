@@ -26,13 +26,13 @@ export const BLITZ_SECONDS = 60
 export const MODE_INFO: Record<Mode, { title: string; emoji: string; blurb: string }> = {
   'flag-to-name': { title: 'Guess the Country', emoji: '🏳️', blurb: 'See a flag, pick the country' },
   'name-to-flag': { title: 'Find the Flag', emoji: '🔍', blurb: 'See a country, pick its flag' },
-  'type-it': { title: 'Type It', emoji: '⌨️', blurb: 'See a flag, type the country' },
+  'type-it': { title: 'Type It', emoji: '⌨️', blurb: 'Name every flag on one page' },
   capital: { title: 'Capitals', emoji: '🏛️', blurb: 'Pick the capital city' },
   blitz: { title: '60s Blitz', emoji: '⚡', blurb: 'Mixed questions against the clock' },
 }
 
 export const DIFFICULTY_INFO: Record<Difficulty, { label: string; blurb: string }> = {
-  easy: { label: 'Easy', blurb: 'Well-known countries, easy options' },
-  medium: { label: 'Medium', blurb: 'More countries, options from the same continent' },
+  easy: { label: 'Easy', blurb: 'Only the best-known countries, easy options' },
+  medium: { label: 'Medium', blurb: 'Well-known and lesser-known countries, options from the same continent' },
   hard: { label: 'Hard', blurb: 'Every country, look-alike flags as options' },
 }

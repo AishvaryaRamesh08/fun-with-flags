@@ -7,7 +7,7 @@ Learn all 195 countries' flags, capitals and currencies — offline, no login, n
 
 ## Phase 1 (in progress)
 - Flag → Country and Country → Flag multiple choice
-- Type It mode with forgiving spelling
+- Type It: every flag on one page, A–Z or random, no timer, forgiving spelling
 - 60-second Blitz
 - Flashcards (flag on front; name, capital, currency, hint and fun fact on back)
 - Filters for every mode: continent, difficulty (Easy / Medium / Hard), number of questions
