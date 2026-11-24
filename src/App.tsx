@@ -7,6 +7,7 @@ import { Play, type GameResult } from './screens/Play'
 import { Results } from './screens/Results'
 import { Setup } from './screens/Setup'
 import { Stats } from './screens/Stats'
+import { TypeGrid } from './screens/TypeGrid'
 
 export type Screen =
   | { name: 'home' }
@@ -43,7 +44,12 @@ export default function App() {
     <div className="mx-auto flex min-h-dvh max-w-md flex-col px-4 pt-[max(env(safe-area-inset-top),12px)] pb-[max(env(safe-area-inset-bottom),16px)]">
       {screen.name === 'home' && <Home navigate={navigate} />}
       {screen.name === 'setup' && <Setup key={screen.mode} initialMode={screen.mode} navigate={navigate} />}
-      {screen.name === 'play' && <Play key={screen.round} settings={screen.settings} navigate={navigate} />}
+      {screen.name === 'play' &&
+        (screen.settings.mode === 'type-it' ? (
+          <TypeGrid key={screen.round} settings={screen.settings} navigate={navigate} />
+        ) : (
+          <Play key={screen.round} settings={screen.settings} navigate={navigate} />
+        ))}
       {screen.name === 'results' && <Results result={screen.result} navigate={navigate} />}
       {screen.name === 'flashcards' && <Flashcards reviewOnly={screen.reviewOnly} only={screen.only} navigate={navigate} />}
       {screen.name === 'stats' && <Stats navigate={navigate} />}

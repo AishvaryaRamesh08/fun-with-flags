@@ -44,7 +44,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
           </>
         )}
         <div className="mt-3 flex justify-center gap-2">
-          <span className="chip bg-orange-100">🔥 Best streak {bestStreak}</span>
+          {settings.mode !== 'type-it' && <span className="chip bg-orange-100">🔥 Best streak {bestStreak}</span>}
           {newBest && <span className="chip pop-in bg-yellow-300">🏆 New best!</span>}
         </div>
       </section>
