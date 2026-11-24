@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-display: 'Baloo 2 Variable', ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+  --color-ink: #1f2937;
+  --color-cream: #fef9e7;
+  --color-bamboo: #22c55e;
+  --color-bamboo-dark: #15803d;
+}
+
 html,
 body,
 #root {
@@ -7,7 +15,150 @@ body,
 }
 
 body {
-  background: #fefce8;
-  font-family: ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+  background-color: var(--color-cream);
+  background-image: radial-gradient(#e7dcc0 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
   -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* Chunky "game" button: dark outline + hard shadow that presses down */
+.btn {
+  @apply flex min-h-14 items-center justify-center gap-2 rounded-2xl border-[3px] border-ink px-4 py-3 text-lg font-extrabold shadow-[0_5px_0_var(--color-ink)] transition-[transform,box-shadow] duration-75 select-none active:translate-y-[5px] active:shadow-none disabled:active:translate-y-0 disabled:active:shadow-[0_5px_0_var(--color-ink)];
+}
+.btn-primary {
+  @apply bg-bamboo text-white;
+}
+.btn-white {
+  @apply bg-white text-ink;
+}
+.card {
+  @apply rounded-3xl border-[3px] border-ink bg-white shadow-[0_6px_0_var(--color-ink)];
+}
+.chip {
+  @apply min-h-11 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 text-base font-bold transition-colors select-none;
+}
+.chip[aria-pressed='true'] {
+  @apply bg-yellow-300;
+}
+
+/* ---------- Panda animations ---------- */
+.panda {
+  transform-origin: 50% 100%;
+  overflow: visible;
+}
+.panda-idle,
+.panda-thinking {
+  animation: breathe 3s ease-in-out infinite;
+}
+.panda-happy {
+  animation: hop 0.6s ease-out 2;
+}
+.panda-party {
+  animation: party 0.7s ease-in-out infinite;
+}
+.panda-sad {
+  animation: wobble 0.5s ease-in-out 2;
+}
+.panda-wave-arm {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: wave 0.6s ease-in-out 3;
+}
+.panda-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 4s infinite;
+}
+.panda-tear {
+  animation: tear 1.2s ease-in infinite;
+}
+.panda-bubble {
+  animation: pop 0.25s ease-out;
+  transform-origin: 0 100%;
+}
+
+@keyframes breathe {
+  50% { transform: scale(1.03, 0.98); }
+}
+@keyframes hop {
+  30% { transform: translateY(-22px) scale(1.05); }
+  60% { transform: translateY(0) scale(1.08, 0.92); }
+}
+@keyframes party {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-14px) rotate(6deg); }
+}
+@keyframes wobble {
+  25% { transform: rotate(-7deg); }
+  75% { transform: rotate(7deg); }
+}
+@keyframes wave {
+  50% { transform: rotate(-30deg); }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes tear {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(26px); opacity: 0; }
+}
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+}
+
+/* ---------- Game feedback ---------- */
+.shake {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.pop-in {
+  animation: pop 0.3s ease-out;
+}
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+}
+.confetti-piece {
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); }
+}
+
+/* ---------- Flashcard flip ---------- */
+.flip-scene {
+  perspective: 1200px;
+}
+.flip-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

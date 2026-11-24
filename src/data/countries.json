@@ -2269,7 +2269,7 @@
     ],
     "flag": "flags/id.svg",
     "tier": 1,
-    "hint": "Red over white. Monaco looks the same but squarer; Poland is white over red.",
+    "hint": "Red over white, the same as Monaco (Indonesia's real flag is a little wider). Poland is white over red.",
     "funFact": "Indonesia is the world's largest island country, with more than 17,000 islands.",
     "confusableWith": [
       "MC",
@@ -3336,7 +3336,7 @@
     ],
     "flag": "flags/mc.svg",
     "tier": 2,
-    "hint": "Red over white, the same colours as Indonesia but squarer. Poland is white over red.",
+    "hint": "Red over white, the same as Indonesia (Monaco's real flag is just a little squarer). Poland is white over red.",
     "funFact": "Monaco is the world's second-smallest country, smaller than New York's Central Park.",
     "confusableWith": [
       "ID",

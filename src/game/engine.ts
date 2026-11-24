@@ -74,10 +74,11 @@ const BLITZ_KINDS: QuestionKind[] = ['flag-to-name', 'name-to-flag', 'flag-to-na
 export class BlitzDeck {
   private queue: Country[] = []
   private pool: Country[]
-  constructor(
-    private settings: Pick<GameSettings, 'continents' | 'difficulty'>,
-    private rng: Rng = Math.random,
-  ) {
+  private settings: Pick<GameSettings, 'continents' | 'difficulty'>
+  private rng: Rng
+  constructor(settings: Pick<GameSettings, 'continents' | 'difficulty'>, rng: Rng = Math.random) {
+    this.settings = settings
+    this.rng = rng
     this.pool = questionPool(settings)
   }
   next(): Question {
