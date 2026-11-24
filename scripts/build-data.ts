@@ -71,10 +71,12 @@ const countries: Country[] = selected
     const currency = currencies[currencyCode]
 
     const name = o.name ?? c.name.common
+    // Hand-picked aliases are always kept (e.g. "USA", "UK"); dataset spellings skip 2–3 letter codes like "JO".
     const aliasSet = new Set(
-      [...(o.aliases ?? []), c.name.common, c.name.official, ...(c.altSpellings ?? [])].filter(
-        (a) => a.length > 3 && a !== name,
-      ),
+      [
+        ...(o.aliases ?? []),
+        ...[c.name.common, c.name.official, ...(c.altSpellings ?? [])].filter((a) => a.length > 3),
+      ].filter((a) => a !== name),
     )
 
     const confusableWith = [
