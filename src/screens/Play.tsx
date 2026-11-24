@@ -10,6 +10,12 @@ import { rightLine, streakLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
 import { bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
 
+/** How long a result stays on screen before the next question (ms) */
+const ADVANCE_MS = {
+  quiz: { right: 1400, wrong: 2300 },
+  blitz: { right: 700, wrong: 1400 },
+}
+
 export interface GameResult {
   settings: GameSettings
   /** Correct answers, or points in Blitz */
@@ -137,19 +143,31 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
         bestStreak: Math.max(s.bestStreak, streak),
       }
     })
-    setMood(a.correct ? 'happy' : 'sad')
+    setMood(a.correct ? 'smug' : 'facepalm')
     setReaction((r) => r + 1)
     setLine(a.correct ? rightLine() : wrongLine(question.kind === 'capital' ? question.country.capitals[0] : question.country.name))
     if (a.correct) feedback.correct()
     else feedback.wrong()
-    // Keep it snappy: right = green and on, wrong = red + the right answer in green, then on.
-    advanceTimer.current = setTimeout(next, blitz ? (a.correct ? 450 : 1100) : a.correct ? 600 : 1500)
+    // Long enough to read Moonpie's remark (and the right answer), short enough to keep moving.
+    // Blitz stays quicker because the clock is running. Tapping anywhere skips ahead.
+    advanceTimer.current = setTimeout(next, ADVANCE_MS[blitz ? 'blitz' : 'quiz'][a.correct ? 'right' : 'wrong'])
   }
 
-  // Desktop keyboard: 1–4 to answer, Enter for next
+  /** Skip the reading pause: move on now instead of waiting for the timer */
+  const skipAhead = () => {
+    if (!answer || finished.current) return
+    clearTimeout(advanceTimer.current)
+    next()
+  }
+
+  // Desktop keyboard: 1–4 to answer, Enter or Space to move on
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement).tagName === 'INPUT') return
+      if (answer && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault()
+        return skipAhead()
+      }
       const n = Number(e.key)
       if (!answer && n >= 1 && n <= question.options.length) submit({ chosen: question.options[n - 1].code, correct: question.options[n - 1] === question.country })
     }
@@ -162,10 +180,17 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
   }
 
   return (
-    <main className="flex flex-1 flex-col">
+    // After answering, a tap anywhere moves on (the click that answered doesn't count: `answer` was still empty then)
+    <main className="flex flex-1 flex-col" onClick={skipAhead}>
       {/* Top bar: quit, progress / timer, score */}
       <header className="mb-2 flex items-center gap-3">
-        <button onClick={quit} className="icon-btn">
+        <button
+          onClick={(e) => {
+            e.stopPropagation() // quitting shouldn't also count as "tap to continue"
+            quit()
+          }}
+          className="icon-btn"
+        >
           <Icon name="close" label="Quit game" />
         </button>
         {blitz ? (
@@ -200,6 +225,7 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
       </div>
 
       <QuestionView key={qid} question={question} answer={answer} onAnswer={submit} />
+      {answer && <p className="mt-4 text-center font-cond text-xs text-muted uppercase">Tap anywhere to continue</p>}
 
     </main>
   )

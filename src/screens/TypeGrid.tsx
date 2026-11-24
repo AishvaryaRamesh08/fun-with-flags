@@ -122,7 +122,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     setSolved(next)
     recordAnswer(c.code, true)
     feedback.correct()
-    setMood(next.size === total ? 'party' : 'happy')
+    setMood(next.size === total ? 'eyeroll' : 'smug')
     setReaction((r) => r + 1)
     setLine(typo ? TYPE_IT.typo.replace('{a}', c.name) : typeItSolved(next.size, total - next.size))
     if (next.size === total) setTimeout(() => finish(next), 1500)
@@ -142,7 +142,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
       recordAnswer(c.code, false)
     }
     setWrongCode(c.code)
-    setMood('sad')
+    setMood('facepalm')
     setReaction((n) => n + 1)
     setLine(pick(TYPE_IT.wrong))
     feedback.wrong()
@@ -152,7 +152,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
   const giveUp = () => {
     if (!confirm(`Show the answers for the ${total - solved.size} flags you haven't named yet?`)) return
     setRevealed(true)
-    setMood('sad')
+    setMood('facepalm')
     setReaction((r) => r + 1)
     setLine(pick(TYPE_IT.gaveUp))
   }

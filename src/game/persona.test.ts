@@ -3,7 +3,7 @@ import { MOOD_LINES, pick, resultLine, rightLine, streakLine, wrongLine } from '
 
 describe('Moonpie persona', () => {
   it('never says the same line twice in a row', () => {
-    for (const make of [rightLine, () => wrongLine('India'), () => streakLine(5), () => resultLine(50)]) {
+    for (const make of [rightLine, () => wrongLine('India'), () => streakLine(5), () => resultLine('meh')]) {
       let prev = ''
       for (let i = 0; i < 200; i++) {
         const line = make()
@@ -20,7 +20,7 @@ describe('Moonpie persona', () => {
   })
 
   it('keeps correct-answer lines short enough to read in the 0.6s before the next question', () => {
-    for (const l of MOOD_LINES.happy) expect(l.length).toBeLessThanOrEqual(30)
+    for (const l of MOOD_LINES.smug) expect(l.length).toBeLessThanOrEqual(30)
   })
 
   it('pick works on single-line pools', () => {

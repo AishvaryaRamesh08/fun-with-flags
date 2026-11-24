@@ -29,7 +29,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
     <main className="flex flex-1 flex-col gap-4 pb-6">
       <TopBar title="Your progress" onBack={() => navigate({ name: 'home' })} />
 
-      <Mascot mood="happy" size={96} say={p.gamesPlayed ? `${mastered} flags mastered. I had all 195 by age six. Just saying.` : 'No games yet. Your record is as blank as a white flag.'} />
+      <Mascot mood="smug" size={96} say={p.gamesPlayed ? `${mastered} flags mastered. I had all 195 by age six. Just saying.` : 'No games yet. Your record is as blank as a white flag.'} />
 
       <section className="grid grid-cols-3 gap-2 text-center">
         <Stat value={p.gamesPlayed} label="games" />

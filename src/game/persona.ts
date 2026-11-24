@@ -96,9 +96,11 @@ const RESULT = {
     'I need a moment. That was a lot of wrong.',
   ],
 } as const
-export function resultLine(pct: number): string {
-  return pick(pct === 100 ? RESULT.perfect : pct >= 70 ? RESULT.good : pct >= 40 ? RESULT.meh : RESULT.bad)
-}
+export type ResultTier = keyof typeof RESULT
+export const resultTier = (pct: number): ResultTier => (pct === 100 ? 'perfect' : pct >= 70 ? 'good' : pct >= 40 ? 'meh' : 'bad')
+export const resultLine = (tier: ResultTier) => pick(RESULT[tier])
+/** His face for each verdict: never pleased. A perfect score gets an eye-roll ("too easy"). */
+export const RESULT_MOOD = { perfect: 'eyeroll', good: 'smug', meh: 'eyeroll', bad: 'facepalm' } as const
 
 /** Default lines for each mood when a screen doesn't pass its own */
 export const MOOD_LINES = {
@@ -118,13 +120,9 @@ export const MOOD_LINES = {
     'Hint: the answer is the correct one.',
     'Any decade now.',
   ],
-  happy: RIGHT,
-  sad: ['No.', 'Wrong.', 'I can’t watch.'],
-  party: [
-    'Fine. A small celebration. Very small.',
-    'Don’t let this go to your head.',
-    'Even I’m mildly surprised. Mildly.',
-  ],
+  smug: RIGHT,
+  eyeroll: ['Oh, how thrilling for you.', 'Wake me when it gets difficult.', 'Yes, yes. Very impressive. Not.'],
+  facepalm: ['No.', 'Wrong.', 'I can’t watch.'],
 } as const
 
 /** Type It page */

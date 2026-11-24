@@ -219,27 +219,26 @@ body {
 .cutout-thinking .cut-head {
   animation: cut-tilt 2.2s steps(3) infinite;
 }
-/* happy: "Correct." — a smug hop and a raised finger */
-.cutout-happy .cut-body {
-  animation: cut-hop 0.5s steps(3) 1;
+/* smug: chin goes up, finger wags "obviously" */
+.cutout-smug .cut-head {
+  animation: cut-chin 0.4s steps(2) forwards;
 }
-.cutout-happy .cut-arm-l {
-  animation: cut-wag 0.25s steps(2) 3;
+.cutout-smug .cut-arm-l {
+  animation: cut-wag 0.3s steps(2) 2;
 }
-/* sad: face-palm and a disappointed head shake */
-.cutout-sad .cut-head {
-  animation: cut-shake 0.24s steps(2) 3;
+/* eyeroll: unimpressed sigh with a slow head tilt */
+.cutout-eyeroll .cut-head {
+  animation: cut-roll 1.4s steps(3) forwards;
 }
-.cutout-sad .cut-body {
+.cutout-eyeroll .cut-body {
+  animation: cut-sigh 1.4s steps(2) forwards;
+}
+/* facepalm: "ugh" head shake and a slump */
+.cutout-facepalm .cut-head {
+  animation: cut-shake 0.28s steps(2) 3;
+}
+.cutout-facepalm .cut-body {
   animation: cut-slump 0.6s steps(2) 1 forwards;
-}
-/* party: jumping with both arms up */
-.cutout-party .cut-body {
-  animation: cut-party 0.6s steps(3) infinite;
-}
-.cutout-party .cut-arm-l,
-.cutout-party .cut-arm-r {
-  animation: cut-wag 0.3s steps(2) infinite;
 }
 
 @keyframes cut-sway {
@@ -254,9 +253,16 @@ body {
   0%, 100% { transform: rotate(0deg); }
   50% { transform: rotate(8deg); }
 }
-@keyframes cut-hop {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px) rotate(-3deg); }
+@keyframes cut-chin {
+  to { transform: rotate(-6deg) translateY(-1px); }
+}
+@keyframes cut-roll {
+  40% { transform: rotate(7deg); }
+  100% { transform: rotate(4deg); }
+}
+@keyframes cut-sigh {
+  50% { transform: translateY(2px) scaleY(0.98); }
+  100% { transform: translateY(1px); }
 }
 @keyframes cut-wag {
   0%, 100% { transform: rotate(0deg); }
@@ -268,10 +274,6 @@ body {
 }
 @keyframes cut-slump {
   to { transform: translateY(3px) rotate(-2deg); }
-}
-@keyframes cut-party {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-12px) rotate(4deg); }
 }
 .panda-bubble {
   animation: pop 0.2s ease-out;

@@ -1,7 +1,13 @@
 import { useId, useMemo } from 'react'
 import { MOOD_LINES, pick } from '../game/persona'
 
-export type Mood = 'idle' | 'happy' | 'sad' | 'thinking' | 'party' | 'wave'
+/**
+ * Moonpie never looks pleased with you:
+ * smug = half-lidded eyes, raised brow, smirk, "obviously" finger (after a right answer)
+ * eyeroll = eyes rolled up, arms crossed, bored sigh (unimpressed, even by a perfect score)
+ * facepalm = hand over face, eyes shut, head shake ("ugh, I knew you'd get that wrong")
+ */
+export type Mood = 'idle' | 'wave' | 'thinking' | 'smug' | 'eyeroll' | 'facepalm'
 
 /**
  * Moonpie — an original paper-cutout cartoon: a lanky, self-declared genius who is
@@ -25,13 +31,20 @@ const REST_R: Arm = { pts: [[89, 101], [95, 122], [87, 142]], hand: 'fist' }
 const POSES: Record<Mood, { L: Arm; R: Arm }> = {
   idle: { L: REST_L, R: REST_R },
   wave: { L: { pts: [[31, 101], [15, 92], [16, 66]], hand: 'open' }, R: REST_R },
-  happy: { L: { pts: [[31, 101], [17, 94], [22, 72]], hand: 'point' }, R: REST_R },
   thinking: { L: { pts: [[31, 101], [36, 120], [50, 86]], hand: 'fist' }, R: REST_R },
-  sad: { L: REST_L, R: { pts: [[89, 101], [86, 84], [68, 52]], hand: 'open' } },
-  party: {
-    L: { pts: [[31, 101], [14, 90], [14, 64]], hand: 'fist' },
-    R: { pts: [[89, 101], [106, 90], [106, 64]], hand: 'fist' },
-  },
+  smug: { L: { pts: [[31, 101], [17, 94], [22, 72]], hand: 'point' }, R: REST_R },
+  // arms folded across the chest
+  eyeroll: { L: { pts: [[31, 101], [44, 126], [74, 117]], hand: 'fist' }, R: { pts: [[89, 101], [76, 128], [46, 119]], hand: 'fist' } },
+  facepalm: { L: REST_L, R: { pts: [[89, 101], [86, 84], [68, 52]], hand: 'open' } },
+}
+/** Arms drawn in front of the body/face for each mood (the rest are drawn behind) */
+const FRONT: Record<Mood, ('L' | 'R')[]> = {
+  idle: [],
+  wave: [],
+  thinking: ['L'],
+  smug: [],
+  eyeroll: ['R', 'L'],
+  facepalm: ['R'],
 }
 
 const SKIN = '#f2c9a7'
@@ -70,7 +83,7 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
         height={size}
         viewBox="0 0 120 150"
         role="img"
-        aria-label={`${MASCOT_NAME} looks ${mood === 'sad' ? 'disappointed' : mood}`}
+        aria-label={`${MASCOT_NAME} looks ${LABEL[mood]}`}
       >
         <defs>
           {/* Paper cut-out look: a rough white paper border around the whole figure plus a soft drop shadow */}
@@ -94,9 +107,9 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
 
         <g filter={`url(#paper-${uid})`}>
           <g className="cut-body">
-            {/* Arms behind the torso when resting */}
-            {mood !== 'thinking' && mood !== 'sad' && <ArmShape arm={pose.L} stripes={`stripes-${uid}`} className="cut-arm-l" />}
-            {mood !== 'sad' && <ArmShape arm={pose.R} stripes={`stripes-${uid}`} className="cut-arm-r" />}
+            {/* Arms behind the torso */}
+            {!FRONT[mood].includes('L') && <ArmShape arm={pose.L} stripes={`stripes-${uid}`} className="cut-arm-l" />}
+            {!FRONT[mood].includes('R') && <ArmShape arm={pose.R} stripes={`stripes-${uid}`} className="cut-arm-r" />}
 
             {/* T-shirt in the theme colour, with a pennant emblem */}
             <path d="M24 100 Q30 92 46 90 L74 90 Q90 92 96 100 L100 150 L20 150 Z" fill="var(--color-accent)" />
@@ -122,13 +135,10 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
               <Face mood={mood} />
             </g>
 
-            {/* Arms in front of the face for the thinking / face-palm poses */}
-            {(mood === 'thinking' || mood === 'sad') && (
-              <>
-                {mood === 'sad' && <ArmShape arm={pose.L} stripes={`stripes-${uid}`} className="cut-arm-l" />}
-                <ArmShape arm={mood === 'thinking' ? pose.L : pose.R} stripes={`stripes-${uid}`} className={mood === 'thinking' ? 'cut-arm-l' : 'cut-arm-r'} />
-              </>
-            )}
+            {/* Arms in front: hand on chin, folded arms, face-palm */}
+            {FRONT[mood].map((side) => (
+              <ArmShape key={side} arm={pose[side]} stripes={`stripes-${uid}`} className={side === 'L' ? 'cut-arm-l' : 'cut-arm-r'} />
+            ))}
           </g>
         </g>
 
@@ -146,43 +156,75 @@ export function Mascot({ mood = 'idle', say, size = 96, reactionKey }: Props) {
   )
 }
 
+const LABEL: Record<Mood, string> = {
+  idle: 'smug',
+  wave: 'smug, waving',
+  thinking: 'skeptical',
+  smug: 'smug',
+  eyeroll: 'unimpressed, rolling his eyes',
+  facepalm: 'exasperated, face-palming',
+}
+
 function Face({ mood }: { mood: Mood }) {
-  // Eyebrows carry most of the attitude
+  // Eyebrows carry most of the attitude: one raised brow = "really?"
   const brows: Record<Mood, [string, string]> = {
-    idle: ['M46 47 L55 46', 'M65 46 L74 47'],
-    wave: ['M46 46 L55 45', 'M65 45 L74 46'],
-    thinking: ['M46 48 L55 48', 'M65 43 L74 45'], // one skeptical raised brow
-    happy: ['M46 45 L55 43', 'M65 43 L74 45'],
-    sad: ['M46 44 L55 48', 'M65 48 L74 44'], // stern, disappointed
-    party: ['M46 44 L55 42', 'M65 42 L74 44'],
+    idle: ['M46 47 L55 47', 'M65 45 L74 46'],
+    wave: ['M46 47 L55 47', 'M65 44 L74 45'],
+    thinking: ['M46 48 L55 48', 'M65 43 L74 45'],
+    smug: ['M46 47 L55 47', 'M65 42 L74 44'],
+    eyeroll: ['M46 46 Q50 43 55 45', 'M65 45 Q69 43 74 46'],
+    facepalm: ['M46 44 L55 48', 'M65 48 L74 44'],
   }
-  const mouths: Record<Mood, React.ReactNode> = {
-    idle: <path d="M52 70 Q60 73 68 68" />, // smug smirk
-    wave: <path d="M51 69 Q60 74 69 69" />,
-    thinking: <path d="M54 71 L66 70" />,
-    happy: <path d="M51 68 Q60 75 69 67" />,
-    sad: <path d="M52 73 Q60 68 68 73" />,
-    party: <path d="M50 67 Q60 80 70 67 Z" fill="#7a2e22" />,
+  const mouths: Record<Mood, string> = {
+    idle: 'M52 70 Q59 72 68 67', // lopsided smirk
+    wave: 'M52 70 Q59 72 68 66',
+    thinking: 'M54 71 L66 70',
+    smug: 'M52 71 Q59 72 69 65',
+    eyeroll: 'M53 72 L66 70 Q68 69.5 69 71', // bored, pulled to one side
+    facepalm: 'M52 73 Q60 69 68 73', // grimace
   }
   return (
     <g stroke={INK} strokeWidth="2.2" strokeLinecap="round" fill="none">
       <path d={brows[mood][0]} />
       <path d={brows[mood][1]} />
-      <g className="cut-eyes" fill={INK} stroke="none">
-        {mood === 'happy' || mood === 'party' ? (
-          <g stroke={INK} strokeWidth="2" fill="none">
-            <path d="M47 56 Q51 52 55 56" />
-            <path d="M65 56 Q69 52 73 56" />
-          </g>
-        ) : (
-          <>
-            <ellipse cx={mood === 'thinking' ? 53 : 51} cy={mood === 'thinking' ? 54 : 56} rx="2.4" ry="2.8" />
-            <ellipse cx={mood === 'thinking' ? 71 : 69} cy={mood === 'thinking' ? 54 : 56} rx="2.4" ry="2.8" />
-          </>
-        )}
-      </g>
+      <Eyes mood={mood} />
       <path d="M60 58 Q62 63 58 65" strokeWidth="1.6" />
-      {mouths[mood]}
+      <path d={mouths[mood]} />
+    </g>
+  )
+}
+
+function Eyes({ mood }: { mood: Mood }) {
+  if (mood === 'smug' || mood === 'wave' || mood === 'idle') {
+    // half-closed, superior eyes: just the lower half of each eye under a heavy lid
+    return (
+      <g className={mood === 'smug' ? undefined : 'cut-eyes'}>
+        <path d="M48.4 57 A2.6 2.8 0 0 0 53.6 57 Z" fill={INK} stroke="none" />
+        <path d="M66.4 57 A2.6 2.8 0 0 0 71.6 57 Z" fill={INK} stroke="none" />
+        <path d="M47.5 57 L54.5 56.6 M65.5 56.6 L72.5 57" strokeWidth="1.8" />
+      </g>
+    )
+  }
+  if (mood === 'eyeroll') {
+    // whites showing, pupils rolled right up
+    return (
+      <g stroke="none">
+        <ellipse cx="51" cy="56" rx="3.6" ry="4" fill="#fff" stroke={INK} strokeWidth="1" />
+        <ellipse cx="69" cy="56" rx="3.6" ry="4" fill="#fff" stroke={INK} strokeWidth="1" />
+        <circle cx="51.6" cy="53.2" r="1.7" fill={INK} />
+        <circle cx="69.6" cy="53.2" r="1.7" fill={INK} />
+      </g>
+    )
+  }
+  if (mood === 'facepalm') {
+    // squeezed shut
+    return <path d="M47 56 L51 57.5 L55 56 M65 56 L69 57.5 L73 56" strokeWidth="1.8" />
+  }
+  // thinking: eyes glance up and aside
+  return (
+    <g className="cut-eyes" fill={INK} stroke="none">
+      <ellipse cx="53" cy="54" rx="2.4" ry="2.8" />
+      <ellipse cx="71" cy="54" rx="2.4" ry="2.8" />
     </g>
   )
 }
