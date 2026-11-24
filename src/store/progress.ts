@@ -26,7 +26,7 @@ export interface Progress {
   gamesPlayed: number
   dayStreak: { count: number; lastDay: string }
   lastSettings: GameSettings | null
-  settings: { sound: boolean; vibration: boolean }
+  settings: { sound: boolean; vibration: boolean; pace?: Pace }
   theme: ThemeName
 }
 
@@ -40,7 +40,7 @@ const fresh = (): Progress => ({
   gamesPlayed: 0,
   dayStreak: { count: 0, lastDay: '' },
   lastSettings: null,
-  settings: { sound: true, vibration: true },
+  settings: { sound: true, vibration: true, pace: 'quick' },
   theme: 'paper',
 })
 
@@ -125,7 +125,31 @@ export function reviewCodes(p: Progress = state): string[] {
 /** Answered right 3+ times in a row */
 export const isMastered = (c?: CountryProgress) => !!c && c.box >= 3
 
-export function setSetting(key: keyof Progress['settings'], value: boolean) {
+/**
+ * How long an answered question stays on screen before the next one (ms).
+ * Blitz uses roughly half, because the clock is running. Tapping anywhere always skips ahead.
+ */
+export type Pace = 'fast' | 'quick' | 'steady' | 'relaxed'
+export const PACES: Record<Pace, { label: string; right: number; wrong: number }> = {
+  fast: { label: 'Fast', right: 600, wrong: 1100 },
+  quick: { label: 'Quick', right: 900, wrong: 1600 },
+  steady: { label: 'Steady', right: 1400, wrong: 2300 },
+  relaxed: { label: 'Relaxed', right: 2000, wrong: 3200 },
+}
+export const DEFAULT_PACE: Pace = 'quick'
+
+/** Milliseconds to wait after an answer, for the player's chosen pace */
+export function answerPauseMs(correct: boolean, blitz: boolean, p: Progress = state): number {
+  const pace = PACES[p.settings.pace ?? DEFAULT_PACE] ?? PACES[DEFAULT_PACE]
+  const ms = correct ? pace.right : pace.wrong
+  return blitz ? Math.max(correct ? 350 : 700, Math.round(ms * 0.5)) : ms
+}
+
+export function setPace(pace: Pace) {
+  update((p) => ({ ...p, settings: { ...p.settings, pace } }))
+}
+
+export function setSetting(key: 'sound' | 'vibration', value: boolean) {
   update((p) => ({ ...p, settings: { ...p.settings, [key]: value } }))
 }
 

@@ -5,7 +5,7 @@ import { TopBar } from '../components/TopBar'
 import { CONTINENTS } from '../data/types'
 import { ALL_COUNTRIES } from '../game/engine'
 import { DIFFICULTY_INFO, MODE_INFO, type Difficulty, type Mode } from '../game/types'
-import { bestKey, isMastered, resetProgress, setSetting, setTheme, useProgress, type ThemeName } from '../store/progress'
+import { DEFAULT_PACE, PACES, bestKey, isMastered, resetProgress, setPace, setSetting, setTheme, useProgress, type Pace, type ThemeName } from '../store/progress'
 
 const DIFFS: Difficulty[] = ['easy', 'medium', 'hard']
 const QUIZ_MODES: Mode[] = ['flag-to-name', 'name-to-flag', 'type-it', 'capital']
@@ -116,6 +116,30 @@ export function Stats({ navigate }: { navigate: Navigate }) {
               </button>
             ))}
           </div>
+        </div>
+        <div>
+          <p className="mb-1 font-cond text-sm uppercase">Next question after</p>
+          <p className="mb-2 text-xs text-muted">How long an answer stays up before moving on. Tap anywhere during a game to skip ahead.</p>
+          <div className="grid grid-cols-4 gap-2" role="radiogroup" aria-label="Next question speed">
+            {(Object.keys(PACES) as Pace[]).map((id) => (
+              <button
+                key={id}
+                role="radio"
+                aria-checked={(p.settings.pace ?? DEFAULT_PACE) === id}
+                onClick={() => setPace(id)}
+                className={`tile flex h-20 flex-col items-center justify-center gap-0.5 px-1 ${(p.settings.pace ?? DEFAULT_PACE) === id ? 'is-right' : ''}`}
+              >
+                <span className="mb-0.5 font-cond text-xs uppercase">{PACES[id].label}</span>
+                <span className="font-cond text-[11px] whitespace-nowrap opacity-80">
+                  <Icon name="check" /> {PACES[id].right / 1000}s
+                </span>
+                <span className="font-cond text-[11px] whitespace-nowrap opacity-80">
+                  <Icon name="close" /> {PACES[id].wrong / 1000}s
+                </span>
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-[11px] text-muted">After a right ✓ or wrong ✗ answer. Blitz is about twice as fast.</p>
         </div>
         <Toggle icon="sound" label="Sounds" on={p.settings.sound} onChange={(v) => setSetting('sound', v)} />
         <Toggle icon="vibrate" label="Vibration" on={p.settings.vibration} onChange={(v) => setSetting('vibration', v)} />

@@ -8,16 +8,10 @@ import type { Country } from '../data/types'
 import { blitzPoints, buildBlitz, buildQuiz } from '../game/engine'
 import { rightLine, streakLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
-import { bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
+import { answerPauseMs, bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
 
 /** Length of the card swish-out before the next question appears (ms) */
 const SWISH_MS = 260
-
-/** How long a result stays on screen before the next question (ms) */
-const ADVANCE_MS = {
-  quiz: { right: 1400, wrong: 2300 },
-  blitz: { right: 700, wrong: 1400 },
-}
 
 export interface GameResult {
   settings: GameSettings
@@ -166,9 +160,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     setLine(a.correct ? rightLine() : wrongLine(question.kind === 'capital' ? question.country.capitals[0] : question.country.name))
     if (a.correct) feedback.correct()
     else feedback.wrong()
-    // Long enough to read Moonpie's remark (and the right answer), short enough to keep moving.
-    // Blitz stays quicker because the clock is running. Tapping anywhere skips ahead.
-    advanceTimer.current = setTimeout(next, ADVANCE_MS[blitz ? 'blitz' : 'quiz'][a.correct ? 'right' : 'wrong'])
+    // Pause to read Moonpie's remark, at the speed chosen in Settings (tapping anywhere skips ahead)
+    advanceTimer.current = setTimeout(next, answerPauseMs(a.correct, blitz))
   }
 
   /** Skip the reading pause: move on now instead of waiting for the timer */
