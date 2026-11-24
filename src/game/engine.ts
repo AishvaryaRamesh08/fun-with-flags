@@ -8,11 +8,13 @@ const BY_CODE = new Map(ALL_COUNTRIES.map((c) => [c.code, c]))
 export const countryByCode = (code: string) => BY_CODE.get(code)
 
 const MAX_TIER: Record<Difficulty, number> = { easy: 1, medium: 2, hard: 3 }
+const MIN_POOL = 4
 
 /**
  * Countries the player will be asked about. Filters by continent and difficulty tier.
- * If a small continent has too few countries at that tier (e.g. Oceania on Easy),
- * the pool widens to the next tier so there are always enough to play.
+ * A level only widens to the next tier when it has fewer than 4 countries (e.g. Oceania on
+ * Easy has just Australia and New Zealand), so Easy, Medium and Hard stay genuinely different.
+ * Wrong answer options always come from all 195 countries, so even a small pool gets 4 options.
  */
 export function questionPool(settings: Pick<GameSettings, 'continents' | 'difficulty'>, all = ALL_COUNTRIES): Country[] {
   const inContinent = settings.continents.length
@@ -20,7 +22,7 @@ export function questionPool(settings: Pick<GameSettings, 'continents' | 'diffic
     : all
   for (let tier = MAX_TIER[settings.difficulty]; tier <= 3; tier++) {
     const pool = inContinent.filter((c) => c.tier <= tier)
-    if (pool.length >= 8 || tier === 3) return pool
+    if (pool.length >= MIN_POOL || tier === 3) return pool
   }
   return inContinent
 }

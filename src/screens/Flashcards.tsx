@@ -58,7 +58,11 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
     recordAnswer(card.code, knewIt)
     setDone((d) => d + 1)
     if (pos < deck.length - 1) go(1)
-    else setFlipped(false)
+    else {
+      // End of the deck: start again from the first card
+      setFlipped(false)
+      setPos(0)
+    }
   }
   const resetFilters = (fn: () => void) => {
     fn()
@@ -139,7 +143,7 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
           </p>
           <ul className="grid grid-cols-2 items-start gap-3 pb-8 sm:grid-cols-3">
             {deck.map((c) => (
-              <li key={c.code}>
+              <li key={c.code} className={openCode === c.code ? 'relative z-10' : undefined}>
                 <FlashCard
                   size="small"
                   country={c}

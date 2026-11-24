@@ -84,7 +84,12 @@ export function FlashCard({ country, flipped, onToggle, size = 'large' }: Props)
                 e.stopPropagation()
                 setExtra(null)
               }}
-              className={`pop-in absolute inset-0 flex flex-col overflow-y-auto rounded-[12px] bg-surface text-left ${large ? 'gap-2 p-5' : 'gap-1 p-2'}`}
+              className={`pop-in absolute flex flex-col rounded-[12px] bg-surface text-left ${
+                large
+                  ? 'inset-0 gap-2 overflow-y-auto p-5'
+                  : // Small grid tiles: grow downward over the tile below rather than hiding text behind a scroll
+                    'inset-x-0 top-0 z-20 min-h-full gap-1 border-2 border-accent p-2 shadow-lg'
+              }`}
             >
               <p className={`flex items-center justify-between font-cond text-accent uppercase ${large ? 'text-lg' : 'text-xs'}`}>
                 <span className="flex items-center gap-1.5">

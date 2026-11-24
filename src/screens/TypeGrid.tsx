@@ -56,6 +56,16 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
   /** What Moonpie says; chosen once per event */
   const [line, setLine] = useState<string | null>(null)
   const inputs = useRef(new Map<string, HTMLInputElement>())
+  /** Flags you typed a wrong answer for this game (each is added to the Review deck once) */
+  const missedOnce = useRef(new Set<string>())
+  // The automatic finish runs 1.5s after the last answer; skip it if you've left the page by then
+  const mounted = useRef(false)
+  useEffect(() => {
+    mounted.current = true
+    return () => {
+      mounted.current = false
+    }
+  }, [])
 
   const list: Country[] = useMemo(
     () =>
@@ -73,22 +83,23 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     else localStorage.setItem(SAVE_KEY, JSON.stringify({ key, order, randomCodes, solved: [...solved] } satisfies Saved))
   }, [key, order, randomCodes, solved, revealed, done])
 
-  const finish = (gaveUp: boolean) => {
-    const missed = list.filter((c) => !solved.has(c.code))
-    if (gaveUp) missed.forEach((c) => recordAnswer(c.code, false))
-    const prevBest = getProgress().bestPercent[bestKey('type-it', settings.difficulty)] ?? 0
-    const pct = Math.round((solved.size / total) * 100)
-    recordGame(settings, solved.size, total)
+  /** `finalSolved` is passed in because a delayed call would otherwise see a stale copy of `solved` */
+  const finish = (finalSolved: Set<string> = solved) => {
+    if (!mounted.current) return
+    const missed = list.filter((c) => !finalSolved.has(c.code))
+    const prevBest = getProgress().bestPercent[bestKey('type-it', settings.difficulty, settings.continents)] ?? 0
+    const pct = Math.round((finalSolved.size / total) * 100)
+    recordGame(settings, finalSolved.size, total)
     feedback.finish()
     navigate({
       name: 'results',
       result: {
         settings,
-        score: solved.size,
-        correct: solved.size,
+        score: finalSolved.size,
+        correct: finalSolved.size,
         answered: total,
         total,
-        bestStreak: solved.size,
+        bestStreak: finalSolved.size,
         missed,
         newBest: pct > prevBest && pct > 0,
       },
@@ -114,7 +125,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     setMood(next.size === total ? 'party' : 'happy')
     setReaction((r) => r + 1)
     setLine(typo ? TYPE_IT.typo.replace('{a}', c.name) : typeItSolved(next.size, total - next.size))
-    if (next.size === total) setTimeout(() => finish(false), 1500)
+    if (next.size === total) setTimeout(() => finish(next), 1500)
     else focusNextAfter(c.code, next)
   }
 
@@ -126,6 +137,10 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     const r = matchCountry(value, c)
     if (r !== 'wrong') return solve(c, r === 'close')
     if (!value.trim()) return focusNextAfter(c.code, solved) // empty: skip to the next flag
+    if (!missedOnce.current.has(c.code)) {
+      missedOnce.current.add(c.code)
+      recordAnswer(c.code, false)
+    }
     setWrongCode(c.code)
     setMood('sad')
     setReaction((n) => n + 1)
@@ -201,7 +216,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
               <Icon name="finish" /> Give up
             </button>
           ) : (
-            <button className="chip col-span-2 h-10 text-xs" aria-pressed="true" onClick={() => finish(true)}>
+            <button className="chip col-span-2 h-10 text-xs" aria-pressed="true" onClick={() => finish()}>
               <Icon name="finish" /> See results
             </button>
           )}
@@ -230,7 +245,7 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
               <Flag country={c} variant="thumb" revealName={isSolved || revealed} />
               {isSolved || revealed ? (
                 <p
-                  className={`flex h-11 items-center justify-center rounded-[10px] px-1 text-center font-cond text-sm leading-tight uppercase ${
+                  className={`flex h-11 items-center justify-center rounded-[10px] px-1 text-center font-cond leading-tight uppercase ${c.name.length > 24 ? 'text-[11px]' : 'text-sm'} ${
                     isSolved ? 'pop-in bg-accent text-on-accent' : 'bg-wrong-dim text-wrong'
                   }`}
                 >

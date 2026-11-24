@@ -63,6 +63,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
 
       <section className="card overflow-x-auto p-4">
         <h2 className="display mb-2 flex items-center gap-2 text-xl"><Icon name="trophy" className="text-accent" /> Best scores</h2>
+        <p className="mb-2 text-xs text-muted">All continents. Filtered rounds show their own best on the game setup screen.</p>
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left">

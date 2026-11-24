@@ -6,7 +6,7 @@ import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent } from '../data/types'
 import { questionPool } from '../game/engine'
 import { DIFFICULTY_INFO, MODE_INFO, type Difficulty, type GameSettings, type Mode } from '../game/types'
-import { bestKey, getProgress, useProgress } from '../store/progress'
+import { bestKey, blitzKey, getProgress, useProgress } from '../store/progress'
 
 const COUNTS = [10, 20, 30, 0]
 const MODES: Mode[] = ['flag-to-name', 'name-to-flag', 'type-it', 'capital', 'blitz']
@@ -26,7 +26,8 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
   ) as Record<Difficulty, number>
   const isBlitz = mode === 'blitz'
   const questions = count > 0 ? Math.min(count, pool.length) : pool.length
-  const best = isBlitz ? progress.blitzBest[difficulty] : progress.bestPercent[bestKey(mode, difficulty)]
+  // Your best for exactly these filters
+  const best = isBlitz ? progress.blitzBest[blitzKey(difficulty, continents)] : progress.bestPercent[bestKey(mode, difficulty, continents)]
 
   const toggleContinent = (c: Continent) =>
     setContinents((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]))

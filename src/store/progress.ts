@@ -18,10 +18,11 @@ export type ThemeName = 'clay' | 'amber' | 'phosphor' | 'paper'
 export interface Progress {
   version: 1
   countries: Record<string, CountryProgress>
-  /** Best % score per mode + difficulty, e.g. "flag-to-name:hard" */
+  /** Best % per mode + difficulty (+ continents if filtered), e.g. "flag-to-name:hard" or "capital:easy:Africa,Asia" */
   bestPercent: Record<string, number>
   /** Best Blitz score per difficulty */
-  blitzBest: Partial<Record<Difficulty, number>>
+  /** Best Blitz points per difficulty (+ continents if filtered), e.g. "hard" or "easy:Europe" */
+  blitzBest: Record<string, number>
   gamesPlayed: number
   dayStreak: { count: number; lastDay: string }
   lastSettings: GameSettings | null
@@ -99,16 +100,20 @@ export function recordGame(settings: GameSettings, score: number, total: number)
         : { count: p.dayStreak.lastDay === yesterday ? p.dayStreak.count + 1 : 1, lastDay: day }
     const next: Progress = { ...p, gamesPlayed: p.gamesPlayed + 1, dayStreak, lastSettings: settings }
     if (settings.mode === 'blitz') {
-      next.blitzBest = { ...p.blitzBest, [settings.difficulty]: Math.max(p.blitzBest[settings.difficulty] ?? 0, score) }
+      const key = blitzKey(settings.difficulty, settings.continents)
+      next.blitzBest = { ...p.blitzBest, [key]: Math.max(p.blitzBest[key] ?? 0, score) }
     } else if (total > 0) {
-      const key = bestKey(settings.mode, settings.difficulty)
+      const key = bestKey(settings.mode, settings.difficulty, settings.continents)
       next.bestPercent = { ...p.bestPercent, [key]: Math.max(p.bestPercent[key] ?? 0, Math.round((score / total) * 100)) }
     }
     return next
   })
 }
 
-export const bestKey = (mode: Mode, difficulty: Difficulty) => `${mode}:${difficulty}`
+/** Best scores are kept per filter, so an easy one-continent round doesn't count as your best for the whole world */
+const filterSuffix = (continents: readonly string[] = []) => (continents.length ? `:${[...continents].sort().join(',')}` : '')
+export const bestKey = (mode: Mode, difficulty: Difficulty, continents?: readonly string[]) => `${mode}:${difficulty}${filterSuffix(continents)}`
+export const blitzKey = (difficulty: Difficulty, continents?: readonly string[]) => `${difficulty}${filterSuffix(continents)}`
 
 /** Countries the player got wrong and hasn't yet answered right twice in a row since */
 export function reviewCodes(p: Progress = state): string[] {

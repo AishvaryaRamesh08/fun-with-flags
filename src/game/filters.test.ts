@@ -16,7 +16,7 @@ describe('filters: every continent combo × difficulty × mode', () => {
     for (const continents of subsets) {
       for (const difficulty of difficulties) {
         const pool = questionPool({ continents, difficulty })
-        expect(pool.length).toBeGreaterThanOrEqual(8)
+        expect(pool.length).toBeGreaterThanOrEqual(4)
         if (continents.length) expect(pool.every((c) => continents.includes(c.continent))).toBe(true)
       }
     }

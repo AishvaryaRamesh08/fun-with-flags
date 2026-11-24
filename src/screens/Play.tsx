@@ -8,7 +8,7 @@ import type { Country } from '../data/types'
 import { BlitzDeck, blitzPoints, buildQuiz } from '../game/engine'
 import { rightLine, streakLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
-import { bestKey, getProgress, recordAnswer, recordGame } from '../store/progress'
+import { bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
 
 export interface GameResult {
   settings: GameSettings
@@ -62,7 +62,9 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
       const p = getProgress()
       const total = blitz ? final.answered : quiz.length
       const score = blitz ? final.points : final.correct
-      const prevBest = blitz ? (p.blitzBest[settings.difficulty] ?? 0) : (p.bestPercent[bestKey(settings.mode, settings.difficulty)] ?? 0)
+      const prevBest = blitz
+        ? (p.blitzBest[blitzKey(settings.difficulty, settings.continents)] ?? 0)
+        : (p.bestPercent[bestKey(settings.mode, settings.difficulty, settings.continents)] ?? 0)
       const thisScore = blitz ? score : Math.round((score / Math.max(total, 1)) * 100)
       recordGame(settings, score, total)
       feedback.finish()
@@ -224,7 +226,7 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
       <section className="flex flex-col gap-4">
         <div className="card flex min-h-28 flex-col items-center justify-center px-4 py-4 text-center">
           <p className="font-cond text-sm text-muted uppercase">Find the flag of</p>
-          <p className="display line-clamp-2 text-4xl">{country.name}</p>
+          <p className={`display line-clamp-2 ${country.name.length > 24 ? 'text-3xl' : 'text-4xl'}`}>{country.name}</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {options.map((o, i) => (
@@ -237,7 +239,7 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
             >
               <Flag country={o} revealName={!!answer} variant="thumb" />
               {/* Name slot is always there (empty until answered) so tiles never change size */}
-              <span className="flex h-9 items-center justify-center font-cond text-sm leading-tight uppercase">
+              <span className={`flex h-9 items-center justify-center font-cond leading-tight uppercase ${o.name.length > 24 ? 'text-[11px]' : 'text-sm'}`}>
                 <span className="line-clamp-2">
                   {answer && (
                     <>
