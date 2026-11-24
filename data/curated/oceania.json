@@ -1,0 +1,16 @@
+{
+  "AU": { "tier": 1, "hint": "Blue with the Union Jack, a big seven-pointed star, and five white stars. New Zealand has four red stars.", "funFact": "Australia is the only country that is also a whole continent." },
+  "NZ": { "tier": 1, "hint": "Blue with the Union Jack and four red stars outlined in white (the Southern Cross).", "funFact": "New Zealand was the first country to give women the vote, in 1893." },
+  "FJ": { "tier": 2, "hint": "Light blue with the Union Jack and a shield showing a lion, sugarcane, a coconut palm, bananas and a dove.", "funFact": "Fiji has about 330 islands, and around 110 of them are inhabited." },
+  "PG": { "tier": 2, "hint": "Split diagonally: red with a gold bird-of-paradise, and black with five white stars.", "funFact": "More than 800 languages are spoken in Papua New Guinea, more than in any other country." },
+  "SB": { "tier": 3, "hint": "A thin yellow diagonal stripe between blue and green, with five white stars in the top-left.", "funFact": "Guadalcanal, its largest island, saw some of the fiercest battles of World War II." },
+  "VU": { "tier": 3, "hint": "Red and green halves split by a black-edged yellow sideways 'Y', with a curled boar's tusk on black.", "funFact": "Bungee jumping was inspired by Vanuatu's 'land diving' ritual on Pentecost Island." },
+  "FM": { "tier": 3, "hint": "Light blue with four white stars in a diamond, one for each state.", "funFact": "On Yap island, giant stone discs called Rai stones, some 4 m wide, were used as money." },
+  "KI": { "tier": 3, "hint": "Red top with a golden frigatebird over a rising sun, and blue and white waves at the bottom.", "funFact": "Kiribati is the only country that lies in all four hemispheres." },
+  "MH": { "tier": 3, "hint": "Blue with two diagonal stripes (orange and white) and a large 24-pointed white star.", "funFact": "Bikini Atoll, where the USA tested nuclear bombs, is in the Marshall Islands." },
+  "NR": { "tier": 3, "hint": "Blue with a thin yellow line (the equator) and a white 12-pointed star below it.", "funFact": "Nauru is the world's smallest island country and has no official capital." },
+  "PW": { "tier": 3, "hint": "Light blue with a yellow circle (the moon) set slightly off-centre.", "funFact": "Palau created the world's first shark sanctuary in 2009." },
+  "WS": { "tier": 3, "hint": "Red with a blue top-left corner holding five white stars (the Southern Cross).", "funFact": "In 2011 Samoa skipped 30 December entirely to move to the other side of the International Date Line." },
+  "TO": { "tier": 3, "hint": "Red with a white top-left square holding a red cross.", "funFact": "Tonga's constitution says the flag can never be changed." },
+  "TV": { "tier": 3, "hint": "Light blue with the Union Jack and nine yellow stars arranged like its islands.", "funFact": "Tuvalu earns millions by leasing out its '.tv' internet domain." }
+}

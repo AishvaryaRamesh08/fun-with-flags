@@ -1,0 +1,33 @@
+{
+  "_comment": "Groups of flags that look alike. Hard mode uses these as wrong answer options.",
+  "groups": [
+    ["TD", "RO", "AD", "MD"],
+    ["ID", "MC", "PL"],
+    ["IE", "CI", "IT"],
+    ["NL", "LU", "PY"],
+    ["RU", "SI", "SK", "RS"],
+    ["AU", "NZ", "TV", "FJ"],
+    ["JO", "PS", "SD"],
+    ["EG", "IQ", "YE"],
+    ["SN", "ML", "GN", "CM"],
+    ["BH", "QA"],
+    ["NO", "IS", "DK", "SE", "FI"],
+    ["AT", "LV", "PE", "CA"],
+    ["JP", "BD", "PW"],
+    ["CO", "EC", "VE"],
+    ["MY", "US", "LR"],
+    ["CZ", "PH"],
+    ["HN", "NI", "SV", "GT", "AR"],
+    ["GH", "BO", "GW", "ET"],
+    ["NE", "IN"],
+    ["TN", "TR"],
+    ["SS", "KE"],
+    ["GA", "SL"],
+    ["HU", "BG"],
+    ["UY", "GR"],
+    ["CN", "VN"],
+    ["AE", "KW"],
+    ["SG", "ID"],
+    ["KP", "LA"]
+  ]
+}

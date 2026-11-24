@@ -1,0 +1,5808 @@
+[
+  {
+    "code": "AF",
+    "name": "Afghanistan",
+    "officialName": "Islamic Republic of Afghanistan",
+    "aliases": [
+      "Islamic Republic of Afghanistan",
+      "Afġānistān"
+    ],
+    "capitals": [
+      "Kabul"
+    ],
+    "currency": {
+      "code": "AFN",
+      "name": "Afghan afghani",
+      "symbol": "؋"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      33,
+      65
+    ],
+    "flag": "flags/af.svg",
+    "tier": 2,
+    "hint": "Black, red, green vertical stripes with a white emblem of a mosque in the centre.",
+    "funFact": "This is the flag recognised at the UN; since 2021 the Taliban government has flown a white flag with black writing instead.",
+    "confusableWith": []
+  },
+  {
+    "code": "AL",
+    "name": "Albania",
+    "officialName": "Republic of Albania",
+    "aliases": [
+      "Republic of Albania",
+      "Shqipëri",
+      "Shqipëria",
+      "Shqipnia"
+    ],
+    "capitals": [
+      "Tirana"
+    ],
+    "currency": {
+      "code": "ALL",
+      "name": "Albanian lek",
+      "symbol": "L"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      41,
+      20
+    ],
+    "flag": "flags/al.svg",
+    "tier": 2,
+    "hint": "Red with a black double-headed eagle. Montenegro's eagle is gold, with a gold border.",
+    "funFact": "Albania has over 170,000 concrete bunkers built during its communist era.",
+    "confusableWith": []
+  },
+  {
+    "code": "DZ",
+    "name": "Algeria",
+    "officialName": "People's Democratic Republic of Algeria",
+    "aliases": [
+      "People's Democratic Republic of Algeria",
+      "Dzayer",
+      "Algérie"
+    ],
+    "capitals": [
+      "Algiers"
+    ],
+    "currency": {
+      "code": "DZD",
+      "name": "Algerian dinar",
+      "symbol": "د.ج"
+    },
+    "continent": "Africa",
+    "subregion": "Northern Africa",
+    "latlng": [
+      28,
+      3
+    ],
+    "flag": "flags/dz.svg",
+    "tier": 2,
+    "hint": "Green and white halves split vertically, with a red crescent and star straddling the middle.",
+    "funFact": "Algeria is the largest country in Africa by area.",
+    "confusableWith": []
+  },
+  {
+    "code": "AD",
+    "name": "Andorra",
+    "officialName": "Principality of Andorra",
+    "aliases": [
+      "Principality of Andorra",
+      "Principat d'Andorra"
+    ],
+    "capitals": [
+      "Andorra la Vella"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      42.5,
+      1.5
+    ],
+    "flag": "flags/ad.svg",
+    "tier": 3,
+    "hint": "Blue, yellow, red vertical like Chad and Romania, but with a coat of arms in the middle.",
+    "funFact": "Andorra has two co-princes: the President of France and the Bishop of Urgell in Spain.",
+    "confusableWith": [
+      "TD",
+      "RO",
+      "MD"
+    ]
+  },
+  {
+    "code": "AO",
+    "name": "Angola",
+    "officialName": "Republic of Angola",
+    "aliases": [
+      "Republic of Angola",
+      "República de Angola",
+      "ʁɛpublika de an'ɡɔla"
+    ],
+    "capitals": [
+      "Luanda"
+    ],
+    "currency": {
+      "code": "AOA",
+      "name": "Angolan kwanza",
+      "symbol": "Kz"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      -12.5,
+      18.5
+    ],
+    "flag": "flags/ao.svg",
+    "tier": 3,
+    "hint": "Red over black, with a yellow half cog-wheel and machete crossed under a star.",
+    "funFact": "Portuguese is the official language, and Angola is one of Africa's biggest oil producers.",
+    "confusableWith": []
+  },
+  {
+    "code": "AG",
+    "name": "Antigua and Barbuda",
+    "officialName": "Antigua and Barbuda",
+    "aliases": [],
+    "capitals": [
+      "Saint John's"
+    ],
+    "currency": {
+      "code": "XCD",
+      "name": "Eastern Caribbean dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      17.05,
+      -61.8
+    ],
+    "flag": "flags/ag.svg",
+    "tier": 3,
+    "hint": "Red with a black, blue and white V-shape and a golden rising sun.",
+    "funFact": "Antigua is said to have 365 beaches, one for every day of the year.",
+    "confusableWith": []
+  },
+  {
+    "code": "AR",
+    "name": "Argentina",
+    "officialName": "Argentine Republic",
+    "aliases": [
+      "Argentine Republic",
+      "República Argentina"
+    ],
+    "capitals": [
+      "Buenos Aires"
+    ],
+    "currency": {
+      "code": "ARS",
+      "name": "Argentine peso",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -34,
+      -64
+    ],
+    "flag": "flags/ar.svg",
+    "tier": 1,
+    "hint": "Light blue, white, light blue with a golden 'Sun of May' that has a face.",
+    "funFact": "Argentina's name comes from argentum, Latin for silver.",
+    "confusableWith": [
+      "HN",
+      "NI",
+      "SV",
+      "GT"
+    ]
+  },
+  {
+    "code": "AM",
+    "name": "Armenia",
+    "officialName": "Republic of Armenia",
+    "aliases": [
+      "Republic of Armenia",
+      "Hayastan",
+      "Հայաստանի Հանրապետություն"
+    ],
+    "capitals": [
+      "Yerevan"
+    ],
+    "currency": {
+      "code": "AMD",
+      "name": "Armenian dram",
+      "symbol": "֏"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      40,
+      45
+    ],
+    "flag": "flags/am.svg",
+    "tier": 2,
+    "hint": "Red, blue, orange horizontal stripes.",
+    "funFact": "Armenia was the first country to make Christianity its state religion, in 301 AD.",
+    "confusableWith": []
+  },
+  {
+    "code": "AU",
+    "name": "Australia",
+    "officialName": "Commonwealth of Australia",
+    "aliases": [
+      "Commonwealth of Australia"
+    ],
+    "capitals": [
+      "Canberra"
+    ],
+    "currency": {
+      "code": "AUD",
+      "name": "Australian dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "latlng": [
+      -27,
+      133
+    ],
+    "flag": "flags/au.svg",
+    "tier": 1,
+    "hint": "Blue with the Union Jack, a big seven-pointed star, and five white stars. New Zealand has four red stars.",
+    "funFact": "Australia is the only country that is also a whole continent.",
+    "confusableWith": [
+      "NZ",
+      "TV",
+      "FJ"
+    ]
+  },
+  {
+    "code": "AT",
+    "name": "Austria",
+    "officialName": "Republic of Austria",
+    "aliases": [
+      "Republic of Austria",
+      "Osterreich",
+      "Oesterreich"
+    ],
+    "capitals": [
+      "Vienna"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Central Europe",
+    "latlng": [
+      47.33333333,
+      13.33333333
+    ],
+    "flag": "flags/at.svg",
+    "tier": 1,
+    "hint": "Red-white-red horizontal. Latvia is darker maroon with a thinner white stripe.",
+    "funFact": "Austria's flag is one of the oldest in the world, with legends dating it to 1191.",
+    "confusableWith": [
+      "LV",
+      "PE",
+      "CA"
+    ]
+  },
+  {
+    "code": "AZ",
+    "name": "Azerbaijan",
+    "officialName": "Republic of Azerbaijan",
+    "aliases": [
+      "Republic of Azerbaijan",
+      "Azərbaycan Respublikası"
+    ],
+    "capitals": [
+      "Baku"
+    ],
+    "currency": {
+      "code": "AZN",
+      "name": "Azerbaijani manat",
+      "symbol": "₼"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      40.5,
+      47.5
+    ],
+    "flag": "flags/az.svg",
+    "tier": 2,
+    "hint": "Blue, red, green stripes with a white crescent and eight-pointed star on the red.",
+    "funFact": "It's called the 'Land of Fire' for natural gas flames like Yanar Dag, a hillside that never stops burning.",
+    "confusableWith": []
+  },
+  {
+    "code": "BS",
+    "name": "Bahamas",
+    "officialName": "Commonwealth of the Bahamas",
+    "aliases": [
+      "The Bahamas",
+      "Commonwealth of the Bahamas"
+    ],
+    "capitals": [
+      "Nassau"
+    ],
+    "currency": {
+      "code": "BSD",
+      "name": "Bahamian dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      24.25,
+      -76
+    ],
+    "flag": "flags/bs.svg",
+    "tier": 2,
+    "hint": "Aquamarine, gold, aquamarine stripes with a black triangle at the flagpole.",
+    "funFact": "Christopher Columbus first landed in the Americas in the Bahamas in 1492.",
+    "confusableWith": []
+  },
+  {
+    "code": "BH",
+    "name": "Bahrain",
+    "officialName": "Kingdom of Bahrain",
+    "aliases": [
+      "Kingdom of Bahrain",
+      "Mamlakat al-Baḥrayn"
+    ],
+    "capitals": [
+      "Manama"
+    ],
+    "currency": {
+      "code": "BHD",
+      "name": "Bahraini dinar",
+      "symbol": ".د.ب"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      26,
+      50.55
+    ],
+    "flag": "flags/bh.svg",
+    "tier": 2,
+    "hint": "Red with a white zigzag of 5 points at the flagpole. Qatar is maroon with 9 points.",
+    "funFact": "Bahrain is an island nation linked to Saudi Arabia by a 25 km causeway.",
+    "confusableWith": [
+      "QA"
+    ]
+  },
+  {
+    "code": "BD",
+    "name": "Bangladesh",
+    "officialName": "People's Republic of Bangladesh",
+    "aliases": [
+      "People's Republic of Bangladesh",
+      "Gônôprôjatôntri Bangladesh"
+    ],
+    "capitals": [
+      "Dhaka"
+    ],
+    "currency": {
+      "code": "BDT",
+      "name": "Bangladeshi taka",
+      "symbol": "৳"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      24,
+      90
+    ],
+    "flag": "flags/bd.svg",
+    "tier": 2,
+    "hint": "Green with a red circle placed slightly towards the flagpole. Japan's red circle is on white.",
+    "funFact": "Bangladesh contains most of the Sundarbans, the world's largest mangrove forest and home of Bengal tigers.",
+    "confusableWith": [
+      "JP",
+      "PW"
+    ]
+  },
+  {
+    "code": "BB",
+    "name": "Barbados",
+    "officialName": "Barbados",
+    "aliases": [],
+    "capitals": [
+      "Bridgetown"
+    ],
+    "currency": {
+      "code": "BBD",
+      "name": "Barbadian dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      13.16666666,
+      -59.53333333
+    ],
+    "flag": "flags/bb.svg",
+    "tier": 3,
+    "hint": "Blue, gold, blue vertical with a black trident head in the middle.",
+    "funFact": "Barbados became a republic in 2021, replacing the British monarch as head of state.",
+    "confusableWith": []
+  },
+  {
+    "code": "BY",
+    "name": "Belarus",
+    "officialName": "Republic of Belarus",
+    "aliases": [
+      "Republic of Belarus",
+      "Bielaruś",
+      "Белоруссия",
+      "Республика Белоруссия"
+    ],
+    "capitals": [
+      "Minsk"
+    ],
+    "currency": {
+      "code": "BYN",
+      "name": "Belarusian ruble",
+      "symbol": "Br"
+    },
+    "continent": "Europe",
+    "subregion": "Eastern Europe",
+    "latlng": [
+      53,
+      28
+    ],
+    "flag": "flags/by.svg",
+    "tier": 2,
+    "hint": "Red over green with a red-and-white folk-embroidery strip down the flagpole side.",
+    "funFact": "Belarus shares the ancient Białowieża Forest with Poland, home of the European bison.",
+    "confusableWith": []
+  },
+  {
+    "code": "BE",
+    "name": "Belgium",
+    "officialName": "Kingdom of Belgium",
+    "aliases": [
+      "Kingdom of Belgium",
+      "België",
+      "Belgie",
+      "Belgien",
+      "Belgique",
+      "Koninkrijk België",
+      "Royaume de Belgique",
+      "Königreich Belgien"
+    ],
+    "capitals": [
+      "Brussels"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      50.83333333,
+      4
+    ],
+    "flag": "flags/be.svg",
+    "tier": 1,
+    "hint": "Black, yellow, red vertical: Germany's colours standing up.",
+    "funFact": "Belgium has three official languages: Dutch, French and German.",
+    "confusableWith": []
+  },
+  {
+    "code": "BZ",
+    "name": "Belize",
+    "officialName": "Belize",
+    "aliases": [],
+    "capitals": [
+      "Belmopan"
+    ],
+    "currency": {
+      "code": "BZD",
+      "name": "Belize dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      17.25,
+      -88.75
+    ],
+    "flag": "flags/bz.svg",
+    "tier": 3,
+    "hint": "Blue with red stripes top and bottom and a detailed coat of arms showing two woodcutters.",
+    "funFact": "It's one of the very few national flags that shows people.",
+    "confusableWith": []
+  },
+  {
+    "code": "BJ",
+    "name": "Benin",
+    "officialName": "Republic of Benin",
+    "aliases": [
+      "Republic of Benin",
+      "République du Bénin"
+    ],
+    "capitals": [
+      "Porto-Novo"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      9.5,
+      2.25
+    ],
+    "flag": "flags/bj.svg",
+    "tier": 3,
+    "hint": "Green vertical stripe on the left, yellow over red on the right, and no emblem at all.",
+    "funFact": "Benin is the birthplace of the Vodun (voodoo) religion, celebrated with a national holiday every 10 January.",
+    "confusableWith": []
+  },
+  {
+    "code": "BT",
+    "name": "Bhutan",
+    "officialName": "Kingdom of Bhutan",
+    "aliases": [
+      "Kingdom of Bhutan"
+    ],
+    "capitals": [
+      "Thimphu"
+    ],
+    "currency": {
+      "code": "BTN",
+      "name": "Bhutanese ngultrum",
+      "symbol": "Nu."
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      27.5,
+      90.5
+    ],
+    "flag": "flags/bt.svg",
+    "tier": 2,
+    "hint": "Yellow and orange diagonal halves with a white thunder dragon (Druk) holding jewels.",
+    "funFact": "Bhutan measures success by 'Gross National Happiness' and absorbs more carbon than it emits.",
+    "confusableWith": []
+  },
+  {
+    "code": "BO",
+    "name": "Bolivia",
+    "officialName": "Plurinational State of Bolivia",
+    "aliases": [
+      "Plurinational State of Bolivia",
+      "Buliwya",
+      "Wuliwya",
+      "Bolivia, Plurinational State of",
+      "Estado Plurinacional de Bolivia",
+      "Buliwya Mamallaqta",
+      "Wuliwya Suyu",
+      "Tetã Volívia"
+    ],
+    "capitals": [
+      "Sucre",
+      "La Paz"
+    ],
+    "currency": {
+      "code": "BOB",
+      "name": "Bolivian boliviano",
+      "symbol": "Bs."
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -17,
+      -65
+    ],
+    "flag": "flags/bo.svg",
+    "tier": 2,
+    "hint": "Red, yellow, green horizontal with a coat of arms. Ghana has the same colours but a black star.",
+    "funFact": "Bolivia's Salar de Uyuni is the largest salt flat in the world.",
+    "confusableWith": [
+      "GH",
+      "GW",
+      "ET"
+    ]
+  },
+  {
+    "code": "BA",
+    "name": "Bosnia and Herzegovina",
+    "officialName": "Bosnia and Herzegovina",
+    "aliases": [
+      "Bosnia-Herzegovina",
+      "Босна и Херцеговина"
+    ],
+    "capitals": [
+      "Sarajevo"
+    ],
+    "currency": {
+      "code": "BAM",
+      "name": "Bosnia and Herzegovina convertible mark",
+      "symbol": "KM"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      44,
+      18
+    ],
+    "flag": "flags/ba.svg",
+    "tier": 2,
+    "hint": "Blue with a yellow triangle and a diagonal line of white stars, some cut off at the edges.",
+    "funFact": "The triangle's three corners are said to stand for the country's three main peoples.",
+    "confusableWith": []
+  },
+  {
+    "code": "BW",
+    "name": "Botswana",
+    "officialName": "Republic of Botswana",
+    "aliases": [
+      "Republic of Botswana",
+      "Lefatshe la Botswana"
+    ],
+    "capitals": [
+      "Gaborone"
+    ],
+    "currency": {
+      "code": "BWP",
+      "name": "Botswana pula",
+      "symbol": "P"
+    },
+    "continent": "Africa",
+    "subregion": "Southern Africa",
+    "latlng": [
+      -22,
+      24
+    ],
+    "flag": "flags/bw.svg",
+    "tier": 3,
+    "hint": "Light sky-blue with a black stripe edged in white across the middle, like a zebra crossing the sky.",
+    "funFact": "Botswana has the world's largest population of African elephants.",
+    "confusableWith": []
+  },
+  {
+    "code": "BR",
+    "name": "Brazil",
+    "officialName": "Federative Republic of Brazil",
+    "aliases": [
+      "Federative Republic of Brazil",
+      "Brasil",
+      "República Federativa do Brasil"
+    ],
+    "capitals": [
+      "Brasília"
+    ],
+    "currency": {
+      "code": "BRL",
+      "name": "Brazilian real",
+      "symbol": "R$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -10,
+      -55
+    ],
+    "flag": "flags/br.svg",
+    "tier": 1,
+    "hint": "Green with a yellow diamond and a blue starry globe with the words 'Ordem e Progresso'.",
+    "funFact": "The stars show the sky over Rio de Janeiro on 15 November 1889, the day Brazil became a republic.",
+    "confusableWith": []
+  },
+  {
+    "code": "BN",
+    "name": "Brunei",
+    "officialName": "Nation of Brunei, Abode of Peace",
+    "aliases": [
+      "Nation of Brunei, Abode of Peace",
+      "Brunei Darussalam",
+      "Nation of Brunei",
+      "the Abode of Peace"
+    ],
+    "capitals": [
+      "Bandar Seri Begawan"
+    ],
+    "currency": {
+      "code": "BND",
+      "name": "Brunei dollar",
+      "symbol": "$"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      4.5,
+      114.66666666
+    ],
+    "flag": "flags/bn.svg",
+    "tier": 3,
+    "hint": "Yellow with white and black diagonal stripes and a red crest in the middle.",
+    "funFact": "The Sultan of Brunei's palace is the largest residential palace in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "BG",
+    "name": "Bulgaria",
+    "officialName": "Republic of Bulgaria",
+    "aliases": [
+      "Republic of Bulgaria",
+      "Република България"
+    ],
+    "capitals": [
+      "Sofia"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      43,
+      25
+    ],
+    "flag": "flags/bg.svg",
+    "tier": 2,
+    "hint": "White, green, red horizontal. Hungary has red on top instead of white.",
+    "funFact": "Bulgaria's 'Valley of Roses' produces a large share of the world's rose oil for perfume.",
+    "confusableWith": [
+      "HU"
+    ]
+  },
+  {
+    "code": "BF",
+    "name": "Burkina Faso",
+    "officialName": "Burkina Faso",
+    "aliases": [],
+    "capitals": [
+      "Ouagadougou"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      13,
+      -2
+    ],
+    "flag": "flags/bf.svg",
+    "tier": 3,
+    "hint": "Red over green with a single yellow star in the centre.",
+    "funFact": "Its name means 'land of upright (honest) people', mixing words from two local languages.",
+    "confusableWith": []
+  },
+  {
+    "code": "BI",
+    "name": "Burundi",
+    "officialName": "Republic of Burundi",
+    "aliases": [
+      "Republic of Burundi",
+      "Republika y'Uburundi",
+      "République du Burundi"
+    ],
+    "capitals": [
+      "Gitega"
+    ],
+    "currency": {
+      "code": "BIF",
+      "name": "Burundian franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -3.5,
+      30
+    ],
+    "flag": "flags/bi.svg",
+    "tier": 3,
+    "hint": "A white X splits red and green triangles, with a white circle holding three red stars.",
+    "funFact": "The three stars stand for the national motto: Unity, Work, Progress.",
+    "confusableWith": []
+  },
+  {
+    "code": "KH",
+    "name": "Cambodia",
+    "officialName": "Kingdom of Cambodia",
+    "aliases": [
+      "Kingdom of Cambodia"
+    ],
+    "capitals": [
+      "Phnom Penh"
+    ],
+    "currency": {
+      "code": "KHR",
+      "name": "Cambodian riel",
+      "symbol": "៛"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      13,
+      105
+    ],
+    "flag": "flags/kh.svg",
+    "tier": 2,
+    "hint": "Blue, red, blue with a white Angkor Wat temple, one of the few flags showing a building.",
+    "funFact": "Angkor Wat is the largest religious monument in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "CM",
+    "name": "Cameroon",
+    "officialName": "Republic of Cameroon",
+    "aliases": [
+      "Republic of Cameroon",
+      "République du Cameroun"
+    ],
+    "capitals": [
+      "Yaoundé"
+    ],
+    "currency": {
+      "code": "XAF",
+      "name": "Central African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      6,
+      12
+    ],
+    "flag": "flags/cm.svg",
+    "tier": 2,
+    "hint": "Green, red, yellow vertical stripes with a gold star on the red middle. Senegal's star is green.",
+    "funFact": "Cameroon is called 'Africa in miniature' because it has almost every African landscape and climate.",
+    "confusableWith": [
+      "SN",
+      "ML",
+      "GN"
+    ]
+  },
+  {
+    "code": "CA",
+    "name": "Canada",
+    "officialName": "Canada",
+    "aliases": [],
+    "capitals": [
+      "Ottawa"
+    ],
+    "currency": {
+      "code": "CAD",
+      "name": "Canadian dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "North America",
+    "latlng": [
+      60,
+      -95
+    ],
+    "flag": "flags/ca.svg",
+    "tier": 1,
+    "hint": "Red, white, red vertical with a red 11-pointed maple leaf.",
+    "funFact": "Canada has the longest coastline of any country.",
+    "confusableWith": [
+      "AT",
+      "LV",
+      "PE"
+    ]
+  },
+  {
+    "code": "CV",
+    "name": "Cape Verde",
+    "officialName": "Republic of Cabo Verde",
+    "aliases": [
+      "Cabo Verde",
+      "Republic of Cabo Verde",
+      "República de Cabo Verde"
+    ],
+    "capitals": [
+      "Praia"
+    ],
+    "currency": {
+      "code": "CVE",
+      "name": "Cape Verdean escudo",
+      "symbol": "Esc"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      16,
+      -24
+    ],
+    "flag": "flags/cv.svg",
+    "tier": 3,
+    "hint": "Blue with a thin white-red-white stripe low down and a ring of ten yellow stars, one for each main island.",
+    "funFact": "The islands were uninhabited until Portuguese explorers arrived in the 1400s.",
+    "confusableWith": []
+  },
+  {
+    "code": "CF",
+    "name": "Central African Republic",
+    "officialName": "Central African Republic",
+    "aliases": [
+      "République centrafricaine"
+    ],
+    "capitals": [
+      "Bangui"
+    ],
+    "currency": {
+      "code": "XAF",
+      "name": "Central African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      7,
+      21
+    ],
+    "flag": "flags/cf.svg",
+    "tier": 3,
+    "hint": "Four horizontal stripes (blue, white, green, yellow) crossed by one red vertical stripe, plus a yellow star in the corner.",
+    "funFact": "Its flag mixes French tricolour colours with pan-African colours to symbolise unity.",
+    "confusableWith": []
+  },
+  {
+    "code": "TD",
+    "name": "Chad",
+    "officialName": "Republic of Chad",
+    "aliases": [
+      "Republic of Chad",
+      "Tchad",
+      "République du Tchad"
+    ],
+    "capitals": [
+      "N'Djamena"
+    ],
+    "currency": {
+      "code": "XAF",
+      "name": "Central African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      15,
+      19
+    ],
+    "flag": "flags/td.svg",
+    "tier": 2,
+    "hint": "Blue, yellow, red vertical, almost identical to Romania! Chad's blue is a slightly darker indigo.",
+    "funFact": "Lake Chad has shrunk by around 90% since the 1960s.",
+    "confusableWith": [
+      "RO",
+      "AD",
+      "MD"
+    ]
+  },
+  {
+    "code": "CL",
+    "name": "Chile",
+    "officialName": "Republic of Chile",
+    "aliases": [
+      "Republic of Chile",
+      "República de Chile"
+    ],
+    "capitals": [
+      "Santiago"
+    ],
+    "currency": {
+      "code": "CLP",
+      "name": "Chilean peso",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -30,
+      -71
+    ],
+    "flag": "flags/cl.svg",
+    "tier": 1,
+    "hint": "White over red with a blue square and a white star, a bit like the Texas flag.",
+    "funFact": "Chile's Atacama is the driest non-polar desert in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "CN",
+    "name": "China",
+    "officialName": "People's Republic of China",
+    "aliases": [
+      "People's Republic of China",
+      "Zhōngguó",
+      "Zhongguo",
+      "Zhonghua",
+      "中华人民共和国",
+      "Zhōnghuá Rénmín Gònghéguó"
+    ],
+    "capitals": [
+      "Beijing"
+    ],
+    "currency": {
+      "code": "CNY",
+      "name": "Chinese yuan",
+      "symbol": "¥"
+    },
+    "continent": "Asia",
+    "subregion": "Eastern Asia",
+    "latlng": [
+      35,
+      105
+    ],
+    "flag": "flags/cn.svg",
+    "tier": 1,
+    "hint": "Red with one big yellow star and four small stars curving around it.",
+    "funFact": "China uses a single time zone even though it is wide enough for five.",
+    "confusableWith": [
+      "VN"
+    ]
+  },
+  {
+    "code": "CO",
+    "name": "Colombia",
+    "officialName": "Republic of Colombia",
+    "aliases": [
+      "Republic of Colombia",
+      "República de Colombia"
+    ],
+    "capitals": [
+      "Bogotá"
+    ],
+    "currency": {
+      "code": "COP",
+      "name": "Colombian peso",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      4,
+      -72
+    ],
+    "flag": "flags/co.svg",
+    "tier": 1,
+    "hint": "Yellow, blue, red horizontal, with yellow taking up the whole top half.",
+    "funFact": "Colombia is the world's leading producer of emeralds.",
+    "confusableWith": [
+      "EC",
+      "VE"
+    ]
+  },
+  {
+    "code": "KM",
+    "name": "Comoros",
+    "officialName": "Union of the Comoros",
+    "aliases": [
+      "Union of the Comoros",
+      "Union des Comores",
+      "Udzima wa Komori",
+      "al-Ittiḥād al-Qumurī"
+    ],
+    "capitals": [
+      "Moroni"
+    ],
+    "currency": {
+      "code": "KMF",
+      "name": "Comorian franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -12.16666666,
+      44.25
+    ],
+    "flag": "flags/km.svg",
+    "tier": 3,
+    "hint": "Four stripes plus a green triangle holding a white crescent and four stars, one per island.",
+    "funFact": "Comoros is one of the world's top producers of ylang-ylang, a flower oil used in perfume.",
+    "confusableWith": []
+  },
+  {
+    "code": "CR",
+    "name": "Costa Rica",
+    "officialName": "Republic of Costa Rica",
+    "aliases": [
+      "Republic of Costa Rica",
+      "República de Costa Rica"
+    ],
+    "capitals": [
+      "San José"
+    ],
+    "currency": {
+      "code": "CRC",
+      "name": "Costa Rican colón",
+      "symbol": "₡"
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      10,
+      -84
+    ],
+    "flag": "flags/cr.svg",
+    "tier": 2,
+    "hint": "Blue, white, a thick red, white, blue stripes, with a coat of arms on the red.",
+    "funFact": "Costa Rica abolished its army in 1948.",
+    "confusableWith": []
+  },
+  {
+    "code": "HR",
+    "name": "Croatia",
+    "officialName": "Republic of Croatia",
+    "aliases": [
+      "Republic of Croatia",
+      "Hrvatska",
+      "Republika Hrvatska"
+    ],
+    "capitals": [
+      "Zagreb"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      45.16666666,
+      15.5
+    ],
+    "flag": "flags/hr.svg",
+    "tier": 1,
+    "hint": "Red, white, blue stripes with a red-and-white checkerboard shield in the middle.",
+    "funFact": "The necktie (cravat) is named after Croatian soldiers who wore knotted scarves in the 1600s.",
+    "confusableWith": []
+  },
+  {
+    "code": "CU",
+    "name": "Cuba",
+    "officialName": "Republic of Cuba",
+    "aliases": [
+      "Republic of Cuba",
+      "República de Cuba"
+    ],
+    "capitals": [
+      "Havana"
+    ],
+    "currency": {
+      "code": "CUP",
+      "name": "Cuban peso",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      21.5,
+      -80
+    ],
+    "flag": "flags/cu.svg",
+    "tier": 1,
+    "hint": "Five blue and white stripes with a red triangle and a white star.",
+    "funFact": "Cuba is the largest island in the Caribbean.",
+    "confusableWith": []
+  },
+  {
+    "code": "CY",
+    "name": "Cyprus",
+    "officialName": "Republic of Cyprus",
+    "aliases": [
+      "Republic of Cyprus",
+      "Kýpros",
+      "Kıbrıs",
+      "Κυπριακή Δημοκρατία",
+      "Kıbrıs Cumhuriyeti"
+    ],
+    "capitals": [
+      "Nicosia"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      35,
+      33
+    ],
+    "flag": "flags/cy.svg",
+    "tier": 2,
+    "hint": "White with a copper-orange map of the island above two green olive branches.",
+    "funFact": "Cyprus was famous for copper in ancient times, which is why the map on the flag is copper-coloured.",
+    "confusableWith": []
+  },
+  {
+    "code": "CZ",
+    "name": "Czechia",
+    "officialName": "Czech Republic",
+    "aliases": [
+      "Czech Republic",
+      "Česká republika",
+      "Česko"
+    ],
+    "capitals": [
+      "Prague"
+    ],
+    "currency": {
+      "code": "CZK",
+      "name": "Czech koruna",
+      "symbol": "Kč"
+    },
+    "continent": "Europe",
+    "subregion": "Central Europe",
+    "latlng": [
+      49.75,
+      15.5
+    ],
+    "flag": "flags/cz.svg",
+    "tier": 1,
+    "hint": "White over red with a blue triangle. The Philippines adds a sun and stars in its triangle.",
+    "funFact": "Czechs drink more beer per person than any other country.",
+    "confusableWith": [
+      "PH"
+    ]
+  },
+  {
+    "code": "DK",
+    "name": "Denmark",
+    "officialName": "Kingdom of Denmark",
+    "aliases": [
+      "Kingdom of Denmark",
+      "Danmark",
+      "Kongeriget Danmark"
+    ],
+    "capitals": [
+      "Copenhagen"
+    ],
+    "currency": {
+      "code": "DKK",
+      "name": "Danish krone",
+      "symbol": "kr"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      56,
+      10
+    ],
+    "flag": "flags/dk.svg",
+    "tier": 1,
+    "hint": "Red with a white off-centre cross: the original Nordic cross.",
+    "funFact": "Denmark's flag, the Dannebrog, is the oldest national flag still in continuous use.",
+    "confusableWith": [
+      "NO",
+      "IS",
+      "SE",
+      "FI"
+    ]
+  },
+  {
+    "code": "DJ",
+    "name": "Djibouti",
+    "officialName": "Republic of Djibouti",
+    "aliases": [
+      "Republic of Djibouti",
+      "Jabuuti",
+      "Gabuuti",
+      "République de Djibouti",
+      "Gabuutih Ummuuno",
+      "Jamhuuriyadda Jabuuti"
+    ],
+    "capitals": [
+      "Djibouti"
+    ],
+    "currency": {
+      "code": "DJF",
+      "name": "Djiboutian franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      11.5,
+      43
+    ],
+    "flag": "flags/dj.svg",
+    "tier": 3,
+    "hint": "Light blue over green with a white triangle holding a red star.",
+    "funFact": "Lake Assal in Djibouti is the lowest point in Africa, about 155 m below sea level.",
+    "confusableWith": []
+  },
+  {
+    "code": "DM",
+    "name": "Dominica",
+    "officialName": "Commonwealth of Dominica",
+    "aliases": [
+      "Commonwealth of Dominica",
+      "Dominique",
+      "Wai‘tu kubuli"
+    ],
+    "capitals": [
+      "Roseau"
+    ],
+    "currency": {
+      "code": "XCD",
+      "name": "Eastern Caribbean dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      15.41666666,
+      -61.33333333
+    ],
+    "flag": "flags/dm.svg",
+    "tier": 3,
+    "hint": "Green with a yellow-black-white cross and a red circle holding a purple Sisserou parrot.",
+    "funFact": "Dominica is one of only two national flags with purple, thanks to its parrot.",
+    "confusableWith": []
+  },
+  {
+    "code": "DO",
+    "name": "Dominican Republic",
+    "officialName": "Dominican Republic",
+    "aliases": [],
+    "capitals": [
+      "Santo Domingo"
+    ],
+    "currency": {
+      "code": "DOP",
+      "name": "Dominican peso",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      19,
+      -70.66666666
+    ],
+    "flag": "flags/do.svg",
+    "tier": 2,
+    "hint": "A white cross dividing blue and red squares, with a coat of arms that includes a Bible.",
+    "funFact": "It's the only national flag that shows an open Bible.",
+    "confusableWith": []
+  },
+  {
+    "code": "CD",
+    "name": "DR Congo",
+    "officialName": "Democratic Republic of the Congo",
+    "aliases": [
+      "Democratic Republic of the Congo",
+      "Congo-Kinshasa",
+      "Congo, the Democratic Republic of the",
+      "Democratic Republic of Congo"
+    ],
+    "capitals": [
+      "Kinshasa"
+    ],
+    "currency": {
+      "code": "CDF",
+      "name": "Congolese franc",
+      "symbol": "FC"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      0,
+      25
+    ],
+    "flag": "flags/cd.svg",
+    "tier": 2,
+    "hint": "Sky blue with a red diagonal stripe edged in yellow and a yellow star in the top-left.",
+    "funFact": "DR Congo is the most populous French-speaking country in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "EC",
+    "name": "Ecuador",
+    "officialName": "Republic of Ecuador",
+    "aliases": [
+      "Republic of Ecuador",
+      "República del Ecuador"
+    ],
+    "capitals": [
+      "Quito"
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -2,
+      -77.5
+    ],
+    "flag": "flags/ec.svg",
+    "tier": 2,
+    "hint": "Yellow, blue, red like Colombia, but with a coat of arms with a condor.",
+    "funFact": "Ecuador is named after the equator, which runs through it.",
+    "confusableWith": [
+      "CO",
+      "VE"
+    ]
+  },
+  {
+    "code": "EG",
+    "name": "Egypt",
+    "officialName": "Arab Republic of Egypt",
+    "aliases": [
+      "Arab Republic of Egypt"
+    ],
+    "capitals": [
+      "Cairo"
+    ],
+    "currency": {
+      "code": "EGP",
+      "name": "Egyptian pound",
+      "symbol": "£"
+    },
+    "continent": "Africa",
+    "subregion": "Northern Africa",
+    "latlng": [
+      27,
+      30
+    ],
+    "flag": "flags/eg.svg",
+    "tier": 1,
+    "hint": "Red, white, black stripes with a golden eagle in the middle. Yemen has no emblem; Iraq has green writing.",
+    "funFact": "About 95% of Egyptians live close to the Nile River.",
+    "confusableWith": [
+      "IQ",
+      "YE"
+    ]
+  },
+  {
+    "code": "SV",
+    "name": "El Salvador",
+    "officialName": "Republic of El Salvador",
+    "aliases": [
+      "Republic of El Salvador",
+      "República de El Salvador"
+    ],
+    "capitals": [
+      "San Salvador"
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      13.83333333,
+      -88.91666666
+    ],
+    "flag": "flags/sv.svg",
+    "tier": 3,
+    "hint": "Blue, white, blue with a triangle coat of arms circled by gold writing.",
+    "funFact": "In 2021 El Salvador became the first country to make Bitcoin legal tender.",
+    "confusableWith": [
+      "HN",
+      "NI",
+      "GT",
+      "AR"
+    ]
+  },
+  {
+    "code": "GQ",
+    "name": "Equatorial Guinea",
+    "officialName": "Republic of Equatorial Guinea",
+    "aliases": [
+      "Republic of Equatorial Guinea",
+      "República de Guinea Ecuatorial",
+      "République de Guinée équatoriale",
+      "República da Guiné Equatorial"
+    ],
+    "capitals": [
+      "Ciudad de la Paz"
+    ],
+    "currency": {
+      "code": "XAF",
+      "name": "Central African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      2,
+      10
+    ],
+    "flag": "flags/gq.svg",
+    "tier": 3,
+    "hint": "Green, white, red stripes, a blue triangle, and a coat of arms with a tree and six stars.",
+    "funFact": "It's the only country in Africa where Spanish is an official language.",
+    "confusableWith": []
+  },
+  {
+    "code": "ER",
+    "name": "Eritrea",
+    "officialName": "State of Eritrea",
+    "aliases": [
+      "State of Eritrea",
+      "ሃገረ ኤርትራ",
+      "Dawlat Iritriyá",
+      "ʾErtrā",
+      "Iritriyā"
+    ],
+    "capitals": [
+      "Asmara"
+    ],
+    "currency": {
+      "code": "ERN",
+      "name": "Eritrean nakfa",
+      "symbol": "Nfk"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      15,
+      39
+    ],
+    "flag": "flags/er.svg",
+    "tier": 3,
+    "hint": "A huge red triangle stretching across the whole flag between green and blue, with a golden olive wreath.",
+    "funFact": "Its capital Asmara is a UNESCO World Heritage Site for its Italian modernist buildings.",
+    "confusableWith": []
+  },
+  {
+    "code": "EE",
+    "name": "Estonia",
+    "officialName": "Republic of Estonia",
+    "aliases": [
+      "Republic of Estonia",
+      "Eesti",
+      "Eesti Vabariik"
+    ],
+    "capitals": [
+      "Tallinn"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      59,
+      26
+    ],
+    "flag": "flags/ee.svg",
+    "tier": 2,
+    "hint": "Blue, black, white horizontal stripes.",
+    "funFact": "Estonia was the first country to offer internet voting nationwide, starting in 2005.",
+    "confusableWith": []
+  },
+  {
+    "code": "SZ",
+    "name": "Eswatini",
+    "officialName": "Kingdom of Eswatini",
+    "aliases": [
+      "Swaziland",
+      "Kingdom of Eswatini",
+      "weSwatini",
+      "Swatini",
+      "Ngwane",
+      "Umbuso weSwatini"
+    ],
+    "capitals": [
+      "Mbabane",
+      "Lobamba"
+    ],
+    "currency": {
+      "code": "SZL",
+      "name": "Swazi lilangeni",
+      "symbol": "L"
+    },
+    "continent": "Africa",
+    "subregion": "Southern Africa",
+    "latlng": [
+      -26.5,
+      31.5
+    ],
+    "flag": "flags/sz.svg",
+    "tier": 3,
+    "hint": "A black-and-white Nguni shield and spears lying sideways across a wide crimson stripe.",
+    "funFact": "Eswatini was called Swaziland until 2018 and is one of the world's last absolute monarchies.",
+    "confusableWith": []
+  },
+  {
+    "code": "ET",
+    "name": "Ethiopia",
+    "officialName": "Federal Democratic Republic of Ethiopia",
+    "aliases": [
+      "Federal Democratic Republic of Ethiopia",
+      "ʾĪtyōṗṗyā",
+      "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ"
+    ],
+    "capitals": [
+      "Addis Ababa"
+    ],
+    "currency": {
+      "code": "ETB",
+      "name": "Ethiopian birr",
+      "symbol": "Br"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      8,
+      38
+    ],
+    "flag": "flags/et.svg",
+    "tier": 2,
+    "hint": "Green, yellow, red stripes with a blue circle holding a yellow star. Green is on top.",
+    "funFact": "Ethiopia's green, yellow and red inspired the 'pan-African' colours used by many African nations.",
+    "confusableWith": [
+      "GH",
+      "BO",
+      "GW"
+    ]
+  },
+  {
+    "code": "FJ",
+    "name": "Fiji",
+    "officialName": "Republic of Fiji",
+    "aliases": [
+      "Republic of Fiji",
+      "Viti",
+      "Matanitu ko Viti",
+      "Fijī Gaṇarājya"
+    ],
+    "capitals": [
+      "Suva"
+    ],
+    "currency": {
+      "code": "FJD",
+      "name": "Fijian dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Melanesia",
+    "latlng": [
+      -18,
+      175
+    ],
+    "flag": "flags/fj.svg",
+    "tier": 2,
+    "hint": "Light blue with the Union Jack and a shield showing a lion, sugarcane, a coconut palm, bananas and a dove.",
+    "funFact": "Fiji has about 330 islands, and around 110 of them are inhabited.",
+    "confusableWith": [
+      "AU",
+      "NZ",
+      "TV"
+    ]
+  },
+  {
+    "code": "FI",
+    "name": "Finland",
+    "officialName": "Republic of Finland",
+    "aliases": [
+      "Republic of Finland",
+      "Suomi",
+      "Suomen tasavalta",
+      "Republiken Finland"
+    ],
+    "capitals": [
+      "Helsinki"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      64,
+      26
+    ],
+    "flag": "flags/fi.svg",
+    "tier": 1,
+    "hint": "White with a blue Nordic cross, like snow and lakes.",
+    "funFact": "Finland has around 188,000 lakes.",
+    "confusableWith": [
+      "NO",
+      "IS",
+      "DK",
+      "SE"
+    ]
+  },
+  {
+    "code": "FR",
+    "name": "France",
+    "officialName": "French Republic",
+    "aliases": [
+      "French Republic",
+      "République française"
+    ],
+    "capitals": [
+      "Paris"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      46,
+      2
+    ],
+    "flag": "flags/fr.svg",
+    "tier": 1,
+    "hint": "Blue, white, red vertical. Italy swaps the blue for green.",
+    "funFact": "France is the most visited country in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "GA",
+    "name": "Gabon",
+    "officialName": "Gabonese Republic",
+    "aliases": [
+      "Gabonese Republic",
+      "République Gabonaise"
+    ],
+    "capitals": [
+      "Libreville"
+    ],
+    "currency": {
+      "code": "XAF",
+      "name": "Central African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      -1,
+      11.75
+    ],
+    "flag": "flags/ga.svg",
+    "tier": 3,
+    "hint": "Plain green, yellow, blue horizontal stripes.",
+    "funFact": "Almost 90% of Gabon is covered in rainforest.",
+    "confusableWith": [
+      "SL"
+    ]
+  },
+  {
+    "code": "GM",
+    "name": "Gambia",
+    "officialName": "Republic of the Gambia",
+    "aliases": [
+      "The Gambia",
+      "Republic of the Gambia"
+    ],
+    "capitals": [
+      "Banjul"
+    ],
+    "currency": {
+      "code": "GMD",
+      "name": "dalasi",
+      "symbol": "D"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      13.46666666,
+      -16.56666666
+    ],
+    "flag": "flags/gm.svg",
+    "tier": 3,
+    "hint": "Red and green stripes with a blue band edged in white through the middle: the Gambia River.",
+    "funFact": "The Gambia is the smallest country on mainland Africa and is almost completely surrounded by Senegal.",
+    "confusableWith": []
+  },
+  {
+    "code": "GE",
+    "name": "Georgia",
+    "officialName": "Georgia",
+    "aliases": [
+      "Sakartvelo"
+    ],
+    "capitals": [
+      "Tbilisi"
+    ],
+    "currency": {
+      "code": "GEL",
+      "name": "lari",
+      "symbol": "₾"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      42,
+      43.5
+    ],
+    "flag": "flags/ge.svg",
+    "tier": 2,
+    "hint": "White with a big red cross and four small red crosses in the corners: the 'five-cross flag'.",
+    "funFact": "Georgia is thought to be the birthplace of wine, with 8,000-year-old traces of winemaking.",
+    "confusableWith": []
+  },
+  {
+    "code": "DE",
+    "name": "Germany",
+    "officialName": "Federal Republic of Germany",
+    "aliases": [
+      "Federal Republic of Germany",
+      "Bundesrepublik Deutschland"
+    ],
+    "capitals": [
+      "Berlin"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      51,
+      9
+    ],
+    "flag": "flags/de.svg",
+    "tier": 1,
+    "hint": "Black, red, gold horizontal. Belgium uses similar colours vertically.",
+    "funFact": "Germany has more than 20,000 castles.",
+    "confusableWith": []
+  },
+  {
+    "code": "GH",
+    "name": "Ghana",
+    "officialName": "Republic of Ghana",
+    "aliases": [
+      "Republic of Ghana"
+    ],
+    "capitals": [
+      "Accra"
+    ],
+    "currency": {
+      "code": "GHS",
+      "name": "Ghanaian cedi",
+      "symbol": "₵"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      8,
+      -2
+    ],
+    "flag": "flags/gh.svg",
+    "tier": 2,
+    "hint": "Red, yellow, green with a black star in the centre. The black star is the giveaway.",
+    "funFact": "Ghana was the first sub-Saharan African colony to win independence, in 1957.",
+    "confusableWith": [
+      "BO",
+      "GW",
+      "ET"
+    ]
+  },
+  {
+    "code": "GR",
+    "name": "Greece",
+    "officialName": "Hellenic Republic",
+    "aliases": [
+      "Hellenic Republic",
+      "Elláda",
+      "Ελληνική Δημοκρατία"
+    ],
+    "capitals": [
+      "Athens"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      39,
+      22
+    ],
+    "flag": "flags/gr.svg",
+    "tier": 1,
+    "hint": "Nine blue and white stripes with a white cross in the blue corner.",
+    "funFact": "The nine stripes are said to match the nine syllables of 'Freedom or Death' in Greek.",
+    "confusableWith": [
+      "UY"
+    ]
+  },
+  {
+    "code": "GD",
+    "name": "Grenada",
+    "officialName": "Grenada",
+    "aliases": [],
+    "capitals": [
+      "St. George's"
+    ],
+    "currency": {
+      "code": "XCD",
+      "name": "Eastern Caribbean dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      12.11666666,
+      -61.66666666
+    ],
+    "flag": "flags/gd.svg",
+    "tier": 3,
+    "hint": "Red border with six yellow stars, yellow and green triangles, and a nutmeg on the left.",
+    "funFact": "Grenada is the 'Island of Spice', and the nutmeg on its flag celebrates its famous crop.",
+    "confusableWith": []
+  },
+  {
+    "code": "GT",
+    "name": "Guatemala",
+    "officialName": "Republic of Guatemala",
+    "aliases": [
+      "Republic of Guatemala"
+    ],
+    "capitals": [
+      "Guatemala City"
+    ],
+    "currency": {
+      "code": "GTQ",
+      "name": "Guatemalan quetzal",
+      "symbol": "Q"
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      15.5,
+      -90.25
+    ],
+    "flag": "flags/gt.svg",
+    "tier": 2,
+    "hint": "Sky blue, white, sky blue vertical with a green quetzal bird and crossed rifles.",
+    "funFact": "Guatemala's currency, the quetzal, is named after its national bird.",
+    "confusableWith": [
+      "HN",
+      "NI",
+      "SV",
+      "AR"
+    ]
+  },
+  {
+    "code": "GN",
+    "name": "Guinea",
+    "officialName": "Republic of Guinea",
+    "aliases": [
+      "Republic of Guinea",
+      "République de Guinée"
+    ],
+    "capitals": [
+      "Conakry"
+    ],
+    "currency": {
+      "code": "GNF",
+      "name": "Guinean franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      11,
+      -10
+    ],
+    "flag": "flags/gn.svg",
+    "tier": 3,
+    "hint": "Red, yellow, green vertical: Mali flipped! Guinea starts with red at the flagpole.",
+    "funFact": "Guinea has around a quarter of the world's known bauxite, the ore used to make aluminium.",
+    "confusableWith": [
+      "SN",
+      "ML",
+      "CM"
+    ]
+  },
+  {
+    "code": "GW",
+    "name": "Guinea-Bissau",
+    "officialName": "Republic of Guinea-Bissau",
+    "aliases": [
+      "Republic of Guinea-Bissau",
+      "República da Guiné-Bissau"
+    ],
+    "capitals": [
+      "Bissau"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      12,
+      -15
+    ],
+    "flag": "flags/gw.svg",
+    "tier": 3,
+    "hint": "Red vertical band with a black star, then yellow over green.",
+    "funFact": "Its Bijagós Archipelago of 88 islands is a UNESCO biosphere reserve.",
+    "confusableWith": [
+      "GH",
+      "BO",
+      "ET"
+    ]
+  },
+  {
+    "code": "GY",
+    "name": "Guyana",
+    "officialName": "Co-operative Republic of Guyana",
+    "aliases": [
+      "Co-operative Republic of Guyana"
+    ],
+    "capitals": [
+      "Georgetown"
+    ],
+    "currency": {
+      "code": "GYD",
+      "name": "Guyanese dollar",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      5,
+      -59
+    ],
+    "flag": "flags/gy.svg",
+    "tier": 3,
+    "hint": "Green with a white-edged golden arrowhead and a black-edged red triangle: 'The Golden Arrowhead'.",
+    "funFact": "Guyana is the only South American country where English is the official language.",
+    "confusableWith": []
+  },
+  {
+    "code": "HT",
+    "name": "Haiti",
+    "officialName": "Republic of Haiti",
+    "aliases": [
+      "Republic of Haiti",
+      "République d'Haïti",
+      "Repiblik Ayiti"
+    ],
+    "capitals": [
+      "Port-au-Prince"
+    ],
+    "currency": {
+      "code": "HTG",
+      "name": "Haitian gourde",
+      "symbol": "G"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      19,
+      -72.41666666
+    ],
+    "flag": "flags/ht.svg",
+    "tier": 2,
+    "hint": "Blue over red with a white panel holding a coat of arms with a palm tree and cannons.",
+    "funFact": "Haiti was the first nation founded by formerly enslaved people, independent in 1804.",
+    "confusableWith": []
+  },
+  {
+    "code": "HN",
+    "name": "Honduras",
+    "officialName": "Republic of Honduras",
+    "aliases": [
+      "Republic of Honduras",
+      "República de Honduras"
+    ],
+    "capitals": [
+      "Tegucigalpa"
+    ],
+    "currency": {
+      "code": "HNL",
+      "name": "Honduran lempira",
+      "symbol": "L"
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      15,
+      -86.5
+    ],
+    "flag": "flags/hn.svg",
+    "tier": 3,
+    "hint": "Blue, white, blue horizontal with five blue stars in an X pattern.",
+    "funFact": "The five stars stand for the five nations of the old Federal Republic of Central America.",
+    "confusableWith": [
+      "NI",
+      "SV",
+      "GT",
+      "AR"
+    ]
+  },
+  {
+    "code": "HU",
+    "name": "Hungary",
+    "officialName": "Hungary",
+    "aliases": [],
+    "capitals": [
+      "Budapest"
+    ],
+    "currency": {
+      "code": "HUF",
+      "name": "Hungarian forint",
+      "symbol": "Ft"
+    },
+    "continent": "Europe",
+    "subregion": "Central Europe",
+    "latlng": [
+      47,
+      20
+    ],
+    "flag": "flags/hu.svg",
+    "tier": 1,
+    "hint": "Red, white, green horizontal: Italy's colours lying down.",
+    "funFact": "The Rubik's Cube was invented by Hungarian Ernő Rubik in 1974.",
+    "confusableWith": [
+      "BG"
+    ]
+  },
+  {
+    "code": "IS",
+    "name": "Iceland",
+    "officialName": "Iceland",
+    "aliases": [
+      "Island",
+      "Republic of Iceland",
+      "Lýðveldið Ísland"
+    ],
+    "capitals": [
+      "Reykjavik"
+    ],
+    "currency": {
+      "code": "ISK",
+      "name": "Icelandic króna",
+      "symbol": "kr"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      65,
+      -18
+    ],
+    "flag": "flags/is.svg",
+    "tier": 2,
+    "hint": "Blue with a red cross outlined in white. Norway is the colour-swap: red with a blue cross.",
+    "funFact": "Iceland has no army and is regularly ranked the world's most peaceful country.",
+    "confusableWith": [
+      "NO",
+      "DK",
+      "SE",
+      "FI"
+    ]
+  },
+  {
+    "code": "IN",
+    "name": "India",
+    "officialName": "Republic of India",
+    "aliases": [
+      "Republic of India",
+      "Bhārat",
+      "Bharat Ganrajya",
+      "இந்தியா"
+    ],
+    "capitals": [
+      "New Delhi"
+    ],
+    "currency": {
+      "code": "INR",
+      "name": "Indian rupee",
+      "symbol": "₹"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      20,
+      77
+    ],
+    "flag": "flags/in.svg",
+    "tier": 1,
+    "hint": "Saffron, white, green with a navy blue 24-spoke wheel. Niger has an orange circle instead.",
+    "funFact": "By law, India's flag is supposed to be made from khadi, a hand-spun cloth.",
+    "confusableWith": [
+      "NE"
+    ]
+  },
+  {
+    "code": "ID",
+    "name": "Indonesia",
+    "officialName": "Republic of Indonesia",
+    "aliases": [
+      "Republic of Indonesia",
+      "Republik Indonesia"
+    ],
+    "capitals": [
+      "Jakarta"
+    ],
+    "currency": {
+      "code": "IDR",
+      "name": "Indonesian rupiah",
+      "symbol": "Rp"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      -5,
+      120
+    ],
+    "flag": "flags/id.svg",
+    "tier": 1,
+    "hint": "Red over white. Monaco looks the same but squarer; Poland is white over red.",
+    "funFact": "Indonesia is the world's largest island country, with more than 17,000 islands.",
+    "confusableWith": [
+      "MC",
+      "PL",
+      "SG"
+    ]
+  },
+  {
+    "code": "IR",
+    "name": "Iran",
+    "officialName": "Islamic Republic of Iran",
+    "aliases": [
+      "Islamic Republic of Iran",
+      "Iran, Islamic Republic of",
+      "Jomhuri-ye Eslāmi-ye Irān"
+    ],
+    "capitals": [
+      "Tehran"
+    ],
+    "currency": {
+      "code": "IRR",
+      "name": "Iranian rial",
+      "symbol": "﷼"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      32,
+      53
+    ],
+    "flag": "flags/ir.svg",
+    "tier": 2,
+    "hint": "Green, white, red with a red emblem in the middle and tiny repeated writing along the stripe edges.",
+    "funFact": "Iran was known to the world as Persia until 1935.",
+    "confusableWith": []
+  },
+  {
+    "code": "IQ",
+    "name": "Iraq",
+    "officialName": "Republic of Iraq",
+    "aliases": [
+      "Republic of Iraq",
+      "Jumhūriyyat al-‘Irāq"
+    ],
+    "capitals": [
+      "Baghdad"
+    ],
+    "currency": {
+      "code": "IQD",
+      "name": "Iraqi dinar",
+      "symbol": "ع.د"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      33,
+      44
+    ],
+    "flag": "flags/iq.svg",
+    "tier": 2,
+    "hint": "Red, white, black stripes with green Arabic writing ('God is great') in the middle.",
+    "funFact": "Iraq was home to ancient Mesopotamia, where writing was invented over 5,000 years ago.",
+    "confusableWith": [
+      "EG",
+      "YE"
+    ]
+  },
+  {
+    "code": "IE",
+    "name": "Ireland",
+    "officialName": "Republic of Ireland",
+    "aliases": [
+      "Republic of Ireland",
+      "Éire",
+      "Poblacht na hÉireann"
+    ],
+    "capitals": [
+      "Dublin"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      53,
+      -8
+    ],
+    "flag": "flags/ie.svg",
+    "tier": 1,
+    "hint": "Green, white, orange vertical, with green at the flagpole. Ivory Coast is the reverse.",
+    "funFact": "Green stands for Irish Catholics, orange for Protestants, and white for peace between them.",
+    "confusableWith": [
+      "CI",
+      "IT"
+    ]
+  },
+  {
+    "code": "IL",
+    "name": "Israel",
+    "officialName": "State of Israel",
+    "aliases": [
+      "State of Israel",
+      "Medīnat Yisrā'el"
+    ],
+    "capitals": [
+      "Jerusalem"
+    ],
+    "currency": {
+      "code": "ILS",
+      "name": "Israeli new shekel",
+      "symbol": "₪"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      31.47,
+      35.13
+    ],
+    "flag": "flags/il.svg",
+    "tier": 1,
+    "hint": "White with two blue stripes and a blue Star of David in the middle.",
+    "funFact": "The Dead Sea, on Israel's border, is the lowest point on land on Earth.",
+    "confusableWith": []
+  },
+  {
+    "code": "IT",
+    "name": "Italy",
+    "officialName": "Italian Republic",
+    "aliases": [
+      "Italian Republic",
+      "Repubblica italiana"
+    ],
+    "capitals": [
+      "Rome"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      42.83333333,
+      12.83333333
+    ],
+    "flag": "flags/it.svg",
+    "tier": 1,
+    "hint": "Green, white, red vertical. Mexico adds an eagle; France swaps green for blue.",
+    "funFact": "Italy has more UNESCO World Heritage Sites than any other country.",
+    "confusableWith": [
+      "IE",
+      "CI"
+    ]
+  },
+  {
+    "code": "CI",
+    "name": "Ivory Coast",
+    "officialName": "Republic of Côte d'Ivoire",
+    "aliases": [
+      "Côte d'Ivoire",
+      "Cote d'Ivoire",
+      "Republic of Côte d'Ivoire",
+      "République de Côte d'Ivoire"
+    ],
+    "capitals": [
+      "Yamoussoukro"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      8,
+      -5
+    ],
+    "flag": "flags/ci.svg",
+    "tier": 2,
+    "hint": "Orange, white, green vertical: Ireland in reverse! Ivory Coast has orange at the flagpole.",
+    "funFact": "Ivory Coast is the world's largest producer of cocoa beans.",
+    "confusableWith": [
+      "IE",
+      "IT"
+    ]
+  },
+  {
+    "code": "JM",
+    "name": "Jamaica",
+    "officialName": "Jamaica",
+    "aliases": [],
+    "capitals": [
+      "Kingston"
+    ],
+    "currency": {
+      "code": "JMD",
+      "name": "Jamaican dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      18.25,
+      -77.5
+    ],
+    "flag": "flags/jm.svg",
+    "tier": 1,
+    "hint": "A gold diagonal cross with green and black triangles, and no red, white or blue.",
+    "funFact": "Jamaica's is the only national flag without any red, white or blue.",
+    "confusableWith": []
+  },
+  {
+    "code": "JP",
+    "name": "Japan",
+    "officialName": "Japan",
+    "aliases": [
+      "Nippon",
+      "Nihon"
+    ],
+    "capitals": [
+      "Tokyo"
+    ],
+    "currency": {
+      "code": "JPY",
+      "name": "Japanese yen",
+      "symbol": "¥"
+    },
+    "continent": "Asia",
+    "subregion": "Eastern Asia",
+    "latlng": [
+      36,
+      138
+    ],
+    "flag": "flags/jp.svg",
+    "tier": 1,
+    "hint": "A red circle in the centre of white. Bangladesh and Palau put an off-centre circle on green and blue.",
+    "funFact": "Japan is made up of more than 14,000 islands.",
+    "confusableWith": [
+      "BD",
+      "PW"
+    ]
+  },
+  {
+    "code": "JO",
+    "name": "Jordan",
+    "officialName": "Hashemite Kingdom of Jordan",
+    "aliases": [
+      "Hashemite Kingdom of Jordan",
+      "al-Mamlakah al-Urdunīyah al-Hāshimīyah"
+    ],
+    "capitals": [
+      "Amman"
+    ],
+    "currency": {
+      "code": "JOD",
+      "name": "Jordanian dinar",
+      "symbol": "د.ا"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      31,
+      36
+    ],
+    "flag": "flags/jo.svg",
+    "tier": 2,
+    "hint": "Black, white, green with a red triangle. The small white 7-pointed star on the red sets it apart from Palestine; no other flag in the region has it.",
+    "funFact": "Petra, a city carved into rose-red rock, is one of the New Seven Wonders of the World.",
+    "confusableWith": [
+      "PS",
+      "SD"
+    ]
+  },
+  {
+    "code": "KZ",
+    "name": "Kazakhstan",
+    "officialName": "Republic of Kazakhstan",
+    "aliases": [
+      "Republic of Kazakhstan",
+      "Qazaqstan",
+      "Казахстан",
+      "Қазақстан Республикасы",
+      "Qazaqstan Respublïkası",
+      "Республика Казахстан",
+      "Respublika Kazakhstan"
+    ],
+    "capitals": [
+      "Astana"
+    ],
+    "currency": {
+      "code": "KZT",
+      "name": "Kazakhstani tenge",
+      "symbol": "₸"
+    },
+    "continent": "Asia",
+    "subregion": "Central Asia",
+    "latlng": [
+      48,
+      68
+    ],
+    "flag": "flags/kz.svg",
+    "tier": 2,
+    "hint": "Sky blue with a gold sun, a soaring eagle, and a gold pattern down the flagpole side.",
+    "funFact": "Kazakhstan is the largest landlocked country in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "KE",
+    "name": "Kenya",
+    "officialName": "Republic of Kenya",
+    "aliases": [
+      "Republic of Kenya",
+      "Jamhuri ya Kenya"
+    ],
+    "capitals": [
+      "Nairobi"
+    ],
+    "currency": {
+      "code": "KES",
+      "name": "Kenyan shilling",
+      "symbol": "Sh"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      1,
+      38
+    ],
+    "flag": "flags/ke.svg",
+    "tier": 2,
+    "hint": "Black, red, green stripes edged in white, with a red Maasai shield and two crossed spears.",
+    "funFact": "Kenya is named after Mount Kenya, Africa's second-highest mountain.",
+    "confusableWith": [
+      "SS"
+    ]
+  },
+  {
+    "code": "KI",
+    "name": "Kiribati",
+    "officialName": "Independent and Sovereign Republic of Kiribati",
+    "aliases": [
+      "Independent and Sovereign Republic of Kiribati",
+      "Republic of Kiribati",
+      "Ribaberiki Kiribati"
+    ],
+    "capitals": [
+      "South Tarawa"
+    ],
+    "currency": {
+      "code": "AUD",
+      "name": "Australian dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Micronesia",
+    "latlng": [
+      1.41666666,
+      173
+    ],
+    "flag": "flags/ki.svg",
+    "tier": 3,
+    "hint": "Red top with a golden frigatebird over a rising sun, and blue and white waves at the bottom.",
+    "funFact": "Kiribati is the only country that lies in all four hemispheres.",
+    "confusableWith": []
+  },
+  {
+    "code": "KW",
+    "name": "Kuwait",
+    "officialName": "State of Kuwait",
+    "aliases": [
+      "State of Kuwait",
+      "Dawlat al-Kuwait"
+    ],
+    "capitals": [
+      "Kuwait City"
+    ],
+    "currency": {
+      "code": "KWD",
+      "name": "Kuwaiti dinar",
+      "symbol": "د.ك"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      29.5,
+      45.75
+    ],
+    "flag": "flags/kw.svg",
+    "tier": 2,
+    "hint": "Green, white, red stripes with a black trapezoid (not a triangle) at the flagpole.",
+    "funFact": "The Kuwaiti dinar is the highest-valued currency unit in the world.",
+    "confusableWith": [
+      "AE"
+    ]
+  },
+  {
+    "code": "KG",
+    "name": "Kyrgyzstan",
+    "officialName": "Kyrgyz Republic",
+    "aliases": [
+      "Kyrgyz Republic",
+      "Киргизия",
+      "Кыргыз Республикасы",
+      "Kyrgyz Respublikasy"
+    ],
+    "capitals": [
+      "Bishkek"
+    ],
+    "currency": {
+      "code": "KGS",
+      "name": "Kyrgyzstani som",
+      "symbol": "с"
+    },
+    "continent": "Asia",
+    "subregion": "Central Asia",
+    "latlng": [
+      41,
+      75
+    ],
+    "flag": "flags/kg.svg",
+    "tier": 3,
+    "hint": "Red with a yellow 40-ray sun and a yurt roof (tunduk) in the middle. The rays were made straight in 2023.",
+    "funFact": "The 40 rays stand for the 40 tribes united by the legendary hero Manas.",
+    "confusableWith": []
+  },
+  {
+    "code": "LA",
+    "name": "Laos",
+    "officialName": "Lao People's Democratic Republic",
+    "aliases": [
+      "Lao People's Democratic Republic",
+      "Sathalanalat Paxathipatai Paxaxon Lao"
+    ],
+    "capitals": [
+      "Vientiane"
+    ],
+    "currency": {
+      "code": "LAK",
+      "name": "Lao kip",
+      "symbol": "₭"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      18,
+      105
+    ],
+    "flag": "flags/la.svg",
+    "tier": 3,
+    "hint": "Red, blue, red stripes with a white circle (the moon over the Mekong) in the middle.",
+    "funFact": "Laos is the most heavily bombed country per person in history.",
+    "confusableWith": [
+      "KP"
+    ]
+  },
+  {
+    "code": "LV",
+    "name": "Latvia",
+    "officialName": "Republic of Latvia",
+    "aliases": [
+      "Republic of Latvia",
+      "Latvijas Republika"
+    ],
+    "capitals": [
+      "Riga"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      57,
+      25
+    ],
+    "flag": "flags/lv.svg",
+    "tier": 2,
+    "hint": "Dark maroon-red with a thin white stripe, darker and thinner than Austria's.",
+    "funFact": "Latvia's red-white-red design is mentioned in a 13th-century chronicle.",
+    "confusableWith": [
+      "AT",
+      "PE",
+      "CA"
+    ]
+  },
+  {
+    "code": "LB",
+    "name": "Lebanon",
+    "officialName": "Lebanese Republic",
+    "aliases": [
+      "Lebanese Republic",
+      "Al-Jumhūrīyah Al-Libnānīyah"
+    ],
+    "capitals": [
+      "Beirut"
+    ],
+    "currency": {
+      "code": "LBP",
+      "name": "Lebanese pound",
+      "symbol": "ل.ل"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      33.83333333,
+      35.83333333
+    ],
+    "flag": "flags/lb.svg",
+    "tier": 2,
+    "hint": "Red, white, red with a green cedar tree in the middle.",
+    "funFact": "The cedar of Lebanon is mentioned dozens of times in the Bible.",
+    "confusableWith": []
+  },
+  {
+    "code": "LS",
+    "name": "Lesotho",
+    "officialName": "Kingdom of Lesotho",
+    "aliases": [
+      "Kingdom of Lesotho",
+      "Muso oa Lesotho"
+    ],
+    "capitals": [
+      "Maseru"
+    ],
+    "currency": {
+      "code": "LSL",
+      "name": "Lesotho loti",
+      "symbol": "L"
+    },
+    "continent": "Africa",
+    "subregion": "Southern Africa",
+    "latlng": [
+      -29.5,
+      28.5
+    ],
+    "flag": "flags/ls.svg",
+    "tier": 3,
+    "hint": "Blue, white, green stripes with a black Basotho straw hat in the middle.",
+    "funFact": "Lesotho is entirely surrounded by South Africa, and even its lowest point is about 1,400 m above sea level.",
+    "confusableWith": []
+  },
+  {
+    "code": "LR",
+    "name": "Liberia",
+    "officialName": "Republic of Liberia",
+    "aliases": [
+      "Republic of Liberia"
+    ],
+    "capitals": [
+      "Monrovia"
+    ],
+    "currency": {
+      "code": "LRD",
+      "name": "Liberian dollar",
+      "symbol": "$"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      6.5,
+      -9.5
+    ],
+    "flag": "flags/lr.svg",
+    "tier": 2,
+    "hint": "Looks like the USA flag but with only 11 stripes and one big white star.",
+    "funFact": "Founded by freed American slaves, Liberia became Africa's first republic in 1847.",
+    "confusableWith": [
+      "MY",
+      "US"
+    ]
+  },
+  {
+    "code": "LY",
+    "name": "Libya",
+    "officialName": "State of Libya",
+    "aliases": [
+      "State of Libya",
+      "Dawlat Libya"
+    ],
+    "capitals": [
+      "Tripoli"
+    ],
+    "currency": {
+      "code": "LYD",
+      "name": "Libyan dinar",
+      "symbol": "ل.د"
+    },
+    "continent": "Africa",
+    "subregion": "Northern Africa",
+    "latlng": [
+      25,
+      17
+    ],
+    "flag": "flags/ly.svg",
+    "tier": 2,
+    "hint": "Red, black, green stripes with a white crescent and star on the wide black middle.",
+    "funFact": "From 1977 to 2011 Libya's flag was plain green, the only single-colour national flag.",
+    "confusableWith": []
+  },
+  {
+    "code": "LI",
+    "name": "Liechtenstein",
+    "officialName": "Principality of Liechtenstein",
+    "aliases": [
+      "Principality of Liechtenstein",
+      "Fürstentum Liechtenstein"
+    ],
+    "capitals": [
+      "Vaduz"
+    ],
+    "currency": {
+      "code": "CHF",
+      "name": "Swiss franc",
+      "symbol": "Fr"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      47.26666666,
+      9.53333333
+    ],
+    "flag": "flags/li.svg",
+    "tier": 3,
+    "hint": "Blue over red with a small gold crown in the top-left corner.",
+    "funFact": "The crown was added after the 1936 Olympics revealed that Liechtenstein's flag was identical to Haiti's.",
+    "confusableWith": []
+  },
+  {
+    "code": "LT",
+    "name": "Lithuania",
+    "officialName": "Republic of Lithuania",
+    "aliases": [
+      "Republic of Lithuania",
+      "Lietuvos Respublika"
+    ],
+    "capitals": [
+      "Vilnius"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      56,
+      24
+    ],
+    "flag": "flags/lt.svg",
+    "tier": 2,
+    "hint": "Yellow, green, red horizontal, like a traffic light with green in the middle.",
+    "funFact": "Lithuania was the first Soviet republic to declare independence, in 1990.",
+    "confusableWith": []
+  },
+  {
+    "code": "LU",
+    "name": "Luxembourg",
+    "officialName": "Grand Duchy of Luxembourg",
+    "aliases": [
+      "Grand Duchy of Luxembourg",
+      "Grand-Duché de Luxembourg",
+      "Großherzogtum Luxemburg",
+      "Groussherzogtum Lëtzebuerg"
+    ],
+    "capitals": [
+      "Luxembourg"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      49.75,
+      6.16666666
+    ],
+    "flag": "flags/lu.svg",
+    "tier": 2,
+    "hint": "Red, white, light blue. The Netherlands is the same but with a darker blue.",
+    "funFact": "Luxembourg is the world's only remaining Grand Duchy.",
+    "confusableWith": [
+      "NL",
+      "PY"
+    ]
+  },
+  {
+    "code": "MG",
+    "name": "Madagascar",
+    "officialName": "Republic of Madagascar",
+    "aliases": [
+      "Republic of Madagascar",
+      "Repoblikan'i Madagasikara",
+      "République de Madagascar"
+    ],
+    "capitals": [
+      "Antananarivo"
+    ],
+    "currency": {
+      "code": "MGA",
+      "name": "Malagasy ariary",
+      "symbol": "Ar"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -20,
+      47
+    ],
+    "flag": "flags/mg.svg",
+    "tier": 2,
+    "hint": "White vertical stripe on the left, red over green on the right.",
+    "funFact": "Around 90% of Madagascar's wildlife, including every lemur, lives nowhere else on Earth.",
+    "confusableWith": []
+  },
+  {
+    "code": "MW",
+    "name": "Malawi",
+    "officialName": "Republic of Malawi",
+    "aliases": [
+      "Republic of Malawi"
+    ],
+    "capitals": [
+      "Lilongwe"
+    ],
+    "currency": {
+      "code": "MWK",
+      "name": "Malawian kwacha",
+      "symbol": "MK"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -13.5,
+      34
+    ],
+    "flag": "flags/mw.svg",
+    "tier": 3,
+    "hint": "Black, red, green stripes with a red rising sun on the black top stripe.",
+    "funFact": "Lake Malawi has more species of fish than any other lake on Earth.",
+    "confusableWith": []
+  },
+  {
+    "code": "MY",
+    "name": "Malaysia",
+    "officialName": "Malaysia",
+    "aliases": [],
+    "capitals": [
+      "Kuala Lumpur"
+    ],
+    "currency": {
+      "code": "MYR",
+      "name": "Malaysian ringgit",
+      "symbol": "RM"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      2.5,
+      112.5
+    ],
+    "flag": "flags/my.svg",
+    "tier": 2,
+    "hint": "Red and white stripes like the USA, but the blue corner holds a yellow crescent and 14-pointed star.",
+    "funFact": "Kuala Lumpur's Petronas Twin Towers were the tallest buildings in the world from 1998 to 2004.",
+    "confusableWith": [
+      "US",
+      "LR"
+    ]
+  },
+  {
+    "code": "MV",
+    "name": "Maldives",
+    "officialName": "Republic of the Maldives",
+    "aliases": [
+      "Republic of the Maldives",
+      "Maldive Islands",
+      "Dhivehi Raajjeyge Jumhooriyya"
+    ],
+    "capitals": [
+      "Malé"
+    ],
+    "currency": {
+      "code": "MVR",
+      "name": "Maldivian rufiyaa",
+      "symbol": ".ރ"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      3.25,
+      73
+    ],
+    "flag": "flags/mv.svg",
+    "tier": 2,
+    "hint": "Red border around a green rectangle holding a white crescent.",
+    "funFact": "The Maldives is the world's lowest-lying country, averaging about 1.5 m above sea level.",
+    "confusableWith": []
+  },
+  {
+    "code": "ML",
+    "name": "Mali",
+    "officialName": "Republic of Mali",
+    "aliases": [
+      "Republic of Mali",
+      "République du Mali"
+    ],
+    "capitals": [
+      "Bamako"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      17,
+      -4
+    ],
+    "flag": "flags/ml.svg",
+    "tier": 3,
+    "hint": "Green, yellow, red vertical: Guinea reversed! Mali has green at the flagpole.",
+    "funFact": "Timbuktu in Mali was a great centre of learning, and its ancient manuscripts are still preserved.",
+    "confusableWith": [
+      "SN",
+      "GN",
+      "CM"
+    ]
+  },
+  {
+    "code": "MT",
+    "name": "Malta",
+    "officialName": "Republic of Malta",
+    "aliases": [
+      "Republic of Malta",
+      "Repubblika ta' Malta"
+    ],
+    "capitals": [
+      "Valletta"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      35.83333333,
+      14.58333333
+    ],
+    "flag": "flags/mt.svg",
+    "tier": 2,
+    "hint": "White and red halves with a small grey George Cross in the top-left.",
+    "funFact": "King George VI awarded the George Cross to the whole island for its bravery in World War II.",
+    "confusableWith": []
+  },
+  {
+    "code": "MH",
+    "name": "Marshall Islands",
+    "officialName": "Republic of the Marshall Islands",
+    "aliases": [
+      "Republic of the Marshall Islands",
+      "Aolepān Aorōkin M̧ajeļ"
+    ],
+    "capitals": [
+      "Majuro"
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Micronesia",
+    "latlng": [
+      9,
+      168
+    ],
+    "flag": "flags/mh.svg",
+    "tier": 3,
+    "hint": "Blue with two diagonal stripes (orange and white) and a large 24-pointed white star.",
+    "funFact": "Bikini Atoll, where the USA tested nuclear bombs, is in the Marshall Islands.",
+    "confusableWith": []
+  },
+  {
+    "code": "MR",
+    "name": "Mauritania",
+    "officialName": "Islamic Republic of Mauritania",
+    "aliases": [
+      "Islamic Republic of Mauritania",
+      "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah"
+    ],
+    "capitals": [
+      "Nouakchott"
+    ],
+    "currency": {
+      "code": "MRU",
+      "name": "Mauritanian ouguiya",
+      "symbol": "UM"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      20,
+      -12
+    ],
+    "flag": "flags/mr.svg",
+    "tier": 3,
+    "hint": "Green with a gold crescent and star, plus thin red bands at the top and bottom (added in 2017).",
+    "funFact": "The 'Eye of the Sahara', a 40 km wide rock formation visible from space, is in Mauritania.",
+    "confusableWith": []
+  },
+  {
+    "code": "MU",
+    "name": "Mauritius",
+    "officialName": "Republic of Mauritius",
+    "aliases": [
+      "Republic of Mauritius",
+      "République de Maurice"
+    ],
+    "capitals": [
+      "Port Louis"
+    ],
+    "currency": {
+      "code": "MUR",
+      "name": "Mauritian rupee",
+      "symbol": "₨"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -20.28333333,
+      57.55
+    ],
+    "flag": "flags/mu.svg",
+    "tier": 3,
+    "hint": "Four equal horizontal stripes: red, blue, yellow, green.",
+    "funFact": "Mauritius was the only home of the dodo, which went extinct in the late 1600s.",
+    "confusableWith": []
+  },
+  {
+    "code": "MX",
+    "name": "Mexico",
+    "officialName": "United Mexican States",
+    "aliases": [
+      "United Mexican States",
+      "Mexicanos",
+      "Estados Unidos Mexicanos"
+    ],
+    "capitals": [
+      "Mexico City"
+    ],
+    "currency": {
+      "code": "MXN",
+      "name": "Mexican peso",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "North America",
+    "latlng": [
+      23,
+      -102
+    ],
+    "flag": "flags/mx.svg",
+    "tier": 1,
+    "hint": "Green, white, red vertical with an eagle eating a snake on a cactus.",
+    "funFact": "The eagle comes from the Aztec legend of founding Tenochtitlan, now Mexico City.",
+    "confusableWith": []
+  },
+  {
+    "code": "FM",
+    "name": "Micronesia",
+    "officialName": "Federated States of Micronesia",
+    "aliases": [
+      "Federated States of Micronesia",
+      "Micronesia, Federated States of"
+    ],
+    "capitals": [
+      "Palikir"
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Micronesia",
+    "latlng": [
+      6.91666666,
+      158.25
+    ],
+    "flag": "flags/fm.svg",
+    "tier": 3,
+    "hint": "Light blue with four white stars in a diamond, one for each state.",
+    "funFact": "On Yap island, giant stone discs called Rai stones, some 4 m wide, were used as money.",
+    "confusableWith": []
+  },
+  {
+    "code": "MD",
+    "name": "Moldova",
+    "officialName": "Republic of Moldova",
+    "aliases": [
+      "Republic of Moldova",
+      "Moldova, Republic of",
+      "Republica Moldova"
+    ],
+    "capitals": [
+      "Chișinău"
+    ],
+    "currency": {
+      "code": "MDL",
+      "name": "Moldovan leu",
+      "symbol": "L"
+    },
+    "continent": "Europe",
+    "subregion": "Eastern Europe",
+    "latlng": [
+      47,
+      29
+    ],
+    "flag": "flags/md.svg",
+    "tier": 3,
+    "hint": "Blue, yellow, red vertical like Romania, but with an eagle coat of arms in the middle.",
+    "funFact": "Moldova's Mileștii Mici cellars hold the world's largest wine collection, nearly 2 million bottles.",
+    "confusableWith": [
+      "TD",
+      "RO",
+      "AD"
+    ]
+  },
+  {
+    "code": "MC",
+    "name": "Monaco",
+    "officialName": "Principality of Monaco",
+    "aliases": [
+      "Principality of Monaco",
+      "Principauté de Monaco"
+    ],
+    "capitals": [
+      "Monaco"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      43.73333333,
+      7.4
+    ],
+    "flag": "flags/mc.svg",
+    "tier": 2,
+    "hint": "Red over white, the same colours as Indonesia but squarer. Poland is white over red.",
+    "funFact": "Monaco is the world's second-smallest country, smaller than New York's Central Park.",
+    "confusableWith": [
+      "ID",
+      "PL"
+    ]
+  },
+  {
+    "code": "MN",
+    "name": "Mongolia",
+    "officialName": "Mongolia",
+    "aliases": [],
+    "capitals": [
+      "Ulan Bator"
+    ],
+    "currency": {
+      "code": "MNT",
+      "name": "Mongolian tögrög",
+      "symbol": "₮"
+    },
+    "continent": "Asia",
+    "subregion": "Eastern Asia",
+    "latlng": [
+      46,
+      105
+    ],
+    "flag": "flags/mn.svg",
+    "tier": 2,
+    "hint": "Red, blue, red vertical with a yellow Soyombo symbol on the left red stripe.",
+    "funFact": "Mongolia is the least densely populated country in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "ME",
+    "name": "Montenegro",
+    "officialName": "Montenegro",
+    "aliases": [
+      "Crna Gora"
+    ],
+    "capitals": [
+      "Podgorica"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      42.5,
+      19.3
+    ],
+    "flag": "flags/me.svg",
+    "tier": 3,
+    "hint": "Red with a gold border and a gold double-headed eagle. Albania's eagle is black.",
+    "funFact": "Montenegro uses the euro even though it isn't in the EU.",
+    "confusableWith": []
+  },
+  {
+    "code": "MA",
+    "name": "Morocco",
+    "officialName": "Kingdom of Morocco",
+    "aliases": [
+      "Kingdom of Morocco",
+      "Al-Mamlakah al-Maġribiyah"
+    ],
+    "capitals": [
+      "Rabat"
+    ],
+    "currency": {
+      "code": "MAD",
+      "name": "Moroccan dirham",
+      "symbol": "د.م."
+    },
+    "continent": "Africa",
+    "subregion": "Northern Africa",
+    "latlng": [
+      32,
+      -5
+    ],
+    "flag": "flags/ma.svg",
+    "tier": 1,
+    "hint": "Red with a green five-pointed star drawn as an outline. Vietnam's star is solid yellow.",
+    "funFact": "Morocco's University of al-Qarawiyyin, founded in 859, is considered the oldest existing university.",
+    "confusableWith": []
+  },
+  {
+    "code": "MZ",
+    "name": "Mozambique",
+    "officialName": "Republic of Mozambique",
+    "aliases": [
+      "Republic of Mozambique",
+      "República de Moçambique"
+    ],
+    "capitals": [
+      "Maputo"
+    ],
+    "currency": {
+      "code": "MZN",
+      "name": "Mozambican metical",
+      "symbol": "MT"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -18.25,
+      35
+    ],
+    "flag": "flags/mz.svg",
+    "tier": 3,
+    "hint": "The only national flag with a rifle: an AK-47 crossed with a hoe on a book, inside a red triangle.",
+    "funFact": "Mozambique's Indian Ocean coastline stretches about 2,500 km.",
+    "confusableWith": []
+  },
+  {
+    "code": "MM",
+    "name": "Myanmar",
+    "officialName": "Republic of the Union of Myanmar",
+    "aliases": [
+      "Burma",
+      "Republic of the Union of Myanmar",
+      "Pyidaunzu Thanmăda Myăma Nainngandaw"
+    ],
+    "capitals": [
+      "Naypyidaw"
+    ],
+    "currency": {
+      "code": "MMK",
+      "name": "Burmese kyat",
+      "symbol": "Ks"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      22,
+      98
+    ],
+    "flag": "flags/mm.svg",
+    "tier": 2,
+    "hint": "Yellow, green, red stripes with one large white star across all three.",
+    "funFact": "Bagan in Myanmar has more than 2,000 ancient Buddhist temples and pagodas.",
+    "confusableWith": []
+  },
+  {
+    "code": "NA",
+    "name": "Namibia",
+    "officialName": "Republic of Namibia",
+    "aliases": [
+      "Republic of Namibia",
+      "Namibië"
+    ],
+    "capitals": [
+      "Windhoek"
+    ],
+    "currency": {
+      "code": "NAD",
+      "name": "Namibian dollar",
+      "symbol": "$"
+    },
+    "continent": "Africa",
+    "subregion": "Southern Africa",
+    "latlng": [
+      -22,
+      17
+    ],
+    "flag": "flags/na.svg",
+    "tier": 3,
+    "hint": "A red diagonal band edged in white, a blue top corner with a golden 12-ray sun, and green at the bottom.",
+    "funFact": "The Namib Desert is thought to be the oldest desert in the world, at least 55 million years old.",
+    "confusableWith": []
+  },
+  {
+    "code": "NR",
+    "name": "Nauru",
+    "officialName": "Republic of Nauru",
+    "aliases": [
+      "Republic of Nauru",
+      "Naoero",
+      "Pleasant Island",
+      "Ripublik Naoero"
+    ],
+    "capitals": [
+      "Yaren"
+    ],
+    "currency": {
+      "code": "AUD",
+      "name": "Australian dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Micronesia",
+    "latlng": [
+      -0.53333333,
+      166.91666666
+    ],
+    "flag": "flags/nr.svg",
+    "tier": 3,
+    "hint": "Blue with a thin yellow line (the equator) and a white 12-pointed star below it.",
+    "funFact": "Nauru is the world's smallest island country and has no official capital.",
+    "confusableWith": []
+  },
+  {
+    "code": "NP",
+    "name": "Nepal",
+    "officialName": "Federal Democratic Republic of Nepal",
+    "aliases": [
+      "Federal Democratic Republic of Nepal",
+      "Loktāntrik Ganatantra Nepāl"
+    ],
+    "capitals": [
+      "Kathmandu"
+    ],
+    "currency": {
+      "code": "NPR",
+      "name": "Nepalese rupee",
+      "symbol": "₨"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      28,
+      84
+    ],
+    "flag": "flags/np.svg",
+    "tier": 1,
+    "hint": "The only non-rectangular national flag: two stacked triangles with a moon and a sun.",
+    "funFact": "Nepal is home to 8 of the world's 10 highest mountains, including Everest.",
+    "confusableWith": []
+  },
+  {
+    "code": "NL",
+    "name": "Netherlands",
+    "officialName": "Kingdom of the Netherlands",
+    "aliases": [
+      "Kingdom of the Netherlands",
+      "Holland",
+      "Nederland",
+      "The Netherlands"
+    ],
+    "capitals": [
+      "Amsterdam"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      52.5,
+      5.75
+    ],
+    "flag": "flags/nl.svg",
+    "tier": 1,
+    "hint": "Red, white, blue horizontal. Luxembourg's blue is lighter; Russia goes white-blue-red.",
+    "funFact": "There are more bicycles than people in the Netherlands.",
+    "confusableWith": [
+      "LU",
+      "PY"
+    ]
+  },
+  {
+    "code": "NZ",
+    "name": "New Zealand",
+    "officialName": "New Zealand",
+    "aliases": [
+      "Aotearoa"
+    ],
+    "capitals": [
+      "Wellington"
+    ],
+    "currency": {
+      "code": "NZD",
+      "name": "New Zealand dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "latlng": [
+      -41,
+      174
+    ],
+    "flag": "flags/nz.svg",
+    "tier": 1,
+    "hint": "Blue with the Union Jack and four red stars outlined in white (the Southern Cross).",
+    "funFact": "New Zealand was the first country to give women the vote, in 1893.",
+    "confusableWith": [
+      "AU",
+      "TV",
+      "FJ"
+    ]
+  },
+  {
+    "code": "NI",
+    "name": "Nicaragua",
+    "officialName": "Republic of Nicaragua",
+    "aliases": [
+      "Republic of Nicaragua",
+      "República de Nicaragua"
+    ],
+    "capitals": [
+      "Managua"
+    ],
+    "currency": {
+      "code": "NIO",
+      "name": "Nicaraguan córdoba",
+      "symbol": "C$"
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      13,
+      -85
+    ],
+    "flag": "flags/ni.svg",
+    "tier": 3,
+    "hint": "Blue, white, blue with a triangle emblem showing volcanoes and a rainbow.",
+    "funFact": "Nicaragua's rainbow makes it one of only two national flags with purple (the other is Dominica).",
+    "confusableWith": [
+      "HN",
+      "SV",
+      "GT",
+      "AR"
+    ]
+  },
+  {
+    "code": "NE",
+    "name": "Niger",
+    "officialName": "Republic of Niger",
+    "aliases": [
+      "Republic of Niger",
+      "Nijar"
+    ],
+    "capitals": [
+      "Niamey"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      16,
+      8
+    ],
+    "flag": "flags/ne.svg",
+    "tier": 3,
+    "hint": "Orange, white, green horizontal with an orange circle in the middle. India has a blue wheel instead.",
+    "funFact": "Niger is named after the Niger River, and about 80% of it lies in the Sahara Desert.",
+    "confusableWith": [
+      "IN"
+    ]
+  },
+  {
+    "code": "NG",
+    "name": "Nigeria",
+    "officialName": "Federal Republic of Nigeria",
+    "aliases": [
+      "Federal Republic of Nigeria",
+      "Nijeriya",
+      "Naíjíríà"
+    ],
+    "capitals": [
+      "Abuja"
+    ],
+    "currency": {
+      "code": "NGN",
+      "name": "Nigerian naira",
+      "symbol": "₦"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      10,
+      8
+    ],
+    "flag": "flags/ng.svg",
+    "tier": 1,
+    "hint": "Simple green-white-green vertical stripes with nothing on them.",
+    "funFact": "Nigeria is Africa's most populous country, and its 'Nollywood' film industry is one of the biggest in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "KP",
+    "name": "North Korea",
+    "officialName": "Democratic People's Republic of Korea",
+    "aliases": [
+      "DPRK",
+      "Democratic People's Republic of Korea",
+      "조선민주주의인민공화국",
+      "Chosŏn Minjujuŭi Inmin Konghwaguk",
+      "Korea, Democratic People's Republic of"
+    ],
+    "capitals": [
+      "Pyongyang"
+    ],
+    "currency": {
+      "code": "KPW",
+      "name": "North Korean won",
+      "symbol": "₩"
+    },
+    "continent": "Asia",
+    "subregion": "Eastern Asia",
+    "latlng": [
+      40,
+      127
+    ],
+    "flag": "flags/kp.svg",
+    "tier": 2,
+    "hint": "Blue, red, blue stripes with thin white lines and a red star inside a white circle.",
+    "funFact": "Rungrado May Day Stadium in Pyongyang is one of the largest stadiums in the world.",
+    "confusableWith": [
+      "LA"
+    ]
+  },
+  {
+    "code": "MK",
+    "name": "North Macedonia",
+    "officialName": "Republic of North Macedonia",
+    "aliases": [
+      "Macedonia",
+      "Republic of North Macedonia",
+      "The former Yugoslav Republic of Macedonia",
+      "Macedonia, The Former Yugoslav Republic of",
+      "Република Северна Македонија"
+    ],
+    "capitals": [
+      "Skopje"
+    ],
+    "currency": {
+      "code": "MKD",
+      "name": "denar",
+      "symbol": "den"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      41.83333333,
+      22
+    ],
+    "flag": "flags/mk.svg",
+    "tier": 2,
+    "hint": "Red with a yellow sun whose eight rays stretch all the way to the edges.",
+    "funFact": "Mother Teresa was born in Skopje, North Macedonia's capital.",
+    "confusableWith": []
+  },
+  {
+    "code": "NO",
+    "name": "Norway",
+    "officialName": "Kingdom of Norway",
+    "aliases": [
+      "Kingdom of Norway",
+      "Norge",
+      "Noreg",
+      "Kongeriket Norge",
+      "Kongeriket Noreg"
+    ],
+    "capitals": [
+      "Oslo"
+    ],
+    "currency": {
+      "code": "NOK",
+      "name": "Norwegian krone",
+      "symbol": "kr"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      62,
+      10
+    ],
+    "flag": "flags/no.svg",
+    "tier": 1,
+    "hint": "Red with a blue Nordic cross outlined in white. Iceland is the colour-swap.",
+    "funFact": "The Nobel Peace Prize is awarded in Oslo every year.",
+    "confusableWith": [
+      "IS",
+      "DK",
+      "SE",
+      "FI"
+    ]
+  },
+  {
+    "code": "OM",
+    "name": "Oman",
+    "officialName": "Sultanate of Oman",
+    "aliases": [
+      "Sultanate of Oman",
+      "Salṭanat ʻUmān"
+    ],
+    "capitals": [
+      "Muscat"
+    ],
+    "currency": {
+      "code": "OMR",
+      "name": "Omani rial",
+      "symbol": "ر.ع."
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      21,
+      57
+    ],
+    "flag": "flags/om.svg",
+    "tier": 3,
+    "hint": "A red vertical band with a white emblem of crossed swords and a dagger, next to white, red and green stripes.",
+    "funFact": "Sultan Qaboos ruled Oman for nearly 50 years, from 1970 to 2020.",
+    "confusableWith": []
+  },
+  {
+    "code": "PK",
+    "name": "Pakistan",
+    "officialName": "Islamic Republic of Pakistan",
+    "aliases": [
+      "Islamic Republic of Pakistan",
+      "Pākistān",
+      "Islāmī Jumhūriya'eh Pākistān"
+    ],
+    "capitals": [
+      "Islamabad"
+    ],
+    "currency": {
+      "code": "PKR",
+      "name": "Pakistani rupee",
+      "symbol": "₨"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      30,
+      70
+    ],
+    "flag": "flags/pk.svg",
+    "tier": 1,
+    "hint": "Dark green with a white crescent and star, plus a white vertical stripe at the flagpole.",
+    "funFact": "K2, the world's second-highest mountain, is in Pakistan.",
+    "confusableWith": []
+  },
+  {
+    "code": "PW",
+    "name": "Palau",
+    "officialName": "Republic of Palau",
+    "aliases": [
+      "Republic of Palau",
+      "Beluu er a Belau"
+    ],
+    "capitals": [
+      "Ngerulmud"
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Micronesia",
+    "latlng": [
+      7.5,
+      134.5
+    ],
+    "flag": "flags/pw.svg",
+    "tier": 3,
+    "hint": "Light blue with a yellow circle (the moon) set slightly off-centre.",
+    "funFact": "Palau created the world's first shark sanctuary in 2009.",
+    "confusableWith": [
+      "JP",
+      "BD"
+    ]
+  },
+  {
+    "code": "PS",
+    "name": "Palestine",
+    "officialName": "State of Palestine",
+    "aliases": [
+      "State of Palestine",
+      "Palestine, State of",
+      "Dawlat Filasṭin"
+    ],
+    "capitals": [
+      "Ramallah"
+    ],
+    "capitalNote": "Ramallah is the administrative centre; Jerusalem is the proclaimed capital.",
+    "currency": {
+      "code": "ILS",
+      "name": "Israeli new shekel",
+      "symbol": "₪"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      31.9,
+      35.2
+    ],
+    "flag": "flags/ps.svg",
+    "tier": 2,
+    "hint": "Black, white, green with a red triangle. It's like Jordan, but without the white star.",
+    "funFact": "Jericho in the West Bank is one of the oldest continuously inhabited cities in the world.",
+    "confusableWith": [
+      "JO",
+      "SD"
+    ]
+  },
+  {
+    "code": "PA",
+    "name": "Panama",
+    "officialName": "Republic of Panama",
+    "aliases": [
+      "Republic of Panama",
+      "República de Panamá"
+    ],
+    "capitals": [
+      "Panama City"
+    ],
+    "currency": {
+      "code": "PAB",
+      "name": "Panamanian balboa",
+      "symbol": "B/."
+    },
+    "continent": "North America",
+    "subregion": "Central America",
+    "latlng": [
+      9,
+      -80
+    ],
+    "flag": "flags/pa.svg",
+    "tier": 2,
+    "hint": "Four squares: white with a blue star, red, blue, and white with a red star.",
+    "funFact": "The Panama Canal, opened in 1914, links the Atlantic and Pacific Oceans.",
+    "confusableWith": []
+  },
+  {
+    "code": "PG",
+    "name": "Papua New Guinea",
+    "officialName": "Independent State of Papua New Guinea",
+    "aliases": [
+      "Independent State of Papua New Guinea",
+      "Independen Stet bilong Papua Niugini"
+    ],
+    "capitals": [
+      "Port Moresby"
+    ],
+    "currency": {
+      "code": "PGK",
+      "name": "Papua New Guinean kina",
+      "symbol": "K"
+    },
+    "continent": "Oceania",
+    "subregion": "Melanesia",
+    "latlng": [
+      -6,
+      147
+    ],
+    "flag": "flags/pg.svg",
+    "tier": 2,
+    "hint": "Split diagonally: red with a gold bird-of-paradise, and black with five white stars.",
+    "funFact": "More than 800 languages are spoken in Papua New Guinea, more than in any other country.",
+    "confusableWith": []
+  },
+  {
+    "code": "PY",
+    "name": "Paraguay",
+    "officialName": "Republic of Paraguay",
+    "aliases": [
+      "Republic of Paraguay",
+      "República del Paraguay",
+      "Tetã Paraguái"
+    ],
+    "capitals": [
+      "Asunción"
+    ],
+    "currency": {
+      "code": "PYG",
+      "name": "Paraguayan guaraní",
+      "symbol": "₲"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -23,
+      -58
+    ],
+    "flag": "flags/py.svg",
+    "tier": 2,
+    "hint": "Red, white, blue horizontal with an emblem. The front and back of the flag are different!",
+    "funFact": "Paraguay shares the Itaipu Dam with Brazil, one of the biggest hydroelectric dams on Earth.",
+    "confusableWith": [
+      "NL",
+      "LU"
+    ]
+  },
+  {
+    "code": "PE",
+    "name": "Peru",
+    "officialName": "Republic of Peru",
+    "aliases": [
+      "Republic of Peru",
+      "República del Perú"
+    ],
+    "capitals": [
+      "Lima"
+    ],
+    "currency": {
+      "code": "PEN",
+      "name": "Peruvian sol",
+      "symbol": "S/."
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -10,
+      -76
+    ],
+    "flag": "flags/pe.svg",
+    "tier": 1,
+    "hint": "Red, white, red vertical: Canada's colours without the maple leaf.",
+    "funFact": "Machu Picchu, the Inca citadel in the Andes, is in Peru.",
+    "confusableWith": [
+      "AT",
+      "LV",
+      "CA"
+    ]
+  },
+  {
+    "code": "PH",
+    "name": "Philippines",
+    "officialName": "Republic of the Philippines",
+    "aliases": [
+      "Republic of the Philippines",
+      "Repúblika ng Pilipinas"
+    ],
+    "capitals": [
+      "Manila"
+    ],
+    "currency": {
+      "code": "PHP",
+      "name": "Philippine peso",
+      "symbol": "₱"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      13,
+      122
+    ],
+    "flag": "flags/ph.svg",
+    "tier": 1,
+    "hint": "Blue over red with a white triangle, a gold 8-ray sun and three stars.",
+    "funFact": "It's flown upside down, with red on top, in times of war.",
+    "confusableWith": [
+      "CZ"
+    ]
+  },
+  {
+    "code": "PL",
+    "name": "Poland",
+    "officialName": "Republic of Poland",
+    "aliases": [
+      "Republic of Poland",
+      "Rzeczpospolita Polska"
+    ],
+    "capitals": [
+      "Warsaw"
+    ],
+    "currency": {
+      "code": "PLN",
+      "name": "Polish złoty",
+      "symbol": "zł"
+    },
+    "continent": "Europe",
+    "subregion": "Central Europe",
+    "latlng": [
+      52,
+      20
+    ],
+    "flag": "flags/pl.svg",
+    "tier": 1,
+    "hint": "White over red. Indonesia and Monaco are red over white.",
+    "funFact": "Marie Curie, the first person to win two Nobel Prizes, was born in Warsaw.",
+    "confusableWith": [
+      "ID",
+      "MC"
+    ]
+  },
+  {
+    "code": "PT",
+    "name": "Portugal",
+    "officialName": "Portuguese Republic",
+    "aliases": [
+      "Portuguese Republic",
+      "Portuguesa",
+      "República Portuguesa"
+    ],
+    "capitals": [
+      "Lisbon"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      39.5,
+      -8
+    ],
+    "flag": "flags/pt.svg",
+    "tier": 1,
+    "hint": "Green and red with a yellow armillary sphere (a globe-like instrument) and shield on the dividing line.",
+    "funFact": "Portugal and England have the world's oldest active alliance, dating from 1373.",
+    "confusableWith": []
+  },
+  {
+    "code": "QA",
+    "name": "Qatar",
+    "officialName": "State of Qatar",
+    "aliases": [
+      "State of Qatar",
+      "Dawlat Qaṭar"
+    ],
+    "capitals": [
+      "Doha"
+    ],
+    "currency": {
+      "code": "QAR",
+      "name": "Qatari riyal",
+      "symbol": "ر.ق"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      25.5,
+      51.25
+    ],
+    "flag": "flags/qa.svg",
+    "tier": 2,
+    "hint": "Maroon with a white band and a 9-point zigzag. Bahrain is brighter red with 5 points.",
+    "funFact": "Qatar's flag is the only national flag more than twice as wide as it is tall (11:28).",
+    "confusableWith": [
+      "BH"
+    ]
+  },
+  {
+    "code": "CG",
+    "name": "Republic of the Congo",
+    "officialName": "Republic of the Congo",
+    "aliases": [
+      "Congo",
+      "Congo-Brazzaville"
+    ],
+    "capitals": [
+      "Brazzaville"
+    ],
+    "currency": {
+      "code": "XAF",
+      "name": "Central African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      -1,
+      15
+    ],
+    "flag": "flags/cg.svg",
+    "tier": 3,
+    "hint": "A yellow diagonal band separates green (top-left) from red (bottom-right). No stars or emblems.",
+    "funFact": "Its capital Brazzaville faces DR Congo's capital Kinshasa across the Congo River, the closest pair of capitals after Rome and Vatican City.",
+    "confusableWith": []
+  },
+  {
+    "code": "RO",
+    "name": "Romania",
+    "officialName": "Romania",
+    "aliases": [
+      "Rumania",
+      "Roumania",
+      "România"
+    ],
+    "capitals": [
+      "Bucharest"
+    ],
+    "currency": {
+      "code": "RON",
+      "name": "Romanian leu",
+      "symbol": "lei"
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      46,
+      25
+    ],
+    "flag": "flags/ro.svg",
+    "tier": 2,
+    "hint": "Blue, yellow, red vertical, almost identical to Chad. Romania's blue is a little lighter.",
+    "funFact": "Bucharest's Palace of the Parliament is one of the heaviest buildings in the world.",
+    "confusableWith": [
+      "TD",
+      "AD",
+      "MD"
+    ]
+  },
+  {
+    "code": "RU",
+    "name": "Russia",
+    "officialName": "Russian Federation",
+    "aliases": [
+      "Russian Federation",
+      "Российская Федерация"
+    ],
+    "capitals": [
+      "Moscow"
+    ],
+    "currency": {
+      "code": "RUB",
+      "name": "Russian ruble",
+      "symbol": "₽"
+    },
+    "continent": "Europe",
+    "subregion": "Eastern Europe",
+    "latlng": [
+      60,
+      100
+    ],
+    "flag": "flags/ru.svg",
+    "tier": 1,
+    "hint": "White, blue, red horizontal. Slovenia and Slovakia add a coat of arms.",
+    "funFact": "Russia spans 11 time zones.",
+    "confusableWith": [
+      "SI",
+      "SK",
+      "RS"
+    ]
+  },
+  {
+    "code": "RW",
+    "name": "Rwanda",
+    "officialName": "Republic of Rwanda",
+    "aliases": [
+      "Republic of Rwanda",
+      "Repubulika y'u Rwanda",
+      "République du Rwanda"
+    ],
+    "capitals": [
+      "Kigali"
+    ],
+    "currency": {
+      "code": "RWF",
+      "name": "Rwandan franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -2,
+      30
+    ],
+    "flag": "flags/rw.svg",
+    "tier": 3,
+    "hint": "A wide light-blue top with a golden sun in the top-right corner, above yellow and green stripes.",
+    "funFact": "Rwanda banned plastic bags in 2008 and is known as one of Africa's cleanest countries.",
+    "confusableWith": []
+  },
+  {
+    "code": "KN",
+    "name": "Saint Kitts and Nevis",
+    "officialName": "Federation of Saint Christopher and Nevis",
+    "aliases": [
+      "Federation of Saint Christopher and Nevis"
+    ],
+    "capitals": [
+      "Basseterre"
+    ],
+    "currency": {
+      "code": "XCD",
+      "name": "Eastern Caribbean dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      17.33333333,
+      -62.75
+    ],
+    "flag": "flags/kn.svg",
+    "tier": 3,
+    "hint": "A black diagonal band edged in yellow with two white stars, between green and red.",
+    "funFact": "Saint Kitts and Nevis is the smallest country in the Western Hemisphere.",
+    "confusableWith": []
+  },
+  {
+    "code": "LC",
+    "name": "Saint Lucia",
+    "officialName": "Saint Lucia",
+    "aliases": [],
+    "capitals": [
+      "Castries"
+    ],
+    "currency": {
+      "code": "XCD",
+      "name": "Eastern Caribbean dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      13.88333333,
+      -60.96666666
+    ],
+    "flag": "flags/lc.svg",
+    "tier": 3,
+    "hint": "Light blue with black, white and gold triangles: the twin Piton mountains.",
+    "funFact": "Saint Lucia is said to be the only country named after a woman (Saint Lucy).",
+    "confusableWith": []
+  },
+  {
+    "code": "VC",
+    "name": "Saint Vincent and the Grenadines",
+    "officialName": "Saint Vincent and the Grenadines",
+    "aliases": [],
+    "capitals": [
+      "Kingstown"
+    ],
+    "currency": {
+      "code": "XCD",
+      "name": "Eastern Caribbean dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      13.25,
+      -61.2
+    ],
+    "flag": "flags/vc.svg",
+    "tier": 3,
+    "hint": "Blue, gold, green vertical with three green diamonds in a V shape.",
+    "funFact": "The diamonds form a 'V' for Vincent; the islands are nicknamed 'the Gems of the Antilles'.",
+    "confusableWith": []
+  },
+  {
+    "code": "WS",
+    "name": "Samoa",
+    "officialName": "Independent State of Samoa",
+    "aliases": [
+      "Independent State of Samoa",
+      "Malo Saʻoloto Tutoʻatasi o Sāmoa"
+    ],
+    "capitals": [
+      "Apia"
+    ],
+    "currency": {
+      "code": "WST",
+      "name": "Samoan tālā",
+      "symbol": "T"
+    },
+    "continent": "Oceania",
+    "subregion": "Polynesia",
+    "latlng": [
+      -13.58333333,
+      -172.33333333
+    ],
+    "flag": "flags/ws.svg",
+    "tier": 3,
+    "hint": "Red with a blue top-left corner holding five white stars (the Southern Cross).",
+    "funFact": "In 2011 Samoa skipped 30 December entirely to move to the other side of the International Date Line.",
+    "confusableWith": []
+  },
+  {
+    "code": "SM",
+    "name": "San Marino",
+    "officialName": "Most Serene Republic of San Marino",
+    "aliases": [
+      "Most Serene Republic of San Marino",
+      "Republic of San Marino",
+      "Repubblica di San Marino"
+    ],
+    "capitals": [
+      "City of San Marino"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      43.76666666,
+      12.41666666
+    ],
+    "flag": "flags/sm.svg",
+    "tier": 3,
+    "hint": "White over light blue with a coat of arms showing three towers.",
+    "funFact": "Founded in 301 AD, San Marino claims to be the world's oldest surviving republic.",
+    "confusableWith": []
+  },
+  {
+    "code": "ST",
+    "name": "São Tomé and Príncipe",
+    "officialName": "Democratic Republic of São Tomé and Príncipe",
+    "aliases": [
+      "Sao Tome and Principe",
+      "Democratic Republic of São Tomé and Príncipe",
+      "República Democrática de São Tomé e Príncipe"
+    ],
+    "capitals": [
+      "São Tomé"
+    ],
+    "currency": {
+      "code": "STN",
+      "name": "São Tomé and Príncipe dobra",
+      "symbol": "Db"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      1,
+      7
+    ],
+    "flag": "flags/st.svg",
+    "tier": 3,
+    "hint": "Green-yellow-green stripes with a red triangle and two black stars on the yellow.",
+    "funFact": "It's Africa's second-smallest country: two volcanic islands sitting almost on the equator.",
+    "confusableWith": []
+  },
+  {
+    "code": "SA",
+    "name": "Saudi Arabia",
+    "officialName": "Kingdom of Saudi Arabia",
+    "aliases": [
+      "Kingdom of Saudi Arabia",
+      "Saudi",
+      "Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah"
+    ],
+    "capitals": [
+      "Riyadh"
+    ],
+    "currency": {
+      "code": "SAR",
+      "name": "Saudi riyal",
+      "symbol": "ر.س"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      25,
+      45
+    ],
+    "flag": "flags/sa.svg",
+    "tier": 1,
+    "hint": "Green with white Arabic writing (the Shahada) above a sword.",
+    "funFact": "Saudi Arabia's flag is never flown at half-mast because it carries the Islamic declaration of faith.",
+    "confusableWith": []
+  },
+  {
+    "code": "SN",
+    "name": "Senegal",
+    "officialName": "Republic of Senegal",
+    "aliases": [
+      "Republic of Senegal",
+      "République du Sénégal"
+    ],
+    "capitals": [
+      "Dakar"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      14,
+      -14
+    ],
+    "flag": "flags/sn.svg",
+    "tier": 3,
+    "hint": "Green, yellow, red vertical with a green star on the yellow middle. It's Mali with a star.",
+    "funFact": "Dakar, Senegal's capital, is the westernmost city on mainland Africa.",
+    "confusableWith": [
+      "ML",
+      "GN",
+      "CM"
+    ]
+  },
+  {
+    "code": "RS",
+    "name": "Serbia",
+    "officialName": "Republic of Serbia",
+    "aliases": [
+      "Republic of Serbia",
+      "Srbija",
+      "Republika Srbija",
+      "Србија",
+      "Република Србија"
+    ],
+    "capitals": [
+      "Belgrade"
+    ],
+    "currency": {
+      "code": "RSD",
+      "name": "Serbian dinar",
+      "symbol": "дин."
+    },
+    "continent": "Europe",
+    "subregion": "Southeast Europe",
+    "latlng": [
+      44,
+      21
+    ],
+    "flag": "flags/rs.svg",
+    "tier": 2,
+    "hint": "Red, blue, white stripes (Russia upside down) with a double-headed eagle shield.",
+    "funFact": "Serbia is one of the world's biggest raspberry exporters.",
+    "confusableWith": [
+      "RU",
+      "SI",
+      "SK"
+    ]
+  },
+  {
+    "code": "SC",
+    "name": "Seychelles",
+    "officialName": "Republic of Seychelles",
+    "aliases": [
+      "Republic of Seychelles",
+      "Repiblik Sesel",
+      "République des Seychelles"
+    ],
+    "capitals": [
+      "Victoria"
+    ],
+    "currency": {
+      "code": "SCR",
+      "name": "Seychellois rupee",
+      "symbol": "₨"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -4.58333333,
+      55.66666666
+    ],
+    "flag": "flags/sc.svg",
+    "tier": 3,
+    "hint": "Five coloured rays fanning out from the bottom-left corner: blue, yellow, red, white, green.",
+    "funFact": "The Seychelles' coco de mer palm produces the heaviest seed of any plant, up to 25 kg.",
+    "confusableWith": []
+  },
+  {
+    "code": "SL",
+    "name": "Sierra Leone",
+    "officialName": "Republic of Sierra Leone",
+    "aliases": [
+      "Republic of Sierra Leone"
+    ],
+    "capitals": [
+      "Freetown"
+    ],
+    "currency": {
+      "code": "SLE",
+      "name": "Sierra Leonean leone",
+      "symbol": "Le"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      8.5,
+      -11.5
+    ],
+    "flag": "flags/sl.svg",
+    "tier": 3,
+    "hint": "Green, white, blue horizontal stripes. Gabon has yellow in the middle instead of white.",
+    "funFact": "Its capital Freetown was founded in 1792 as a home for freed slaves.",
+    "confusableWith": [
+      "GA"
+    ]
+  },
+  {
+    "code": "SG",
+    "name": "Singapore",
+    "officialName": "Republic of Singapore",
+    "aliases": [
+      "Republic of Singapore",
+      "Singapura",
+      "Republik Singapura",
+      "新加坡共和国"
+    ],
+    "capitals": [
+      "Singapore"
+    ],
+    "currency": {
+      "code": "SGD",
+      "name": "Singapore dollar",
+      "symbol": "$"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      1.36666666,
+      103.8
+    ],
+    "flag": "flags/sg.svg",
+    "tier": 2,
+    "hint": "Red over white with a white crescent and five small stars in the top-left.",
+    "funFact": "Singapore is one of only three city-states left, along with Monaco and Vatican City.",
+    "confusableWith": [
+      "ID"
+    ]
+  },
+  {
+    "code": "SK",
+    "name": "Slovakia",
+    "officialName": "Slovak Republic",
+    "aliases": [
+      "Slovak Republic",
+      "Slovenská republika"
+    ],
+    "capitals": [
+      "Bratislava"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Central Europe",
+    "latlng": [
+      48.66666666,
+      19.5
+    ],
+    "flag": "flags/sk.svg",
+    "tier": 2,
+    "hint": "White, blue, red with a shield showing a white double cross on three blue hills.",
+    "funFact": "Slovakia makes more cars per person than any other country.",
+    "confusableWith": [
+      "RU",
+      "SI",
+      "RS"
+    ]
+  },
+  {
+    "code": "SI",
+    "name": "Slovenia",
+    "officialName": "Republic of Slovenia",
+    "aliases": [
+      "Republic of Slovenia",
+      "Republika Slovenija"
+    ],
+    "capitals": [
+      "Ljubljana"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Central Europe",
+    "latlng": [
+      46.11666666,
+      14.81666666
+    ],
+    "flag": "flags/si.svg",
+    "tier": 2,
+    "hint": "White, blue, red with a small shield showing a white mountain (Triglav) and three yellow stars.",
+    "funFact": "More than half of Slovenia is covered by forest.",
+    "confusableWith": [
+      "RU",
+      "SK",
+      "RS"
+    ]
+  },
+  {
+    "code": "SB",
+    "name": "Solomon Islands",
+    "officialName": "Solomon Islands",
+    "aliases": [],
+    "capitals": [
+      "Honiara"
+    ],
+    "currency": {
+      "code": "SBD",
+      "name": "Solomon Islands dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Melanesia",
+    "latlng": [
+      -8,
+      159
+    ],
+    "flag": "flags/sb.svg",
+    "tier": 3,
+    "hint": "A thin yellow diagonal stripe between blue and green, with five white stars in the top-left.",
+    "funFact": "Guadalcanal, its largest island, saw some of the fiercest battles of World War II.",
+    "confusableWith": []
+  },
+  {
+    "code": "SO",
+    "name": "Somalia",
+    "officialName": "Federal Republic of Somalia",
+    "aliases": [
+      "Federal Republic of Somalia",
+      "aṣ-Ṣūmāl",
+      "Jamhuuriyadda Federaalka Soomaaliya",
+      "Jumhūriyyat aṣ-Ṣūmāl al-Fiderāliyya"
+    ],
+    "capitals": [
+      "Mogadishu"
+    ],
+    "currency": {
+      "code": "SOS",
+      "name": "Somali shilling",
+      "symbol": "Sh"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      10,
+      49
+    ],
+    "flag": "flags/so.svg",
+    "tier": 2,
+    "hint": "Light blue with one big white star in the middle.",
+    "funFact": "Somalia has the longest coastline of mainland Africa, about 3,000 km.",
+    "confusableWith": []
+  },
+  {
+    "code": "ZA",
+    "name": "South Africa",
+    "officialName": "Republic of South Africa",
+    "aliases": [
+      "Republic of South Africa",
+      "Suid-Afrika"
+    ],
+    "capitals": [
+      "Pretoria",
+      "Cape Town",
+      "Bloemfontein"
+    ],
+    "currency": {
+      "code": "ZAR",
+      "name": "South African rand",
+      "symbol": "R"
+    },
+    "continent": "Africa",
+    "subregion": "Southern Africa",
+    "latlng": [
+      -29,
+      24
+    ],
+    "flag": "flags/za.svg",
+    "tier": 1,
+    "hint": "A green sideways 'Y' shape with six colours: red top, blue bottom and a black triangle.",
+    "funFact": "South Africa has three capitals: Pretoria (government), Cape Town (parliament) and Bloemfontein (courts).",
+    "confusableWith": []
+  },
+  {
+    "code": "KR",
+    "name": "South Korea",
+    "officialName": "Republic of Korea",
+    "aliases": [
+      "Korea",
+      "Republic of Korea",
+      "Korea, Republic of"
+    ],
+    "capitals": [
+      "Seoul"
+    ],
+    "currency": {
+      "code": "KRW",
+      "name": "South Korean won",
+      "symbol": "₩"
+    },
+    "continent": "Asia",
+    "subregion": "Eastern Asia",
+    "latlng": [
+      37,
+      127.5
+    ],
+    "flag": "flags/kr.svg",
+    "tier": 1,
+    "hint": "White with a red-and-blue yin-yang circle surrounded by four black bar patterns.",
+    "funFact": "South Korea has some of the fastest internet speeds in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "SS",
+    "name": "South Sudan",
+    "officialName": "Republic of South Sudan",
+    "aliases": [
+      "Republic of South Sudan"
+    ],
+    "capitals": [
+      "Juba"
+    ],
+    "currency": {
+      "code": "SSP",
+      "name": "South Sudanese pound",
+      "symbol": "£"
+    },
+    "continent": "Africa",
+    "subregion": "Middle Africa",
+    "latlng": [
+      7,
+      30
+    ],
+    "flag": "flags/ss.svg",
+    "tier": 3,
+    "hint": "Black, red, green stripes edged in white, with a blue triangle and a gold star.",
+    "funFact": "South Sudan is the world's youngest country, independent since 2011.",
+    "confusableWith": [
+      "KE"
+    ]
+  },
+  {
+    "code": "ES",
+    "name": "Spain",
+    "officialName": "Kingdom of Spain",
+    "aliases": [
+      "Kingdom of Spain",
+      "Reino de España"
+    ],
+    "capitals": [
+      "Madrid"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      40,
+      -4
+    ],
+    "flag": "flags/es.svg",
+    "tier": 1,
+    "hint": "Red, yellow, red with a thick yellow middle and a coat of arms near the flagpole.",
+    "funFact": "Spain's national anthem has no official lyrics.",
+    "confusableWith": []
+  },
+  {
+    "code": "LK",
+    "name": "Sri Lanka",
+    "officialName": "Democratic Socialist Republic of Sri Lanka",
+    "aliases": [
+      "Democratic Socialist Republic of Sri Lanka",
+      "ilaṅkai"
+    ],
+    "capitals": [
+      "Colombo"
+    ],
+    "currency": {
+      "code": "LKR",
+      "name": "Sri Lankan rupee",
+      "symbol": "Rs රු"
+    },
+    "continent": "Asia",
+    "subregion": "Southern Asia",
+    "latlng": [
+      7,
+      81
+    ],
+    "flag": "flags/lk.svg",
+    "tier": 2,
+    "hint": "A golden lion holding a sword on maroon, with green and orange stripes on the left.",
+    "funFact": "Sri Lanka is one of the world's biggest tea exporters, still sold as 'Ceylon tea'.",
+    "confusableWith": []
+  },
+  {
+    "code": "SD",
+    "name": "Sudan",
+    "officialName": "Republic of the Sudan",
+    "aliases": [
+      "Republic of the Sudan",
+      "Jumhūrīyat as-Sūdān"
+    ],
+    "capitals": [
+      "Khartoum"
+    ],
+    "currency": {
+      "code": "SDG",
+      "name": "Sudanese pound",
+      "symbol": "PT"
+    },
+    "continent": "Africa",
+    "subregion": "Northern Africa",
+    "latlng": [
+      15,
+      30
+    ],
+    "flag": "flags/sd.svg",
+    "tier": 2,
+    "hint": "Red, white, black stripes with a green triangle on the flagpole side.",
+    "funFact": "Sudan has more ancient pyramids than Egypt: over 200, at sites like Meroë.",
+    "confusableWith": [
+      "JO",
+      "PS"
+    ]
+  },
+  {
+    "code": "SR",
+    "name": "Suriname",
+    "officialName": "Republic of Suriname",
+    "aliases": [
+      "Republic of Suriname",
+      "Sarnam",
+      "Sranangron",
+      "Republiek Suriname"
+    ],
+    "capitals": [
+      "Paramaribo"
+    ],
+    "currency": {
+      "code": "SRD",
+      "name": "Surinamese dollar",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      4,
+      -56
+    ],
+    "flag": "flags/sr.svg",
+    "tier": 3,
+    "hint": "Green, white, a wide red, white, green stripes with a yellow star in the middle.",
+    "funFact": "Suriname is the most forested country in the world, with more than 90% forest cover.",
+    "confusableWith": []
+  },
+  {
+    "code": "SE",
+    "name": "Sweden",
+    "officialName": "Kingdom of Sweden",
+    "aliases": [
+      "Kingdom of Sweden",
+      "Konungariket Sverige"
+    ],
+    "capitals": [
+      "Stockholm"
+    ],
+    "currency": {
+      "code": "SEK",
+      "name": "Swedish krona",
+      "symbol": "kr"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      62,
+      15
+    ],
+    "flag": "flags/se.svg",
+    "tier": 1,
+    "hint": "Blue with a yellow Nordic cross.",
+    "funFact": "Sweden's 'right to roam' lets anyone walk and camp on most land, even if it's privately owned.",
+    "confusableWith": [
+      "NO",
+      "IS",
+      "DK",
+      "FI"
+    ]
+  },
+  {
+    "code": "CH",
+    "name": "Switzerland",
+    "officialName": "Swiss Confederation",
+    "aliases": [
+      "Swiss Confederation",
+      "Schweiz",
+      "Suisse",
+      "Svizzera",
+      "Svizra"
+    ],
+    "capitals": [
+      "Bern"
+    ],
+    "currency": {
+      "code": "CHF",
+      "name": "Swiss franc",
+      "symbol": "Fr."
+    },
+    "continent": "Europe",
+    "subregion": "Western Europe",
+    "latlng": [
+      47,
+      8
+    ],
+    "flag": "flags/ch.svg",
+    "tier": 1,
+    "hint": "A square red flag with a white plus-shaped cross. It's one of only two square national flags.",
+    "funFact": "The Red Cross symbol is the Swiss flag with its colours reversed.",
+    "confusableWith": []
+  },
+  {
+    "code": "SY",
+    "name": "Syria",
+    "officialName": "Syrian Arab Republic",
+    "aliases": [
+      "Syrian Arab Republic",
+      "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah"
+    ],
+    "capitals": [
+      "Damascus"
+    ],
+    "currency": {
+      "code": "SYP",
+      "name": "Syrian pound",
+      "symbol": "£"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      35,
+      38
+    ],
+    "flag": "flags/sy.svg",
+    "tier": 2,
+    "hint": "Green, white, black stripes with three red stars. This is the flag adopted in 2025.",
+    "funFact": "Damascus is one of the oldest continuously inhabited cities in the world.",
+    "confusableWith": []
+  },
+  {
+    "code": "TJ",
+    "name": "Tajikistan",
+    "officialName": "Republic of Tajikistan",
+    "aliases": [
+      "Republic of Tajikistan",
+      "Toçikiston",
+      "Ҷумҳурии Тоҷикистон",
+      "Çumhuriyi Toçikiston"
+    ],
+    "capitals": [
+      "Dushanbe"
+    ],
+    "currency": {
+      "code": "TJS",
+      "name": "Tajikistani somoni",
+      "symbol": "ЅМ"
+    },
+    "continent": "Asia",
+    "subregion": "Central Asia",
+    "latlng": [
+      39,
+      71
+    ],
+    "flag": "flags/tj.svg",
+    "tier": 3,
+    "hint": "Red, wide white, green stripes with a gold crown under an arc of seven stars.",
+    "funFact": "More than 90% of Tajikistan is mountains.",
+    "confusableWith": []
+  },
+  {
+    "code": "TZ",
+    "name": "Tanzania",
+    "officialName": "United Republic of Tanzania",
+    "aliases": [
+      "United Republic of Tanzania",
+      "Tanzania, United Republic of",
+      "Jamhuri ya Muungano wa Tanzania"
+    ],
+    "capitals": [
+      "Dodoma"
+    ],
+    "currency": {
+      "code": "TZS",
+      "name": "Tanzanian shilling",
+      "symbol": "Sh"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -6,
+      35
+    ],
+    "flag": "flags/tz.svg",
+    "tier": 2,
+    "hint": "A black diagonal stripe edged in yellow, with green top-left and blue bottom-right.",
+    "funFact": "Tanzania is home to Mount Kilimanjaro, Africa's highest mountain.",
+    "confusableWith": []
+  },
+  {
+    "code": "TH",
+    "name": "Thailand",
+    "officialName": "Kingdom of Thailand",
+    "aliases": [
+      "Kingdom of Thailand",
+      "Prathet",
+      "Thai",
+      "ราชอาณาจักรไทย",
+      "Ratcha Anachak Thai"
+    ],
+    "capitals": [
+      "Bangkok"
+    ],
+    "currency": {
+      "code": "THB",
+      "name": "Thai baht",
+      "symbol": "฿"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      15,
+      100
+    ],
+    "flag": "flags/th.svg",
+    "tier": 1,
+    "hint": "Five horizontal bands: red, white, a wide blue, white, red.",
+    "funFact": "Thailand is the only Southeast Asian nation never colonised by a European power.",
+    "confusableWith": []
+  },
+  {
+    "code": "TL",
+    "name": "Timor-Leste",
+    "officialName": "Democratic Republic of Timor-Leste",
+    "aliases": [
+      "East Timor",
+      "Democratic Republic of Timor-Leste",
+      "Timor",
+      "República Democrática de Timor-Leste",
+      "Repúblika Demokrátika Timór-Leste",
+      "Timór Lorosa'e",
+      "Timor Lorosae"
+    ],
+    "capitals": [
+      "Dili"
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      -8.83333333,
+      125.91666666
+    ],
+    "flag": "flags/tl.svg",
+    "tier": 3,
+    "hint": "Red with a yellow and black arrowhead at the flagpole, and a white star on the black.",
+    "funFact": "Independent in 2002, it was the first new country of the 21st century.",
+    "confusableWith": []
+  },
+  {
+    "code": "TG",
+    "name": "Togo",
+    "officialName": "Togolese Republic",
+    "aliases": [
+      "Togolese Republic",
+      "Togolese",
+      "République Togolaise"
+    ],
+    "capitals": [
+      "Lomé"
+    ],
+    "currency": {
+      "code": "XOF",
+      "name": "West African CFA franc",
+      "symbol": "Fr"
+    },
+    "continent": "Africa",
+    "subregion": "Western Africa",
+    "latlng": [
+      8,
+      1.16666666
+    ],
+    "flag": "flags/tg.svg",
+    "tier": 3,
+    "hint": "Five green and yellow stripes with a red square and white star in the corner.",
+    "funFact": "The five stripes stand for the five regions of Togo.",
+    "confusableWith": []
+  },
+  {
+    "code": "TO",
+    "name": "Tonga",
+    "officialName": "Kingdom of Tonga",
+    "aliases": [
+      "Kingdom of Tonga"
+    ],
+    "capitals": [
+      "Nuku'alofa"
+    ],
+    "currency": {
+      "code": "TOP",
+      "name": "Tongan paʻanga",
+      "symbol": "T$"
+    },
+    "continent": "Oceania",
+    "subregion": "Polynesia",
+    "latlng": [
+      -20,
+      -175
+    ],
+    "flag": "flags/to.svg",
+    "tier": 3,
+    "hint": "Red with a white top-left square holding a red cross.",
+    "funFact": "Tonga's constitution says the flag can never be changed.",
+    "confusableWith": []
+  },
+  {
+    "code": "TT",
+    "name": "Trinidad and Tobago",
+    "officialName": "Republic of Trinidad and Tobago",
+    "aliases": [
+      "Republic of Trinidad and Tobago"
+    ],
+    "capitals": [
+      "Port of Spain"
+    ],
+    "currency": {
+      "code": "TTD",
+      "name": "Trinidad and Tobago dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "Caribbean",
+    "latlng": [
+      11,
+      -61
+    ],
+    "flag": "flags/tt.svg",
+    "tier": 2,
+    "hint": "Red with a black diagonal stripe edged in white.",
+    "funFact": "The steelpan drum was invented in Trinidad and Tobago in the 20th century.",
+    "confusableWith": []
+  },
+  {
+    "code": "TN",
+    "name": "Tunisia",
+    "officialName": "Tunisian Republic",
+    "aliases": [
+      "Tunisian Republic",
+      "Republic of Tunisia",
+      "al-Jumhūriyyah at-Tūnisiyyah"
+    ],
+    "capitals": [
+      "Tunis"
+    ],
+    "currency": {
+      "code": "TND",
+      "name": "Tunisian dinar",
+      "symbol": "د.ت"
+    },
+    "continent": "Africa",
+    "subregion": "Northern Africa",
+    "latlng": [
+      34,
+      9
+    ],
+    "flag": "flags/tn.svg",
+    "tier": 2,
+    "hint": "Red with a white circle holding a red crescent and star. Türkiye's crescent sits loose on the red.",
+    "funFact": "The desert planet Tatooine in Star Wars was filmed in Tunisia.",
+    "confusableWith": [
+      "TR"
+    ]
+  },
+  {
+    "code": "TR",
+    "name": "Türkiye",
+    "officialName": "Republic of Türkiye",
+    "aliases": [
+      "Turkey",
+      "Turkiye",
+      "Republic of Türkiye",
+      "Republic of Turkey",
+      "Türkiye Cumhuriyeti"
+    ],
+    "capitals": [
+      "Ankara"
+    ],
+    "currency": {
+      "code": "TRY",
+      "name": "Turkish lira",
+      "symbol": "₺"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      39,
+      35
+    ],
+    "flag": "flags/tr.svg",
+    "tier": 1,
+    "hint": "Red with a white crescent and star sitting right on the red. Tunisia puts them inside a white circle.",
+    "funFact": "Istanbul is a major city that spans two continents, Europe and Asia.",
+    "confusableWith": [
+      "TN"
+    ]
+  },
+  {
+    "code": "TM",
+    "name": "Turkmenistan",
+    "officialName": "Turkmenistan",
+    "aliases": [],
+    "capitals": [
+      "Ashgabat"
+    ],
+    "currency": {
+      "code": "TMT",
+      "name": "Turkmenistan manat",
+      "symbol": "m"
+    },
+    "continent": "Asia",
+    "subregion": "Central Asia",
+    "latlng": [
+      40,
+      60
+    ],
+    "flag": "flags/tm.svg",
+    "tier": 3,
+    "hint": "Green with a vertical red stripe full of carpet patterns, plus a white crescent and five stars.",
+    "funFact": "The 'Door to Hell', a gas crater burning since 1971, is in Turkmenistan.",
+    "confusableWith": []
+  },
+  {
+    "code": "TV",
+    "name": "Tuvalu",
+    "officialName": "Tuvalu",
+    "aliases": [],
+    "capitals": [
+      "Funafuti"
+    ],
+    "currency": {
+      "code": "AUD",
+      "name": "Australian dollar",
+      "symbol": "$"
+    },
+    "continent": "Oceania",
+    "subregion": "Polynesia",
+    "latlng": [
+      -8,
+      178
+    ],
+    "flag": "flags/tv.svg",
+    "tier": 3,
+    "hint": "Light blue with the Union Jack and nine yellow stars arranged like its islands.",
+    "funFact": "Tuvalu earns millions by leasing out its '.tv' internet domain.",
+    "confusableWith": [
+      "AU",
+      "NZ",
+      "FJ"
+    ]
+  },
+  {
+    "code": "UG",
+    "name": "Uganda",
+    "officialName": "Republic of Uganda",
+    "aliases": [
+      "Republic of Uganda",
+      "Jamhuri ya Uganda"
+    ],
+    "capitals": [
+      "Kampala"
+    ],
+    "currency": {
+      "code": "UGX",
+      "name": "Ugandan shilling",
+      "symbol": "Sh"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      1,
+      32
+    ],
+    "flag": "flags/ug.svg",
+    "tier": 2,
+    "hint": "Black, yellow, red stripes repeated twice, with a grey crowned crane in a white circle.",
+    "funFact": "Uganda is home to about half of the world's remaining mountain gorillas.",
+    "confusableWith": []
+  },
+  {
+    "code": "UA",
+    "name": "Ukraine",
+    "officialName": "Ukraine",
+    "aliases": [
+      "Ukrayina"
+    ],
+    "capitals": [
+      "Kyiv"
+    ],
+    "currency": {
+      "code": "UAH",
+      "name": "Ukrainian hryvnia",
+      "symbol": "₴"
+    },
+    "continent": "Europe",
+    "subregion": "Eastern Europe",
+    "latlng": [
+      49,
+      32
+    ],
+    "flag": "flags/ua.svg",
+    "tier": 1,
+    "hint": "Blue over yellow: the sky above wheat fields.",
+    "funFact": "Ukraine is the largest country lying entirely within Europe.",
+    "confusableWith": []
+  },
+  {
+    "code": "AE",
+    "name": "United Arab Emirates",
+    "officialName": "United Arab Emirates",
+    "aliases": [
+      "Emirates"
+    ],
+    "capitals": [
+      "Abu Dhabi"
+    ],
+    "currency": {
+      "code": "AED",
+      "name": "United Arab Emirates dirham",
+      "symbol": "د.إ"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      24,
+      54
+    ],
+    "flag": "flags/ae.svg",
+    "tier": 1,
+    "hint": "A red vertical stripe at the flagpole with green, white, black horizontal stripes.",
+    "funFact": "Dubai's Burj Khalifa is the tallest building in the world at 828 m.",
+    "confusableWith": [
+      "KW"
+    ]
+  },
+  {
+    "code": "GB",
+    "name": "United Kingdom",
+    "officialName": "United Kingdom of Great Britain and Northern Ireland",
+    "aliases": [
+      "Great Britain",
+      "Britain",
+      "United Kingdom of Great Britain and Northern Ireland"
+    ],
+    "capitals": [
+      "London"
+    ],
+    "currency": {
+      "code": "GBP",
+      "name": "British pound",
+      "symbol": "£"
+    },
+    "continent": "Europe",
+    "subregion": "Northern Europe",
+    "latlng": [
+      54,
+      -2
+    ],
+    "flag": "flags/gb.svg",
+    "tier": 1,
+    "hint": "The Union Jack: England's red cross, Scotland's white X and Ireland's red X on blue.",
+    "funFact": "The Union Jack appears in the corner of other flags too, like Australia, New Zealand, Fiji and Tuvalu.",
+    "confusableWith": []
+  },
+  {
+    "code": "US",
+    "name": "United States",
+    "officialName": "United States of America",
+    "aliases": [
+      "United States of America",
+      "America"
+    ],
+    "capitals": [
+      "Washington D.C."
+    ],
+    "currency": {
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
+    },
+    "continent": "North America",
+    "subregion": "North America",
+    "latlng": [
+      38,
+      -97
+    ],
+    "flag": "flags/us.svg",
+    "tier": 1,
+    "hint": "50 white stars on blue with 13 red and white stripes.",
+    "funFact": "The 50-star design came from a 17-year-old's school project, which got a B-minus.",
+    "confusableWith": [
+      "MY",
+      "LR"
+    ]
+  },
+  {
+    "code": "UY",
+    "name": "Uruguay",
+    "officialName": "Oriental Republic of Uruguay",
+    "aliases": [
+      "Oriental Republic of Uruguay",
+      "República Oriental del Uruguay"
+    ],
+    "capitals": [
+      "Montevideo"
+    ],
+    "currency": {
+      "code": "UYU",
+      "name": "Uruguayan peso",
+      "symbol": "$"
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      -33,
+      -56
+    ],
+    "flag": "flags/uy.svg",
+    "tier": 2,
+    "hint": "Nine white and blue stripes with a golden 'Sun of May' in the top-left white square.",
+    "funFact": "Uruguay hosted and won the very first FIFA World Cup, in 1930.",
+    "confusableWith": [
+      "GR"
+    ]
+  },
+  {
+    "code": "UZ",
+    "name": "Uzbekistan",
+    "officialName": "Republic of Uzbekistan",
+    "aliases": [
+      "Republic of Uzbekistan",
+      "O‘zbekiston Respublikasi",
+      "Ўзбекистон Республикаси"
+    ],
+    "capitals": [
+      "Tashkent"
+    ],
+    "currency": {
+      "code": "UZS",
+      "name": "Uzbekistani soʻm",
+      "symbol": "so'm"
+    },
+    "continent": "Asia",
+    "subregion": "Central Asia",
+    "latlng": [
+      41,
+      64
+    ],
+    "flag": "flags/uz.svg",
+    "tier": 3,
+    "hint": "Blue, white, green stripes separated by thin red lines, with a crescent and 12 stars.",
+    "funFact": "The great Silk Road cities of Samarkand and Bukhara are in Uzbekistan.",
+    "confusableWith": []
+  },
+  {
+    "code": "VU",
+    "name": "Vanuatu",
+    "officialName": "Republic of Vanuatu",
+    "aliases": [
+      "Republic of Vanuatu",
+      "Ripablik blong Vanuatu",
+      "République de Vanuatu"
+    ],
+    "capitals": [
+      "Port Vila"
+    ],
+    "currency": {
+      "code": "VUV",
+      "name": "Vanuatu vatu",
+      "symbol": "Vt"
+    },
+    "continent": "Oceania",
+    "subregion": "Melanesia",
+    "latlng": [
+      -16,
+      167
+    ],
+    "flag": "flags/vu.svg",
+    "tier": 3,
+    "hint": "Red and green halves split by a black-edged yellow sideways 'Y', with a curled boar's tusk on black.",
+    "funFact": "Bungee jumping was inspired by Vanuatu's 'land diving' ritual on Pentecost Island.",
+    "confusableWith": []
+  },
+  {
+    "code": "VA",
+    "name": "Vatican City",
+    "officialName": "Vatican City State",
+    "aliases": [
+      "Holy See",
+      "Vatican",
+      "Vatican City State",
+      "Holy See (Vatican City State)",
+      "Stato della Città del Vaticano"
+    ],
+    "capitals": [
+      "Vatican City"
+    ],
+    "currency": {
+      "code": "EUR",
+      "name": "Euro",
+      "symbol": "€"
+    },
+    "continent": "Europe",
+    "subregion": "Southern Europe",
+    "latlng": [
+      41.9,
+      12.45
+    ],
+    "flag": "flags/va.svg",
+    "tier": 2,
+    "hint": "A square flag: yellow and white halves with crossed gold and silver keys under the papal crown.",
+    "funFact": "Vatican City is the smallest country in the world, at just 0.44 km².",
+    "confusableWith": []
+  },
+  {
+    "code": "VE",
+    "name": "Venezuela",
+    "officialName": "Bolivarian Republic of Venezuela",
+    "aliases": [
+      "Bolivarian Republic of Venezuela",
+      "Venezuela, Bolivarian Republic of",
+      "República Bolivariana de Venezuela"
+    ],
+    "capitals": [
+      "Caracas"
+    ],
+    "currency": {
+      "code": "VES",
+      "name": "Venezuelan bolívar soberano",
+      "symbol": "Bs.S."
+    },
+    "continent": "South America",
+    "subregion": "South America",
+    "latlng": [
+      8,
+      -66
+    ],
+    "flag": "flags/ve.svg",
+    "tier": 2,
+    "hint": "Yellow, blue, red with an arc of eight white stars on the blue.",
+    "funFact": "Venezuela's Angel Falls is the tallest uninterrupted waterfall in the world.",
+    "confusableWith": [
+      "CO",
+      "EC"
+    ]
+  },
+  {
+    "code": "VN",
+    "name": "Vietnam",
+    "officialName": "Socialist Republic of Vietnam",
+    "aliases": [
+      "Socialist Republic of Vietnam",
+      "Cộng hòa Xã hội chủ nghĩa Việt Nam",
+      "Viet Nam"
+    ],
+    "capitals": [
+      "Hanoi"
+    ],
+    "currency": {
+      "code": "VND",
+      "name": "Vietnamese đồng",
+      "symbol": "₫"
+    },
+    "continent": "Asia",
+    "subregion": "South-Eastern Asia",
+    "latlng": [
+      16.16666666,
+      107.83333333
+    ],
+    "flag": "flags/vn.svg",
+    "tier": 1,
+    "hint": "Red with one big yellow star in the middle.",
+    "funFact": "Vietnam is the world's second-largest coffee producer.",
+    "confusableWith": [
+      "CN"
+    ]
+  },
+  {
+    "code": "YE",
+    "name": "Yemen",
+    "officialName": "Republic of Yemen",
+    "aliases": [
+      "Republic of Yemen",
+      "Yemeni Republic",
+      "al-Jumhūriyyah al-Yamaniyyah"
+    ],
+    "capitals": [
+      "Sana'a"
+    ],
+    "currency": {
+      "code": "YER",
+      "name": "Yemeni rial",
+      "symbol": "﷼"
+    },
+    "continent": "Asia",
+    "subregion": "Western Asia",
+    "latlng": [
+      15,
+      48
+    ],
+    "flag": "flags/ye.svg",
+    "tier": 2,
+    "hint": "Plain red, white, black stripes. Egypt has an eagle, Iraq has writing, Yemen has nothing.",
+    "funFact": "Yemen's Socotra island has 'dragon's blood' trees found nowhere else on Earth.",
+    "confusableWith": [
+      "EG",
+      "IQ"
+    ]
+  },
+  {
+    "code": "ZM",
+    "name": "Zambia",
+    "officialName": "Republic of Zambia",
+    "aliases": [
+      "Republic of Zambia"
+    ],
+    "capitals": [
+      "Lusaka"
+    ],
+    "currency": {
+      "code": "ZMW",
+      "name": "Zambian kwacha",
+      "symbol": "ZK"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -15,
+      30
+    ],
+    "flag": "flags/zm.svg",
+    "tier": 3,
+    "hint": "Green with an orange eagle flying over three small vertical stripes (red, black, orange) in the bottom-right.",
+    "funFact": "Victoria Falls, on the Zambia–Zimbabwe border, is one of the largest waterfalls on Earth.",
+    "confusableWith": []
+  },
+  {
+    "code": "ZW",
+    "name": "Zimbabwe",
+    "officialName": "Republic of Zimbabwe",
+    "aliases": [
+      "Republic of Zimbabwe"
+    ],
+    "capitals": [
+      "Harare"
+    ],
+    "currency": {
+      "code": "ZWG",
+      "name": "Zimbabwe Gold",
+      "symbol": "ZiG"
+    },
+    "continent": "Africa",
+    "subregion": "Eastern Africa",
+    "latlng": [
+      -20,
+      30
+    ],
+    "flag": "flags/zw.svg",
+    "tier": 2,
+    "hint": "Seven stripes (green, yellow, red, black) with a white triangle holding the golden Zimbabwe Bird on a red star.",
+    "funFact": "Zimbabwe is named after Great Zimbabwe, a medieval stone city whose bird carving is on the flag.",
+    "confusableWith": []
+  }
+]
