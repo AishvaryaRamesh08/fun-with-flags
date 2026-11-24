@@ -1396,6 +1396,7 @@
     "aliases": [
       "Democratic Republic of the Congo",
       "Congo-Kinshasa",
+      "DRC",
       "Congo, the Democratic Republic of the",
       "Democratic Republic of Congo"
     ],
@@ -5453,6 +5454,7 @@
     "name": "United Arab Emirates",
     "officialName": "United Arab Emirates",
     "aliases": [
+      "UAE",
       "Emirates"
     ],
     "capitals": [
@@ -5482,6 +5484,7 @@
     "name": "United Kingdom",
     "officialName": "United Kingdom of Great Britain and Northern Ireland",
     "aliases": [
+      "UK",
       "Great Britain",
       "Britain",
       "United Kingdom of Great Britain and Northern Ireland"
@@ -5511,6 +5514,7 @@
     "name": "United States",
     "officialName": "United States of America",
     "aliases": [
+      "USA",
       "United States of America",
       "America"
     ],
