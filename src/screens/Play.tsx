@@ -136,17 +136,14 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     setReaction((r) => r + 1)
     if (a.correct) feedback.correct()
     else feedback.wrong()
-    // Correct answers move on by themselves after a quick cheer; wrong ones wait so you can read the hint.
-    // Blitz always keeps moving.
-    if (blitz) advanceTimer.current = setTimeout(next, a.correct ? 450 : 1100)
-    else if (a.correct) advanceTimer.current = setTimeout(next, 900)
+    // Keep it snappy: right = green and on, wrong = red + the right answer in green, then on.
+    advanceTimer.current = setTimeout(next, blitz ? (a.correct ? 450 : 1100) : a.correct ? 600 : 1500)
   }
 
   // Desktop keyboard: 1–4 to answer, Enter for next
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement).tagName === 'INPUT') return
-      if (answer && !answer.correct && !blitz && e.key === 'Enter') next()
       const n = Number(e.key)
       if (!answer && n >= 1 && n <= question.options.length) submit({ chosen: question.options[n - 1].code, correct: question.options[n - 1] === question.country })
     }
@@ -161,8 +158,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
   /** What Bao says: streaks while thinking; in Blitz a wrong answer names the right one (there's no hint panel) */
   const pandaLine = (): string | null | undefined => {
     if (mood === 'thinking') return stats.streak >= 3 ? `🔥 ${stats.streak} in a row!` : null
-    if (blitz && answer && !answer.correct) {
-      return question.kind === 'capital' ? `It's ${question.country.capitals[0]}!` : `That's ${question.country.name}!`
+    if (answer && !answer.correct) {
+      return `✗ Wrong! It's ${question.kind === 'capital' ? question.country.capitals[0] : question.country.name}`
     }
     return undefined
   }
@@ -209,7 +206,6 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
 
       <QuestionView key={qid} question={question} answer={answer} onAnswer={submit} />
 
-      {answer && !answer.correct && !blitz && <FeedbackSheet question={question} onNext={next} last={index + 1 >= quiz.length} />}
     </main>
   )
 }
@@ -218,6 +214,7 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
   const { kind, country, options } = question
   const choose = (o: Country) => onAnswer({ chosen: o.code, correct: o === country })
 
+  const mark = (o: Country) => (!answer ? '' : o === country ? '✓ ' : o.code === answer.chosen ? '✗ ' : '')
   const optionClass = (o: Country) => {
     if (!answer) return 'bg-white'
     if (o === country) return 'bg-green-300 pop-in'
@@ -242,7 +239,7 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
               className={`rounded-2xl border-[3px] border-ink p-2 shadow-[0_4px_0_var(--color-ink)] transition active:translate-y-1 active:shadow-none disabled:active:translate-y-0 ${optionClass(o)}`}
             >
               <Flag country={o} revealName={!!answer} variant="thumb" />
-              {answer && <span className="mt-1 block text-sm leading-tight font-extrabold">{o.name}</span>}
+              {answer && <span className="mt-1 block text-sm leading-tight font-extrabold">{mark(o)}{o.name}</span>}
             </button>
           ))}
         </div>
@@ -268,44 +265,11 @@ function QuestionView({ question, answer, onAnswer }: { question: Question; answ
       <div className="grid gap-3">
         {options.map((o) => (
           <button key={o.code} onClick={() => choose(o)} disabled={!!answer} className={`btn text-xl ${optionClass(o)}`}>
+            {mark(o)}
             {kind === 'capital' ? o.capitals[0] : o.name}
           </button>
         ))}
       </div>
     </section>
-  )
-}
-
-function FeedbackSheet({ question, onNext, last }: { question: Question; onNext: () => void; last: boolean }) {
-  const { country, kind } = question
-  const nextRef = useRef<HTMLButtonElement>(null)
-  // Sits below the answers (so the green correct answer stays visible) and scrolls the Next button into reach
-  useEffect(() => {
-    nextRef.current?.focus({ preventScroll: true })
-    nextRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-  }, [])
-
-  return (
-    <div className="mt-4 pb-2">
-      <div role="status" className="slide-up rounded-3xl border-[3px] border-ink bg-rose-100 p-4 shadow-[0_6px_0_var(--color-ink)]">
-        <p className="text-2xl font-black text-rose-700">😮 Not quite!</p>
-        <p className="mt-1 text-lg font-bold">
-          {kind === 'capital' ? (
-            <>
-              The capital of {country.name} is <span className="underline decoration-4">{country.capitals[0]}</span>.
-            </>
-          ) : (
-            <>
-              That’s <span className="underline decoration-4">{country.name}</span>
-              {kind === 'name-to-flag' ? '’s flag (in green).' : '.'}
-            </>
-          )}
-        </p>
-        <p className="mt-2 text-base leading-snug font-semibold">💡 {country.hint}</p>
-        <button ref={nextRef} onClick={onNext} className="btn btn-primary mt-3 w-full">
-          {last ? 'See results 🏁' : 'Next →'}
-        </button>
-      </div>
-    </div>
   )
 }

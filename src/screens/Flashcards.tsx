@@ -1,12 +1,15 @@
 import { useMemo, useRef, useState } from 'react'
 import type { Navigate } from '../App'
-import { Flag } from '../components/Flag'
+import { FlashCard } from '../components/FlashCard'
 import { Panda } from '../components/Panda'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent, type Country } from '../data/types'
 import { ALL_COUNTRIES, countryByCode } from '../game/engine'
 import { shuffle } from '../game/random'
 import { isMastered, recordAnswer, reviewCodes, useProgress } from '../store/progress'
+
+type View = 'one' | 'grid'
+const VIEW_KEY = 'fun-with-flags:flashcard-view'
 
 interface Props {
   navigate: Navigate
@@ -18,6 +21,7 @@ interface Props {
 
 export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
   const progress = useProgress()
+  const [view, setViewState] = useState<View>(() => (localStorage.getItem(VIEW_KEY) === 'grid' ? 'grid' : 'one'))
   const [continent, setContinent] = useState<Continent | null>(null)
   const [review, setReview] = useState(reviewOnly)
   const [shuffleSeed, setShuffleSeed] = useState(0)
@@ -30,11 +34,21 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
     return shuffleSeed ? shuffle(cards) : [...cards].sort((a, b) => a.name.localeCompare(b.name))
   }, [only, review, continent, shuffleSeed])
 
+  // One-at-a-time state
   const [pos, setPos] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [done, setDone] = useState(0)
+  // Grid state: only one card can be open at a time
+  const [openCode, setOpenCode] = useState<string | null>(null)
+
   const card = deck[Math.min(pos, deck.length - 1)]
 
+  const setView = (v: View) => {
+    localStorage.setItem(VIEW_KEY, v)
+    setViewState(v)
+    setOpenCode(null)
+    setFlipped(false)
+  }
   const go = (delta: number) => {
     setFlipped(false)
     setPos((p) => Math.max(0, Math.min(deck.length - 1, p + delta)))
@@ -49,9 +63,10 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
     fn()
     setPos(0)
     setFlipped(false)
+    setOpenCode(null)
   }
 
-  // Swipe left/right to change cards
+  // Swipe left/right to change cards (one-at-a-time mode)
   const touch = useRef<{ x: number; y: number } | null>(null)
   const onTouchStart = (e: React.TouchEvent) => (touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY })
   const onTouchEnd = (e: React.TouchEvent) => {
@@ -78,6 +93,21 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
         }
       />
 
+      {/* View switch */}
+      <div className="mb-3 grid grid-cols-2 rounded-full border-[3px] border-ink bg-white p-1" role="radiogroup" aria-label="Card view">
+        {(['one', 'grid'] as View[]).map((v) => (
+          <button
+            key={v}
+            role="radio"
+            aria-checked={view === v}
+            onClick={() => setView(v)}
+            className={`min-h-10 rounded-full font-extrabold ${view === v ? 'bg-yellow-300' : ''}`}
+          >
+            {v === 'one' ? '🃏 One at a time' : '🔳 All flags'}
+          </button>
+        ))}
+      </div>
+
       {!only && (
         <div className="-mx-4 mb-3 flex gap-2 overflow-x-auto px-4 pb-2">
           <button className="chip shrink-0" aria-pressed={review} onClick={() => resetFilters(() => setReview((r) => !r))}>
@@ -101,6 +131,24 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
             Back home
           </button>
         </div>
+      ) : view === 'grid' ? (
+        <>
+          <p className="mb-2 text-center text-sm font-extrabold text-slate-500">
+            {deck.length} flags · tap one to flip it
+          </p>
+          <ul className="grid grid-cols-2 items-start gap-3 pb-8 sm:grid-cols-3">
+            {deck.map((c) => (
+              <li key={c.code}>
+                <FlashCard
+                  size="small"
+                  country={c}
+                  flipped={openCode === c.code}
+                  onToggle={() => setOpenCode((cur) => (cur === c.code ? null : c.code))}
+                />
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
         <>
           <p className="mb-2 text-center text-sm font-extrabold text-slate-500">
@@ -109,49 +157,8 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
             {isMastered(progress.countries[card.code]) && ' · ⭐ mastered'}
           </p>
 
-          <div className="flip-scene" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-            <button
-              onClick={() => setFlipped((f) => !f)}
-              aria-label={flipped ? 'Show flag side' : 'Flip card to see the answer'}
-              className={`flip-card relative grid w-full text-left ${flipped ? 'flipped' : ''}`}
-            >
-              {/* Front: the flag */}
-              <div className="flip-face card col-start-1 row-start-1 flex min-h-[420px] flex-col items-center justify-center gap-5 p-5">
-                <Flag country={card} />
-                <p className="text-lg font-extrabold text-slate-500">Which country? Tap to flip 👆</p>
-              </div>
-              {/* Back: everything about the country */}
-              <div className="flip-face flip-back card col-start-1 row-start-1 flex min-h-[420px] flex-col gap-3 bg-yellow-50 p-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-20 shrink-0">
-                    <Flag country={card} revealName variant="thumb" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-2xl leading-tight font-black">{card.name}</p>
-                    <p className="text-sm font-bold text-slate-500">{card.continent} · {card.subregion}</p>
-                  </div>
-                </div>
-                <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-base">
-                  <dt className="font-extrabold">🏛️ Capital</dt>
-                  <dd className="font-semibold">
-                    {card.capitals.join(', ')}
-                    {card.capitalNote && <span className="block text-xs text-slate-500">{card.capitalNote}</span>}
-                  </dd>
-                  <dt className="font-extrabold">💰 Currency</dt>
-                  <dd className="font-semibold">
-                    {card.currency.name} ({card.currency.symbol} {card.currency.code})
-                  </dd>
-                </dl>
-                <p className="rounded-2xl border-2 border-ink bg-white p-3 leading-snug font-semibold">
-                  <span className="font-extrabold">💡 Remember it: </span>
-                  {card.hint}
-                </p>
-                <p className="rounded-2xl border-2 border-ink bg-sky-50 p-3 leading-snug font-semibold">
-                  <span className="font-extrabold">🤓 Fun fact: </span>
-                  {card.funFact}
-                </p>
-              </div>
-            </button>
+          <div onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+            <FlashCard key={card.code} country={card} flipped={flipped} onToggle={() => setFlipped((f) => !f)} />
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
