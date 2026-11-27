@@ -6,7 +6,7 @@ import { Icon } from '../components/Icon'
 import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { blitzPoints, buildBlitz, buildQuiz } from '../game/engine'
-import { rightLine, streakLine, wrongLine } from '../game/persona'
+import { BLITZ, pick, rightLine, wrongLine } from '../game/persona'
 import { BLITZ_SECONDS, type GameSettings, type Question } from '../game/types'
 import { answerPauseMs, bestKey, blitzKey, getProgress, recordAnswer, recordGame } from '../store/progress'
 
@@ -44,7 +44,11 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
   const [mood, setMood] = useState<Mood>('thinking')
   const [reaction, setReaction] = useState(0)
   /** What Moonpie is saying right now (null = nothing). Chosen once per event so it never flickers. */
-  const [line, setLine] = useState<string | null>(null)
+  const [line, setLine] = useState<string | null>(() => (blitz ? pick(BLITZ.start) : null))
+  /** A Blitz clock remark (start / 45s / 30s / 10s left) stays up across questions until your next answer */
+  const clockLine = useRef(blitz)
+  /** Wrong answers in a row (for "Wrong again…") */
+  const wrongRun = useRef(0)
   const [timeLeft, setTimeLeft] = useState(BLITZ_SECONDS)
   const finished = useRef(false)
   const advanceTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
@@ -100,6 +104,13 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
       const left = Math.max(0, Math.ceil((end - Date.now()) / 1000))
       setTimeLeft((prev) => {
         if (left !== prev && left <= 5 && left > 0) feedback.tick()
+        // Moonpie gets impatient as the clock runs down
+        if (left !== prev && (left === 45 || left === 30 || left === 10)) {
+          clockLine.current = true
+          setLine(pick(left === 45 ? BLITZ.early : left === 30 ? BLITZ.half : BLITZ.end))
+          setMood('eyeroll')
+          setReaction((r) => r + 1)
+        }
         return left
       })
       if (left === 0) {
@@ -115,8 +126,8 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     setAnswer(null)
     setMood('thinking')
     setQid((q) => q + 1)
-    const streak = statsRef.current.streak
-    setLine(streak >= 3 ? streakLine(streak) : null)
+    // Clear his remark for the new question, unless it's a Blitz clock remark you haven't seen yet
+    if (!clockLine.current) setLine(null)
     // No country is ever asked twice: when the list runs out the game ends (Blitz may end before 60s)
     if (index + 1 >= quiz.length) {
       finish(statsRef.current)
@@ -157,11 +168,23 @@ export function Play({ settings, navigate }: { settings: GameSettings; navigate:
     })
     setMood(a.correct ? 'smug' : 'facepalm')
     setReaction((r) => r + 1)
-    setLine(a.correct ? rightLine() : wrongLine(question.kind === 'capital' ? question.country.capitals[0] : question.country.name))
+    clockLine.current = false
+    wrongRun.current = a.correct ? 0 : wrongRun.current + 1
+    const flagMode = question.kind !== 'capital'
+    const said = a.correct
+      ? rightLine(stats.streak + 1, flagMode)
+      : wrongLine({
+          answer: question.country,
+          chosen: question.options.find((o) => o.code === a.chosen),
+          flagMode,
+          wrongStreak: wrongRun.current,
+          blitz,
+        })
+    setLine(said)
     if (a.correct) feedback.correct()
     else feedback.wrong()
     // Pause to read Moonpie's remark, at the speed chosen in Settings (tapping anywhere skips ahead)
-    advanceTimer.current = setTimeout(next, answerPauseMs(a.correct, blitz))
+    advanceTimer.current = setTimeout(next, answerPauseMs(a.correct, blitz, said.length))
   }
 
   /** Skip the reading pause: move on now instead of waiting for the timer */

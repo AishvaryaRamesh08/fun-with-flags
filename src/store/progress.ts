@@ -130,19 +130,26 @@ export const isMastered = (c?: CountryProgress) => !!c && c.box >= 3
  * Blitz uses roughly half, because the clock is running. Tapping anywhere always skips ahead.
  */
 export type Pace = 'fast' | 'quick' | 'steady' | 'relaxed'
-export const PACES: Record<Pace, { label: string; right: number; wrong: number }> = {
-  fast: { label: 'Fast', right: 600, wrong: 1100 },
-  quick: { label: 'Quick', right: 900, wrong: 1600 },
-  steady: { label: 'Steady', right: 1400, wrong: 2300 },
-  relaxed: { label: 'Relaxed', right: 2000, wrong: 3200 },
+export const PACES: Record<Pace, { label: string; right: number; wrong: number; perChar: number }> = {
+  fast: { label: 'Fast', right: 600, wrong: 1100, perChar: 12 },
+  quick: { label: 'Quick', right: 900, wrong: 1600, perChar: 18 },
+  steady: { label: 'Steady', right: 1400, wrong: 2300, perChar: 25 },
+  relaxed: { label: 'Relaxed', right: 2000, wrong: 3200, perChar: 32 },
 }
+/** Moonpie's lines up to this length fit the base pause; longer ones get a little extra reading time */
+const SHORT_LINE = 35
 export const DEFAULT_PACE: Pace = 'quick'
 
-/** Milliseconds to wait after an answer, for the player's chosen pace */
-export function answerPauseMs(correct: boolean, blitz: boolean, p: Progress = state): number {
+/**
+ * Milliseconds to wait after an answer, for the player's chosen pace.
+ * Longer remarks from Moonpie add a little reading time (per character past SHORT_LINE).
+ * Blitz stays at about half and ignores line length, because the clock is running.
+ */
+export function answerPauseMs(correct: boolean, blitz: boolean, lineLength = 0, p: Progress = state): number {
   const pace = PACES[p.settings.pace ?? DEFAULT_PACE] ?? PACES[DEFAULT_PACE]
   const ms = correct ? pace.right : pace.wrong
-  return blitz ? Math.max(correct ? 350 : 700, Math.round(ms * 0.5)) : ms
+  if (blitz) return Math.max(correct ? 350 : 700, Math.round(ms * 0.5))
+  return ms + Math.max(0, lineLength - SHORT_LINE) * pace.perChar
 }
 
 export function setPace(pace: Pace) {

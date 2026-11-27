@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import type { Navigate } from '../App'
 import { Icon, type IconName } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
+import { STATS, pick } from '../game/persona'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS } from '../data/types'
 import { ALL_COUNTRIES } from '../game/engine'
@@ -20,7 +22,10 @@ const THEMES: { id: ThemeName; label: string; colors: [string, string, string] }
 
 export function Stats({ navigate }: { navigate: Navigate }) {
   const p = useProgress()
-  const mastered = ALL_COUNTRIES.filter((c) => isMastered(p.countries[c.code])).length
+  // One remark per visit: a brag about your mastered count, or a remark about the app itself
+  const [statsLine] = useState(() =>
+    p.gamesPlayed ? pick([...STATS, `${ALL_COUNTRIES.filter((c) => isMastered(p.countries[c.code])).length} flags mastered. I had all 195 by age six.`]) : 'No games yet. Your record is as blank as a white flag.',
+  )
   const seen = Object.values(p.countries)
   const answers = seen.reduce((n, c) => n + c.seen, 0)
   const right = seen.reduce((n, c) => n + c.correct, 0)
@@ -32,7 +37,7 @@ export function Stats({ navigate }: { navigate: Navigate }) {
       </div>
 
       <div className="lg:col-span-2">
-      <Mascot mood="smug" size={96} say={p.gamesPlayed ? `${mastered} flags mastered. I had all 195 by age six. Just saying.` : 'No games yet. Your record is as blank as a white flag.'} />
+      <Mascot mood="smug" size={96} say={statsLine} />
 
       </div>
 
