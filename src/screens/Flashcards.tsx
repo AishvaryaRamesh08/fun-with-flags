@@ -2,10 +2,11 @@ import { useMemo, useRef, useState } from 'react'
 import type { Navigate } from '../App'
 import { FlashCard } from '../components/FlashCard'
 import { Icon } from '../components/Icon'
-import { Mascot } from '../components/Mascot'
+import { Mascot, type Mood } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent, type Country } from '../data/types'
 import { ALL_COUNTRIES, countryByCode } from '../game/engine'
+import { FLASHCARDS, pick } from '../game/persona'
 import { shuffle } from '../game/random'
 import { isMastered, recordAnswer, reviewCodes, useProgress } from '../store/progress'
 
@@ -54,8 +55,19 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
     setFlipped(false)
     setPos((p) => Math.max(0, Math.min(deck.length - 1, p + delta)))
   }
+  // Moonpie: brisk in study mode, needling in the Review deck
+  const [line, setLine] = useState(() => pick(reviewOnly ? FLASHCARDS.review : FLASHCARDS.study))
+  const [lineMood, setLineMood] = useState<Mood>('smug')
+  const [reaction, setReaction] = useState(0)
+  const comment = (inReview: boolean, mood: Mood = 'smug') => {
+    setLine(pick(inReview ? FLASHCARDS.review : FLASHCARDS.study))
+    setLineMood(mood)
+    setReaction((r) => r + 1)
+  }
+
   const mark = (knewIt: boolean) => {
     recordAnswer(card.code, knewIt)
+    comment(review || !knewIt, knewIt ? 'eyeroll' : 'facepalm')
     setDone((d) => d + 1)
     if (pos < deck.length - 1) go(1)
     else {
@@ -115,23 +127,38 @@ export function Flashcards({ navigate, reviewOnly = false, only }: Props) {
 
       {!only && (
         <div className="-mx-4 mb-3 flex gap-2 overflow-x-auto px-4 pb-2">
-          <button className="chip shrink-0" aria-pressed={review} onClick={() => resetFilters(() => setReview((r) => !r))}>
+          <button className="chip shrink-0" aria-pressed={review} onClick={() => {
+              resetFilters(() => setReview(!review))
+              comment(!review)
+            }}>
             <Icon name="review" /> Review only
           </button>
-          <button className="chip shrink-0" aria-pressed={continent === null} onClick={() => resetFilters(() => setContinent(null))}>
+          <button className="chip shrink-0" aria-pressed={continent === null} onClick={() => {
+              resetFilters(() => setContinent(null))
+              comment(review)
+            }}>
             All
           </button>
           {CONTINENTS.map((c) => (
-            <button key={c} className="chip shrink-0" aria-pressed={continent === c} onClick={() => resetFilters(() => setContinent(c))}>
+            <button key={c} className="chip shrink-0" aria-pressed={continent === c} onClick={() => {
+              resetFilters(() => setContinent(c))
+              comment(review)
+            }}>
               {c}
             </button>
           ))}
         </div>
       )}
 
+      {card && (
+        <div className="mb-3 min-h-[80px]">
+          <Mascot mood={lineMood} size={72} reactionKey={reaction} say={line} />
+        </div>
+      )}
+
       {!card ? (
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
-          <Mascot mood="eyeroll" size={124} say={review ? 'Nothing to review. I’m as surprised as you are.' : 'No cards here.'} />
+          <Mascot mood="eyeroll" size={124} say={review ? FLASHCARDS.reviewEmpty : 'No cards here.'} />
           <button className="btn btn-primary w-full" onClick={() => navigate({ name: 'home' })}>
             Back home
           </button>

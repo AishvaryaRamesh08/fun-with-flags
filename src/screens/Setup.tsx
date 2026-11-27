@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import type { Navigate } from '../App'
 import { Icon } from '../components/Icon'
-import { Mascot } from '../components/Mascot'
+import { Mascot, type Mood } from '../components/Mascot'
 import { TopBar } from '../components/TopBar'
 import { CONTINENTS, type Continent } from '../data/types'
 import { questionPool } from '../game/engine'
+import { SETUP, pick } from '../game/persona'
 import { DIFFICULTY_INFO, MODE_INFO, type Difficulty, type GameSettings, type Mode } from '../game/types'
 import { bestKey, blitzKey, getProgress, useProgress } from '../store/progress'
 
@@ -25,12 +26,36 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
     (['easy', 'medium', 'hard'] as Difficulty[]).map((d) => [d, questionPool({ continents, difficulty: d }).length]),
   ) as Record<Difficulty, number>
   const isBlitz = mode === 'blitz'
-  const questions = count > 0 ? Math.min(count, pool.length) : pool.length
   // Your best for exactly these filters
   const best = isBlitz ? progress.blitzBest[blitzKey(difficulty, continents)] : progress.bestPercent[bestKey(mode, difficulty, continents)]
 
-  const toggleContinent = (c: Continent) =>
+  // Moonpie comments on whatever you just changed
+  const [say, setSay] = useState(() => (initialMode === 'type-it' ? SETUP.typeIt : initialMode === 'blitz' ? SETUP.blitz : SETUP.start))
+  const [sayMood, setSayMood] = useState<Mood>('thinking')
+  const [reaction, setReaction] = useState(0)
+  const comment = (line: string, mood: Mood = 'eyeroll') => {
+    setSay(line)
+    setSayMood(mood)
+    setReaction((r) => r + 1)
+  }
+
+  const toggleContinent = (c: Continent) => {
     setContinents((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]))
+    comment(pick(SETUP.continent))
+  }
+  const chooseMode = (m: Mode) => {
+    if (m === mode) return
+    setMode(m)
+    comment(SETUP.mode)
+  }
+  const chooseDifficulty = (d: Difficulty) => {
+    setDifficulty(d)
+    comment(d === 'hard' ? SETUP.hard : SETUP.difficulty, d === 'hard' ? 'smug' : 'eyeroll')
+  }
+  const chooseCount = (n: number) => {
+    setCount(n)
+    comment(SETUP.count)
+  }
 
   const start = () => {
     const settings: GameSettings = { mode, continents, difficulty, count }
@@ -43,22 +68,16 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
 
       <div className="flex flex-1 flex-col gap-5 pb-28">
         <Mascot
-          mood="thinking"
+          mood={sayMood}
           size={96}
-          reactionKey={`${mode}${difficulty}${continents.join()}`}
-          say={
-            mode === 'type-it'
-              ? `All ${pool.length} flags. No timer. Try not to embarrass us both.`
-              : isBlitz
-                ? `${pool.length} countries, each once, 60 seconds. I’d need about 12.`
-                : `${questions} question${questions === 1 ? '' : 's'}. I’ll try to contain my boredom.`
-          }
+          reactionKey={reaction}
+          say={say}
         />
 
         <Section title="Game">
           <div className="grid grid-cols-2 gap-2">
             {MODES.map((m) => (
-              <button key={m} className={`chip h-11 px-2 text-sm whitespace-nowrap ${m === 'blitz' ? 'col-span-2' : ''}`} aria-pressed={mode === m} onClick={() => setMode(m)}>
+              <button key={m} className={`chip h-11 px-2 text-sm whitespace-nowrap ${m === 'blitz' ? 'col-span-2' : ''}`} aria-pressed={mode === m} onClick={() => chooseMode(m)}>
                 <Icon name={MODE_INFO[m].icon} /> {MODE_INFO[m].title}
               </button>
             ))}
@@ -67,7 +86,10 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
 
         <Section title="Continents" note={continents.length ? `${continents.length} picked` : 'All of them'}>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-            <button className="chip col-span-2 h-11 text-sm md:col-span-3" aria-pressed={continents.length === 0} onClick={() => setContinents([])}>
+            <button className="chip col-span-2 h-11 text-sm md:col-span-3" aria-pressed={continents.length === 0} onClick={() => {
+                setContinents([])
+                comment(pick(SETUP.continent))
+              }}>
               All continents
             </button>
             {CONTINENTS.map((c) => (
@@ -85,7 +107,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
                 key={d}
                 role="radio"
                 aria-checked={difficulty === d}
-                onClick={() => setDifficulty(d)}
+                onClick={() => chooseDifficulty(d)}
                 className={`tile flex min-h-20 flex-col items-center justify-center gap-1 px-2 py-2 ${
                   difficulty === d ? 'is-right' : ''
                 }`}
@@ -105,7 +127,7 @@ export function Setup({ initialMode, navigate }: { initialMode: Mode; navigate: 
           <Section title="Questions">
             <div className="grid grid-cols-4 gap-2">
               {COUNTS.map((n) => (
-                <button key={n} className="chip h-11 px-2 text-sm whitespace-nowrap" aria-pressed={count === n} onClick={() => setCount(n)}>
+                <button key={n} className="chip h-11 px-2 text-sm whitespace-nowrap" aria-pressed={count === n} onClick={() => chooseCount(n)}>
                   {n === 0 ? `All ${pool.length}` : n}
                 </button>
               ))}

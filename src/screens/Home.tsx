@@ -1,6 +1,7 @@
 import type { Navigate } from '../App'
 import { Icon } from '../components/Icon'
 import { Mascot } from '../components/Mascot'
+import { FIRST_VISIT } from '../game/persona'
 import { Typewriter } from '../components/Typewriter'
 import { ALL_COUNTRIES } from '../game/engine'
 import { MODE_INFO, type Mode } from '../game/types'
@@ -33,7 +34,7 @@ export function Home({ navigate }: { navigate: Navigate }) {
         </h1>
       </header>
 
-      <Mascot mood="wave" size={124} say={firstVisit ? "I'm Moonpie, the smartest person you'll ever meet. This is Fun with Flags." : undefined} />
+      <Mascot mood="wave" size={124} say={firstVisit ? FIRST_VISIT : undefined} />
 
       <section className="card p-4">
         <div className="mb-2 flex items-baseline justify-between font-cond text-lg uppercase">

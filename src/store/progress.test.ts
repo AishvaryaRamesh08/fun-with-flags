@@ -5,17 +5,17 @@ const withPace = (pace?: Progress['settings']['pace']): Progress => ({ ...getPro
 
 describe('answer pause (Settings → Next question after)', () => {
   it('uses the chosen pace for quizzes', () => {
-    expect(answerPauseMs(true, false, withPace('fast'))).toBe(PACES.fast.right)
-    expect(answerPauseMs(false, false, withPace('relaxed'))).toBe(PACES.relaxed.wrong)
+    expect(answerPauseMs(true, false, 0, withPace('fast'))).toBe(PACES.fast.right)
+    expect(answerPauseMs(false, false, 0, withPace('relaxed'))).toBe(PACES.relaxed.wrong)
   })
   it('defaults to Quick for players who never chose (older saved progress has no pace)', () => {
     expect(DEFAULT_PACE).toBe('quick')
-    expect(answerPauseMs(true, false, withPace(undefined))).toBe(PACES.quick.right)
+    expect(answerPauseMs(true, false, 0, withPace(undefined))).toBe(PACES.quick.right)
   })
   it('is about half as long in Blitz, with a sensible minimum', () => {
-    expect(answerPauseMs(true, true, withPace('steady'))).toBe(700)
-    expect(answerPauseMs(true, true, withPace('fast'))).toBe(350)
-    expect(answerPauseMs(false, true, withPace('fast'))).toBe(700)
+    expect(answerPauseMs(true, true, 0, withPace('steady'))).toBe(700)
+    expect(answerPauseMs(true, true, 0, withPace('fast'))).toBe(350)
+    expect(answerPauseMs(false, true, 0, withPace('fast'))).toBe(700)
   })
   it('gets longer with each step from Fast to Relaxed', () => {
     const order = Object.values(PACES)
@@ -23,5 +23,11 @@ describe('answer pause (Settings → Next question after)', () => {
       expect(order[i].right).toBeGreaterThan(order[i - 1].right)
       expect(order[i].wrong).toBeGreaterThan(order[i - 1].wrong)
     }
+  })
+
+  it('gives longer remarks a little more reading time (not in Blitz)', () => {
+    expect(answerPauseMs(true, false, 35, withPace('quick'))).toBe(900)
+    expect(answerPauseMs(true, false, 85, withPace('quick'))).toBe(900 + 50 * 18)
+    expect(answerPauseMs(true, true, 85, withPace('quick'))).toBe(450)
   })
 })

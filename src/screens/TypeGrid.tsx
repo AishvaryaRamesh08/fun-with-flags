@@ -8,7 +8,7 @@ import { Mascot, type Mood } from '../components/Mascot'
 import type { Country } from '../data/types'
 import { countryByCode, questionPool } from '../game/engine'
 import { couldBeAnotherCountry, matchCountry } from '../game/match'
-import { TYPE_IT, pick, typeItSolved } from '../game/persona'
+import { TYPE_IT, pick, typeItClean, typeItForgiven } from '../game/persona'
 import { shuffle } from '../game/random'
 import type { GameSettings } from '../game/types'
 import { bestKey, getProgress, recordAnswer, recordGame } from '../store/progress'
@@ -124,7 +124,8 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
     feedback.correct()
     setMood(next.size === total ? 'eyeroll' : 'smug')
     setReaction((r) => r + 1)
-    setLine(typo ? TYPE_IT.typo.replace('{a}', c.name) : typeItSolved(next.size, total - next.size))
+    // Clean spelling gets grudging approval; a typo or a part of the name gets forgiven, with the full name
+    setLine(typo ? typeItForgiven(c.name) : typeItClean())
     if (next.size === total) setTimeout(() => finish(next), 1500)
     else focusNextAfter(c.code, next)
   }
@@ -203,7 +204,12 @@ export function TypeGrid({ settings, navigate }: { settings: GameSettings; navig
         <div className="md:mt-2 md:grid md:grid-cols-2 md:gap-2">
         <div className="mt-2 grid grid-cols-2 gap-2 md:mt-0" role="radiogroup" aria-label="Order">
           {(['az', 'random'] as Order[]).map((o) => (
-            <button key={o} role="radio" aria-checked={order === o} onClick={() => setOrder(o)} className="chip h-10 text-sm">
+            <button key={o} role="radio" aria-checked={order === o} onClick={() => {
+                setOrder(o)
+                setLine(o === 'az' ? TYPE_IT.orderAZ : TYPE_IT.orderRandom)
+                setMood('eyeroll')
+                setReaction((r) => r + 1)
+              }} className="chip h-10 text-sm">
               <Icon name={o === 'az' ? 'sort' : 'shuffle'} /> {o === 'az' ? 'A–Z' : 'Random'}
             </button>
           ))}

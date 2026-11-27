@@ -16,7 +16,7 @@ export function Results({ result, navigate }: { result: GameResult; navigate: Na
   const tier = resultTier(answered > 0 ? pct : 0)
   const mood = RESULT_MOOD[tier]
   // Chosen once for this results screen (he never praises, even a perfect score)
-  const [message] = useState(() => resultLine(tier))
+  const [message] = useState(() => resultLine(tier, blitz))
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-4 pb-4">
